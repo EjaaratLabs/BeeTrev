@@ -139,4 +139,36 @@ module.exports = {
         controller: "GetDonorDetails",
         allowedMethod: ['GET']
     },
+    "/transaction/createannouncement": {
+        controller: "createAnnouncement",
+        allowedMethod: ['POST']
+    },
+    "/transaction/createtour": {
+        controller: "createtour",
+        allowedMethod: ['POST']
+    },
+    "/transaction/createtransport": {
+        controller: "createTransport",
+        allowedMethod: ['POST']
+    },
+    "/transaction/getannouncement": {
+        controller: "GetAnnouncement",
+        allowedMethod: ['GET']
+    },
+    "/transaction/gettour": {
+        controller: "GetTour",
+        allowedMethod: ['GET']
+    },
+    "/transaction/gettourbyuserid": {
+        controller: "GetTourHistory",
+        allowedMethod: ['GET']
+    },
+    "/transaction/gettransportbyuserid": {
+        controller: "GetTransportHistory",
+        allowedMethod: ['GET']
+    },
+    "/transaction/gettransport": {
+        controller: "GetTransport",
+        allowedMethod: ['GET']
+    },
 }
