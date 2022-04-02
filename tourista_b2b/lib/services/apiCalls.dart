@@ -1,4 +1,5 @@
 // ignore: file_names
+// ignore: file_names
 import 'dart:convert';
 import 'dart:io';
 import 'package:http/http.dart' as http;
@@ -7,7 +8,7 @@ import 'package:streaming_shared_preferences/streaming_shared_preferences.dart';
 class ApiCalls {
   final LoginToken loginToken;
   String baseApiUrl;
-  ApiCalls({required this.loginToken, this.baseApiUrl = "172.16.5.190:3100"});
+  ApiCalls({required this.loginToken, this.baseApiUrl = "172.16.5.55:3100"});
 
   ///CONSTANTS FOR API CALLS
   ///eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJjbGllbnQiLCJpYXQiOjE2MTQ5NTE5MTl9.NhFa1eFf4Z1DNxmXUSVWt9VWDdsGch_w31yD5a5Muew
@@ -50,8 +51,9 @@ class ApiCalls {
       "Authorization": "Bearer ${loginToken.token}",
       // 'Content-Type': 'application/json; charset=UTF-8',
     };
+    print(queryParams);
     return await http.get(
-      Uri.https(baseApiUrl, route, queryParams),
+      Uri.http(baseApiUrl, route, queryParams),
       headers: header,
     );
   }

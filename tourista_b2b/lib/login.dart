@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:tourista_b2b/select%20tour.dart';
 import 'package:tourista_b2b/services/apiCalls.dart';
+import 'package:tourista_b2b/services/auth.dart';
 
 class login extends StatefulWidget {
   const login({Key? key}) : super(key: key);
@@ -98,14 +99,16 @@ class _loginState extends State<login> {
                       height: 50,
                       child: FlatButton(
                         onPressed: () async {
-                          ApiCalls api = new ApiCalls(
+                          /* ApiCalls api = new ApiCalls(
                               loginToken: new LoginToken(token: ""));
                           //    var username=usernamecon.
                           var resp = await api.postApiRequest(
                               "api/User/login", {
                             "f8996da763b7a969b1": usernamecon.text,
                             "d74ff0ee8da3b9806b": passwordcon.text
-                          });
+                          });*/
+                          var resp = await Auth()
+                              .login(usernamecon.text, passwordcon.text);
                           print(resp.body);
                           if (resp.statusCode == 200) {
                             Navigator.push(

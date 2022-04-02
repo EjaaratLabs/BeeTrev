@@ -1,17 +1,17 @@
 var modle = require('./Modules/Announcements');
 
 
-class GetAnnouncement {
+class GetLastAnnouncement {
     async input(req, message) {
        
-message.TOURID = req.query.tourid
+        message.TOURID = req.query.tourid
        // message.CHANNEL_NAME = req.body.channelName?? "";
 
     }
     async process(message) {
        
         try {
-            message.ANNOUNCEMENTS=await modle.getAllAnnouncement(message);
+            message.ANNOUNCEMENTS=await modle.getLastAnnouncement(message);
            
         }
         catch (ex) {
@@ -28,4 +28,4 @@ message.TOURID = req.query.tourid
 
 }
 
-module.exports = new GetAnnouncement();
+module.exports = new GetLastAnnouncement();

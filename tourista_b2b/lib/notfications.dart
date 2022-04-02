@@ -1,29 +1,28 @@
 import 'package:flutter/material.dart';
-import 'package:tourista_b2b/guest_details.dart';
-import 'package:tourista_b2b/models/customerModel.dart';
+import 'package:tourista_b2b/models/annuncementModel.dart';
 import 'package:tourista_b2b/services/services.dart';
 
-class guestList extends StatefulWidget {
-  const guestList({Key? key}) : super(key: key);
+class notifications extends StatefulWidget {
+  const notifications({Key? key}) : super(key: key);
 
   @override
-  _guestListState createState() => _guestListState();
+  State<notifications> createState() => _notificationsState();
 }
 
-class _guestListState extends State<guestList> {
+class _notificationsState extends State<notifications> {
   void initState() {
     super.initState();
     _requestInit();
   }
 
   _requestInit() async {
-    var temp = await Services().getcustomer();
+    var temp = await Services().getannouncement();
     setState(() {
       aboutCard = temp;
     });
   }
 
-  List<CustomerModel> aboutCard = [
+  List<AnnouncmenetModel> aboutCard = [
     // about_card(title: "Samad", description: "No Of Guests: 5"),
     // about_card(title: "Hunzala", description: "No Of Guests: 3"),
     // about_card(title: "Ahmed", description: "No Of Guests: 10"),
@@ -39,7 +38,7 @@ class _guestListState extends State<guestList> {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
-        title: Text("Select Tour"),
+        title: Text("Announcments"),
         backgroundColor: Color(0xffa014eb),
       ),
       body: SingleChildScrollView(
@@ -67,21 +66,12 @@ class _guestListState extends State<guestList> {
                 itemCount: aboutCard.length,
                 itemBuilder: (context, index) {
                   return Card(
-                    child: new InkWell(
-                      onTap: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => guest_details()),
-                        );
-                      },
-                      child: ListTile(
-                        title: Text(aboutCard[index].name),
-                        subtitle: Text(
-                          aboutCard[index].customerPhone,
-                          style: TextStyle(fontSize: 12),
-                        ),
-                      ),
+                    child: ListTile(
+                      title: Text(aboutCard[index].message),
+                      // subtitle: Text(
+                      //   aboutCard[index].customerPhone,
+                      //   style: TextStyle(fontSize: 12),
+                      // ),
                     ),
                   );
                 }),

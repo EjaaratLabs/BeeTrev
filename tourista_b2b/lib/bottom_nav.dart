@@ -4,6 +4,7 @@ import 'package:tourista_b2b/Home_page.dart';
 import 'package:tourista_b2b/guest_list.dart';
 import 'package:tourista_b2b/profile.dart';
 import 'new_msg.dart';
+import 'notfications.dart';
 
 class btm_nav extends StatefulWidget {
   const btm_nav({Key? key}) : super(key: key);
@@ -42,10 +43,10 @@ class _btm_navState extends State<btm_nav> {
                 IconButton(
                   icon: Icon(Icons.notifications),
                   onPressed: () {
-                    // Navigator.push(
-                    //     context,
-                    //     MaterialPageRoute(
-                    //         builder: (context) => notifications()));
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => notifications()));
                   },
                 ),
                 // IconButton(

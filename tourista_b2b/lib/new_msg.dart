@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:tourista_b2b/main.dart';
+import 'package:tourista_b2b/select%20tour.dart';
+import 'package:tourista_b2b/services/apiCalls.dart';
+import 'package:streaming_shared_preferences/streaming_shared_preferences.dart';
 
 class broadCast_msg extends StatefulWidget {
   const broadCast_msg({Key? key}) : super(key: key);
@@ -8,6 +12,7 @@ class broadCast_msg extends StatefulWidget {
 }
 
 class _broadCast_msgState extends State<broadCast_msg> {
+  TextEditingController announcmentcon = new TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -42,6 +47,7 @@ class _broadCast_msgState extends State<broadCast_msg> {
           Padding(
             padding: const EdgeInsets.only(left: 15.0, right: 9.0),
             child: TextField(
+              controller: announcmentcon,
               maxLines: 6,
               decoration: InputDecoration(
                   border: OutlineInputBorder(
@@ -52,9 +58,37 @@ class _broadCast_msgState extends State<broadCast_msg> {
           ),
           Padding(
             padding: const EdgeInsets.fromLTRB(10.0, 30.0, 10.0, 0),
+            // ignore: deprecated_member_use
             child: FlatButton(
               height: 50,
-              onPressed: () {},
+              onPressed: () async {
+                var preferences = await StreamingSharedPreferences.instance;
+                var tourid = preferences
+                    .getString("tourid", defaultValue: "")
+                    .getValue();
+                var val = preferences
+                    .getString('loginToken', defaultValue: '')
+                    .getValue();
+                print("#############################");
+                print(val);
+                ApiCalls api =
+                    new ApiCalls(loginToken: new LoginToken(token: val));
+                //    var username=usernamecon.
+                var resp =
+                    await api.postApiRequest("transaction/createannouncement", {
+                  "MESSAGE": announcmentcon.text,
+                  "TOURID": tourid
+
+                  //"d74ff0ee8da3b9806b": passwordcon.text
+                });
+                print(resp.body);
+                if (resp.statusCode == 200) {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => selectTour()),
+                  );
+                }
+              },
               color: Color(0xffa014eb),
               shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(50),

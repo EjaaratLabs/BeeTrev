@@ -1,0 +1,17 @@
+23:15:14.884 | Info | '/transaction/createcustomer' | 
+23:15:31.247 | Info | '/transaction/createcustomer' | 
+23:21:47.731 | Info | '/transaction/getcustomer' | 
+23:22:57.977 | Info | '/api/user/login' | 
+23:22:58.238 | Info | '/api/user/login' | 
+23:23:04.017 | Info | '/api/user/login' | 
+23:23:17.298 | Info | '/api/user/login' | 
+23:23:18.089 | Info | '/transaction/gettour' | 
+23:47:46.223 | Info | '/api/user/login' | 
+23:47:47.297 | Info | '/transaction/gettour' | 
+23:47:54.647 | Info | '/transaction/getcustomer' | 
+23:50:42.817 | Info | '/api/user/login' | 
+23:50:43.902 | Info | '/transaction/gettour' | 
+23:50:47.332 | Info | '/transaction/getcustomer' | 
+23:55:11.889 | Info | '/api/user/login' | 
+23:55:12.969 | Info | '/transaction/gettour' | 
+23:55:16.782 | Info | '/transaction/getcustomer' | 

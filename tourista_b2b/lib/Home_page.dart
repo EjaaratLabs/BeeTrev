@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:tourista_b2b/models/lastannuncementModel.dart';
+import 'package:tourista_b2b/services/services.dart';
 
 class homePage extends StatefulWidget {
   const homePage({Key? key}) : super(key: key);
@@ -8,6 +10,23 @@ class homePage extends StatefulWidget {
 }
 
 class _homePageState extends State<homePage> {
+  void initState() {
+    super.initState();
+    _requestInit();
+  }
+
+  String lastAnnounce = "";
+
+  _requestInit() async {
+    var temp = await Services().getlastannouncement();
+    setState(() {
+      //aboutCard = temp;
+      lastAnnounce = temp.message;
+    });
+  }
+
+  LastAnnouncmenetModel() {}
+
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -32,19 +51,16 @@ class _homePageState extends State<homePage> {
         Card(
           elevation: 2.0,
           child: ListTile(
-            title: Text("Last Announcment"),
-            subtitle: Text(
-                "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec dapibus tincidunt bibendum. Maecenas eu viverra orci. Duis diam leo, porta at justo vitae, euismod aliquam nulla."),
-          ),
+              title: Text("Last Announcment"), subtitle: Text(lastAnnounce)),
         ),
-        Card(
-          elevation: 2.0,
-          child: ListTile(
-            title: Text("Last Announcment"),
-            subtitle: Text(
-                "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec dapibus tincidunt bibendum. Maecenas eu viverra orci. Duis diam leo, porta at justo vitae, euismod aliquam nulla."),
-          ),
-        ),
+        // Card(
+        //   elevation: 2.0,
+        //   child: ListTile(
+        //     title: Text("Last Announcment"),
+        //     subtitle: Text(
+        //         "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec dapibus tincidunt bibendum. Maecenas eu viverra orci. Duis diam leo, porta at justo vitae, euismod aliquam nulla."),
+        //   ),
+        // ),
         Card(
           child: ListTile(
             title: Text("Current Event"),
