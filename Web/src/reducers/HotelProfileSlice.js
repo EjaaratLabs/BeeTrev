@@ -1,5 +1,6 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import { CreateNewTour, GetToursList } from '../api/TourApis';
+
+import { CreateNewHotel, GetHotelsList } from '../api/HotelApis';
 import { toast } from 'react-toastify';
 
 
@@ -9,7 +10,7 @@ const initialState = {
   unAssignedList: [],
   status: 'idle',
   screenMode: 'list',
-  tours: []
+  hotels: []
 };
 
 // The function below is called a thunk and allows us to perform async logic. It
@@ -19,27 +20,26 @@ const initialState = {
 // typically used to make async requests.
 
 
-export const GetToursListAsync = createAsyncThunk(
-  'TourSlice/gettour',
+export const GetHotelsListAsync = createAsyncThunk(
+  'HotelSlice/gethotels',
   async (data) => {
-    const response = await GetToursList(data.formData, data.token);
+    const response = await GetHotelsList(data.formData, data.token);
     console.log("res:  ", response)
     return response.data;
   }
 );
 
-export const createNewTourAsync = createAsyncThunk(
-  'TourSlice/createtour',
+export const createNewHotelAsync = createAsyncThunk(
+  'HotelSlice/createhotels',
   async (data) => {
     console.log(data)
-    const response = await CreateNewTour(data.formData, data.token);
+    const response = await CreateNewHotel(data.formData, data.token);
     return response.data;
   }
 );
 
-
-export const TourProfileSlice = createSlice({
-  name: 'TourSlice',
+export const HotelProfileSlice = createSlice({
+  name: 'HotelSlice',
   initialState,
   /*  reducers: {
       changeScreen: (state, action) => {
@@ -49,15 +49,15 @@ export const TourProfileSlice = createSlice({
     },*/
   extraReducers: (builder) => {
     builder
-      .addCase(GetToursListAsync.fulfilled, (state, action) => {
+      .addCase(GetHotelsListAsync.fulfilled, (state, action) => {
         state.status = 'idle';
-        state.tours = action.payload.tours
+        state.hotels = action.payload.list
         // state.profileData = action.payload.token;
       })
-      .addCase(createNewTourAsync.pending, (state, action) => {
+      .addCase(createNewHotelAsync.pending, (state, action) => {
         state.status = 'loading';
       })
-      .addCase(createNewTourAsync.fulfilled, (state, action) => {
+      .addCase(createNewHotelAsync.fulfilled, (state, action) => {
         state.status = 'idle';
         toast.success(action.payload.message)
         // state.profileData = action.payload.token;
@@ -65,18 +65,18 @@ export const TourProfileSlice = createSlice({
   },
 });
 
-export const { changeScreen } = TourProfileSlice.actions;
+export const { changeScreen } = HotelProfileSlice.actions;
 
 // The function below is called a selector and allows us to select a value from
 // the state. Selectors can also be defined inline where they're used instead of
 // in the slice file. For example: `useSelector((state: RootState) => state.counter.value)`
-export const getScreenMode = (state) => state.TourSlice.screenMode;
+export const getScreenMode = (state) => state.HotelSlice.screenMode;
 
-export const getProfiles = (state) => state.TourSlice.profile;
+export const getProfiles = (state) => state.HotelSlice.profile;
 
-export const getAvailableProfiles = (state) => state.TourSlice.unAssignedList;
+export const getAvailableProfiles = (state) => state.HotelSlice.unAssignedList;
 
-export const getTours = (state) => state.TourSlice.tours;
+export const getHotels = (state) => state.HotelSlice.hotels;
 
 // We can also write thunks by hand, which may contain both sync and async logic.
 // Here's an example of conditionally dispatching actions based on current state.
@@ -87,4 +87,4 @@ export const getTours = (state) => state.TourSlice.tours;
   }
 };*/
 
-export default TourProfileSlice.reducer;
+export default HotelProfileSlice.reducer;

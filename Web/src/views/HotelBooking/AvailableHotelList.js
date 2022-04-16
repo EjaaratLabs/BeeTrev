@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import { Link } from 'react-router-dom'
 
 import {
   MDBNavbar,
@@ -21,45 +22,48 @@ import {
   MDBCardHeader,
   MDBCardImage,
   MDBTooltip,
-  MDBCardFooter
+  MDBCardFooter,
 } from 'mdb-react-ui-kit';
 
 import DataTable from 'react-data-table-component';
 
 import room from '../Assets/room.jpeg'
+import { getToken } from '../../reducers/AuthSlice';
+import { getHotels, GetHotelsListAsync } from '../../reducers/HotelProfileSlice';
 
 const columns = [
   {
     name: 'Name',
-    selector: row => row.name,
+    selector: row => row.hotelName,
   },
   {
     name: 'Location',
-    selector: row => row.location,
+    selector: row => row.hotelLocation,
   },
   {
     name: 'Room Price',
-    selector: row => row.price,
+    selector: row => row.roomPrice,
   },
   {
     name: 'Description',
-    selector: row => row.description,
+    selector: row => row.hotelDescription,
   },
   {
     name: 'Facilities',
-    selector: row => row.facilities,
+    selector: row => row.hotelFacilities,
   },
   {
     name: 'Status',
-    selector: row => row.status,
+    selector: row => row.hotelStatus,
   },
   {
     name: 'Actions',
-    selector: row => row.action,
-  }
+    selector: row =>  <Link to={"/home/donors/details/"+row.regid}><MDBBtn color='warning' size='sm'>Details</MDBBtn> </Link>,
+  },
+  
 ];
 
-const data = [
+const data1 = [
   {
     id: 1,
     image: room,
@@ -107,6 +111,15 @@ const data = [
 ]
 export function AvailableHotelList() {
 
+  const dispatch = useDispatch();
+  const token = useSelector(getToken);
+  useEffect(() => {
+
+    dispatch(GetHotelsListAsync({ token }));
+  }, []);
+  const data = useSelector(getHotels);
+
+
   return (
     <div className="p-4 text-start ">
 
@@ -116,28 +129,28 @@ export function AvailableHotelList() {
 {data.map((data, index) => (  
 
 <MDBCard className="m-2" style={{ width: "22rem" }} cascade ecommerce>
-<MDBCardImage cascade top src={data.image} waves />
+<MDBCardImage cascade top src={room} waves />
 <MDBCardBody cascade className="text-center">
   <MDBCardTitle tag="h5">
-  {data.name}
+  {data.hotelName}
   </MDBCardTitle>
   <MDBCardTitle tag="h6">
-  {data.location}
+  {data.hotelLocation}
   </MDBCardTitle>
   <MDBCardText>
-  {data.description}
+  {data.hotelDescription}
   </MDBCardText>
   <MDBCardText>
-  {data.facilities}
+  {data.hotelFacilities}
   </MDBCardText>
   <MDBCardFooter>
     <MDBCardText>
-    Rs. {data.price}
+    Rs. {data.roomPrice}
   </MDBCardText>
     <MDBCardText>
-    {data.status}
+    {data.hotelStatus}
   </MDBCardText>
-  {data.action}
+  <MDBBtn href='/home/hotel-booking/book' >Book</MDBBtn>
   </MDBCardFooter>
 </MDBCardBody>
 </MDBCard>

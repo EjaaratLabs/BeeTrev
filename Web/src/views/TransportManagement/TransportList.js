@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
 import {
@@ -22,6 +22,9 @@ import {
 } from 'mdb-react-ui-kit';
 
 import DataTable from 'react-data-table-component';
+import { getTransports, GetTransportsListAsync } from '../../reducers/TransportProfileSlice';
+
+import { getToken, loginAsync } from '../../reducers/AuthSlice'
 
 const columns = [
   {
@@ -47,7 +50,7 @@ const columns = [
   
 ];
 
-const data = [
+const data1 = [
   {
     id: 1,
     type: 'Sedan',
@@ -90,6 +93,14 @@ const data = [
   }
 ]
 export function TransportList() {
+
+  const dispatch = useDispatch();
+  const token = useSelector(getToken);
+  useEffect(() => {
+
+    dispatch(GetTransportsListAsync({ token }));
+  }, []);
+  const data = useSelector(getTransports);
 
   return (
     <div className="p-4 text-start ">

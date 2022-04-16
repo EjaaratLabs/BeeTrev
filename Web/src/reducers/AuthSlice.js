@@ -1,5 +1,5 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import { Login } from '../api/AuthApis';
+import { Login, Signup } from '../api/AuthApis';
 
 const initialState = {
   token: '',
@@ -22,6 +22,16 @@ export const loginAsync = createAsyncThunk(
   }
 );
 
+export const createNewUserAsync = createAsyncThunk(
+  'authentication/signup',
+  async (data) => {
+    console.log(data)
+    const response = await Signup(data.formData);
+    console.log(response)
+    return response.data;
+  }
+);
+
 export const AuthSlice = createSlice({
   name: 'authentication',
   initialState,
@@ -32,6 +42,7 @@ export const AuthSlice = createSlice({
       // which detects changes to a "draft state" and produces a brand new
       // immutable state based off those changes
       state.token=''
+      window.location.href = "/login";
     }
   },
   extraReducers: (builder) => {
@@ -45,7 +56,16 @@ export const AuthSlice = createSlice({
        
         state.status = 'idle';
         state.token = action.payload.token;
-      });
+      })
+      .addCase(createNewUserAsync.pending, (state) => {
+      
+        state.status = 'loading';
+      })
+      .addCase(createNewUserAsync.fulfilled, (state, action) => {
+       
+        state.status = 'idle';
+        state.token = action.payload.token;
+      })
   },
 });
 

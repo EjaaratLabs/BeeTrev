@@ -6,8 +6,8 @@ class users
     async createNewUser(message)
     {
     
-        var results=await client.Query("insert into users(UserName,Name,Password,Email,Phone,Address,Status,ChannelId,RoleId,CenterId,createdby,updateby) values(?,?,?,?,?,?,?,?,?,?,?,?)",
-        [message.USER_NAME,message.NAME,message.PASSWORD,message.EMAIL,message.PHONE,message.ADDRESS,"1",message.CHANNEL_ID,message.ROLE_ID,message.CENTER_ID,message.API_USER_ID,message.API_USER_ID]);
+        var results=await client.Query("insert into users(UserName,Name,Password,Email,Phone,Address,Status,ChannelId,RoleId,CenterId,createdby,updateby,userType) values(?,?,?,?,?,?,?,?,?,?,?,?,?)",
+        [message.USER_NAME,message.NAME,message.PASSWORD,message.EMAIL,message.PHONE,message.ADDRESS,"1",message.CHANNEL_ID,message.ROLE_ID,message.CENTER_ID,message.API_USER_ID,message.API_USER_ID,message.USER_TYPE]);
     }
     async getAllUsers()
     {

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
 import {
@@ -22,36 +22,38 @@ import {
 } from 'mdb-react-ui-kit';
 
 import DataTable from 'react-data-table-component';
+import { getHotels, GetHotelsListAsync } from '../../reducers/HotelProfileSlice';
+import { getToken } from '../../reducers/AuthSlice';
 
 const columns = [
   {
     name: 'Name',
-    selector: row => row.name,
+    selector: row => row.hotelName,
   },
   {
     name: 'Location',
-    selector: row => row.location,
+    selector: row => row.hotelLocation,
   },
   {
     name: 'Room Price',
-    selector: row => row.price,
+    selector: row => row.roomPrice,
   },
   {
     name: 'Description',
-    selector: row => row.description,
+    selector: row => row.hotelDescription,
   },
   {
     name: 'Facilities',
-    selector: row => row.facilities,
+    selector: row => row.hotelFacilities,
   },
   {
     name: 'Status',
-    selector: row => row.status,
+    selector: row => row.hotelStatus,
   }
   
 ];
 
-const data = [
+const data1 = [
   {
     id: 1,
     name: 'Skardu View Point',
@@ -90,6 +92,14 @@ const data = [
   },
 ]
 export function HotelList() {
+
+  const dispatch = useDispatch();
+  const token = useSelector(getToken);
+  useEffect(() => {
+
+    dispatch(GetHotelsListAsync({ token }));
+  }, []);
+  const data = useSelector(getHotels);
 
   return (
     <div className="p-4 text-start ">

@@ -26,7 +26,7 @@ import { createNewTourAsync } from '../../reducers/TourProfileSlice';
 
 
 
-export function TourSetup() {
+export function CustomerSetup() {
 
 
   const token = useSelector(getToken);
@@ -66,7 +66,7 @@ export function TourSetup() {
                 <div className="grey-text text-start">
 
                   <MDBRow>
-                    <h5>Tour Information</h5>
+                    <h5>Customer Information</h5>
                     <MDBCol lg="4" className="py-1">
                       <MDBInput label="Name" icon="envelope" group type="text" validate error="wrong"
                         success="right" name='NAME' value={formData.NAME} onChange={handleChange} />
@@ -95,7 +95,7 @@ export function TourSetup() {
                   <hr />
                 </div>
                 <div className="text-end w-100">
-                  <MDBBtn  color="danger" className="mx-2 my-5" href="/home/tour">Close</MDBBtn><MDBBtn className="mx-2  my-5" onClick={onSubmit}>Add</MDBBtn>
+                  <MDBBtn  color="danger" className="mx-2 my-5" href="/home/customer">Close</MDBBtn><MDBBtn className="mx-2  my-5" onClick={onSubmit}>Add</MDBBtn>
                 </div>
               </form>
 

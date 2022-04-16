@@ -35,6 +35,8 @@ import { TransportBooking } from './TransportBooking/TransportBooking';
 import logo from './Assets/logo.png'
 import { Webiste, WebsiteSetup } from './WebsiteCreation/WebsiteSetup';
 import { resetToken } from './../reducers/AuthSlice'
+import { CustomerManagement } from './CustomerManagement/CustomerManagement';
+import { Dashboard } from './Dashboard/Dashboard';
 
 export function Landing() {
 
@@ -50,12 +52,17 @@ export function Landing() {
 
           <div className="custom-sidebar-menu-item">
             <div className="custom-sidebar-menu-item-inner">
-              <Link to={`/home`} >Dashboard</Link>
+              <Link to={`/home/dashboard`} >Dashboard</Link>
             </div>
           </div>
           <div className="custom-sidebar-menu-item">
             <div className="custom-sidebar-menu-item-inner">
               <Link to={`/home/tour`} >Tour Management</Link>
+            </div>
+          </div>
+          <div className="custom-sidebar-menu-item">
+            <div className="custom-sidebar-menu-item-inner">
+              <Link to={`/home/customer`} >Customer Management</Link>
             </div>
           </div>
           <div className="custom-sidebar-menu-item">
@@ -92,10 +99,12 @@ export function Landing() {
         </div>
         <div className="custom-sidebar-content">
       <div className="custom-sidebar-content-nav">
-
+                
       </div>
           <Routes>
+            <Route path={`dashboard/*`} element={ <Dashboard />} />
             <Route path={`tour/*`} element={ <TourManagement />} />
+            <Route path={`customer/*`} element={ <CustomerManagement />} />
             <Route path={`hotel/*`} element={ <HotelManagement />} />
             <Route path={`transport/*`} element={ <TransportManagement />} />
             <Route path={`hotel-booking/*`} element={ <HotelBooking />} />

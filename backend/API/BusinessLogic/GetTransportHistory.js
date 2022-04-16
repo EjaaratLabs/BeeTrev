@@ -11,7 +11,7 @@ class GetTransportHistory {
     async process(message) {
        
         try {
-            message.TRANSPORTS=await modle.getAllTransport(message);
+            message.TRANSPORTS=await modle.getTransportsByUserId(message);
         }
         catch (ex) {
             console.log(JSON.stringify(ex));

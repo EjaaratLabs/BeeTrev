@@ -4,16 +4,17 @@ var sha256 = require('js-sha256');
 class PostUser {
     async input(req, message) {
 
-
+        console.log("message ", req.body)
         message.USER_NAME = req.body.userName ?req.body.userName: "";
         message.PASSWORD = req.body.password ?req.body.password: "";
-        message.CENTER_ID=req.body.centerId?req.body.centerId:"";
+        message.CENTER_ID=req.body.centerId?req.body.centerId:1;
         message.PHONE = req.body.phone ?req.body.phone: "";
         message.EMAIL = req.body.email ?req.body.email: "";
         message.ADDRESS = req.body.address ?req.body.address: "";
         message.NAME= req.body.name ?req.body.name: "";
-        message.ROLE_ID= req.body.roleId ?req.body.roleId: "";
-        message.CHANNEL_ID= req.body.channelId ?req.body.channelId: "";
+        message.ROLE_ID= req.body.roleId ?req.body.roleId: 1;
+        message.CHANNEL_ID= req.body.channelId ?req.body.channelId: 6;
+        message.USER_TYPE= req.body.userType ?req.body.userType: 1;
     }
     async process(message) {
 
@@ -25,7 +26,7 @@ class PostUser {
             message.PASSWORD = result.toString().substr(0,50);
             console.log("PASSWORD: " + message.PASSWORD);
             await modle.createNewUser(message);
-            console.log("not my problem\n");
+            console.log(message)
 
         }
         catch (ex) {

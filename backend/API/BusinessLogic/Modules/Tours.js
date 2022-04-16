@@ -6,8 +6,8 @@ class Tours
     async createNewTour(message)
     {
     
-        var results=await client.Query("insert into tours(name,days,destination,departure,price,status) values(?,?,?,?,?,?)",
-        [message.NAME, message.DAYS, message.DESTINATION, message.DEPARTURE, message.PRICE, message.STATUS]);
+        var results=await client.Query("insert into tours(name,days,destination,departure,price,status,createdBy) values(?,?,?,?,?,?,?)",
+        [message.NAME, message.DAYS, message.DESTINATION, message.DEPARTURE, message.PRICE, message.STATUS, message.API_USER_ID]);
     }
     async getAllTour()
     {

@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
-import loginBg from './Assets/pakistan-karakorum.webp'
+import slider1 from './Assets/slider1.png'
+import slider2 from './Assets/slider2.png'
+import slider3 from './Assets/slider3.png'
 import logo from './Assets/logo.png'
 import tours from './Assets/tours.jpg'
 import hotels from './Assets/hotels.jpg'
@@ -31,8 +33,14 @@ import {
   MDBInput,
   MDBCardImage,
   MDBCardFooter,
-  MDBCardLink
+  MDBCardLink,
+  MDBCarousel,
+  MDBCarouselItem,
+  MDBCarouselInner,
+  MDBCarouselElement
 } from 'mdb-react-ui-kit';
+
+
 import { TourManagement } from './TourManagement/TourManagement';
 import { Tours } from './CustomerWeb/Tours';
 import { Hotels } from './CustomerWeb/Hotels';
@@ -71,6 +79,20 @@ export function CustomerWeb() {
           </div>
         </MDBContainer>
       </MDBNavbar>
+
+      <MDBCarousel showIndicators showControls>
+      <MDBCarouselInner>
+        <MDBCarouselItem className='active'>
+          <MDBCarouselElement src={slider1} alt='...' />
+        </MDBCarouselItem>
+        <MDBCarouselItem>
+          <MDBCarouselElement src={slider2} alt='...' />
+        </MDBCarouselItem>
+        <MDBCarouselItem>
+          <MDBCarouselElement src={slider3} alt='...' />
+        </MDBCarouselItem>
+      </MDBCarouselInner>
+    </MDBCarousel>
 
       <div className="p-4 mt-2 text-center ">
 

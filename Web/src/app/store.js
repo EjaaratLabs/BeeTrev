@@ -8,6 +8,9 @@ import counterReducer from '../features/counter/counterSlice';
 import childProfileReducer from '../reducers/ChildProfileSlice';
 import doonorProfileReducer from '../reducers/DonorProfileSlice';
 import TourProfileSlice from '../reducers/TourProfileSlice';
+import TransportProfileSlice from '../reducers/TransportProfileSlice';
+import HotelProfileSlice from '../reducers/HotelProfileSlice';
+import UserProfileSlice from '../reducers/UserProfileSlice';
 
 const persistConfig = {
   key: 'root',
@@ -20,7 +23,10 @@ const reducers = combineReducers({
   authentication: authReducer,
   childProfile: childProfileReducer,
   donorProfile: doonorProfileReducer,
-  TourSlice: TourProfileSlice
+  TourSlice: TourProfileSlice,
+  TransportSlice: TransportProfileSlice,
+  HotelSlice: HotelProfileSlice,
+  UserSlice: UserProfileSlice
 });
 
 const _persistedReducer = persistReducer(persistConfig, reducers);

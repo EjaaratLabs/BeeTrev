@@ -22,8 +22,29 @@ import {
   MDBInput,
   MDBRadio
 } from 'mdb-react-ui-kit';
+import { createNewUserAsync } from '../../reducers/AuthSlice';
 
 export function Signup() {
+
+  const [formData, setFormData] = useState({});
+  const dispatch = useDispatch();
+  const handleChange = event => {
+    var data = formData;
+    data[event.target.name] = event.target.value;
+    setFormData(data);
+  }
+  const handleDate = event => {
+    var data = formData;
+
+    data[event.target.name] = new Date(event.target.value);
+    setFormData(data);
+  }
+
+  const onSubmit = () => {
+
+    dispatch(createNewUserAsync({ formData }));
+
+  }
 
   return (
     <div>
@@ -66,26 +87,28 @@ export function Signup() {
             <MDBCard style={{ minWidth: '25rem' }} >
               <MDBCardBody>
                 <MDBCardTitle>Sign Up</MDBCardTitle>
-                <MDBInput label="Name" className="mt-5 mb-2" icon="envelope" group type="email" validate error="wrong"
-                  success="right" />
-                <MDBInput label="Username" className="mb-2" icon="envelope" group type="email" validate error="wrong"
-                  success="right" />
-                <MDBInput label="Email" className="mb-2" icon="envelope" group type="email" validate error="wrong"
-                  success="right" />
-                <MDBInput label="Phone" className="mb-2" icon="envelope" group type="email" validate error="wrong"
-                  success="right" />
+                <MDBInput label="Name" className="mt-5 mb-2" icon="envelope" group type="text" validate error="wrong"
+                  success="right" name='name' value={formData.name} onChange={handleChange} />
+                <MDBInput label="Username" className="mb-2" icon="envelope" group type="text" validate error="wrong"
+                  success="right" name='userName' value={formData.userName} onChange={handleChange} />
+                <MDBInput label="Email" className="mb-2" icon="envelope" group type="text" validate error="wrong"
+                  success="right" name='email' value={formData.email} onChange={handleChange} />
+                <MDBInput label="Phone" className="mb-2" icon="envelope" group type="text" validate error="wrong"
+                  success="right" name='phone' value={formData.phone} onChange={handleChange} />
+                <MDBInput label="Address" className="mb-2" icon="envelope" group type="text" validate error="wrong"
+                  success="right" name='address' value={formData.address} onChange={handleChange} />
 
-                <label class="form-label" for="customFile">Signing up as</label>
-                <MDBRadio name='flexRadioDefault' id='flexRadioDefault1' label='Tour Operator' />
-                <MDBRadio name='flexRadioDefault' id='flexRadioDefault2' label='Hotel Vendor' />
-                <MDBRadio name='flexRadioDefault' className="mb-3" id='flexRadioDefault2' label='Transport Vendor' />
+                <select className="form-select mb-2" name="userType" value={formData.userType} onChange={handleChange}>
+                        <option value="SELECT">Signing up as</option>
+                        <option value="1">Tour Operator</option>
+                        <option value="2">Hotel Vendor</option>
+                        <option value="3">Transport Vendor</option>
+                      </select>
 
-                <label class="form-label" for="customFile">Official Document</label>
-                <input type="file" class="form-control mb-2" id="customFile" />
                 <MDBInput label="Password" className="mb-5 mb-2" icon="envelope" group type="password" validate error="wrong"
-                  success="right" />
+                  success="right" name='password' value={formData.password} onChange={handleChange} />
 
-                <MDBBtn href="/home/tour">Sign Up</MDBBtn>
+                <MDBBtn href="" onClick={onSubmit}>Sign Up</MDBBtn>
               </MDBCardBody>
             </MDBCard>
 

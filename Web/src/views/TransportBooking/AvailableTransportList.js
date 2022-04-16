@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
 import {
@@ -26,6 +26,8 @@ import {
 
 import DataTable from 'react-data-table-component';
 import car from '../Assets/car.jpg'
+import { getTransports, GetTransportsListAsync } from '../../reducers/TransportProfileSlice';
+import { getToken } from '../../reducers/AuthSlice';
 
 const columns = [
   {
@@ -54,7 +56,7 @@ const columns = [
   }
 ];
 
-const data = [
+const data1 = [
   {
     id: 1,
     image: car,
@@ -108,6 +110,22 @@ const data = [
 ]
 export function AvailableTransportList() {
 
+  const [value,setValue]=useState('');
+  
+  const handleSelect=(e)=>{
+    setValue(e.target.value)
+    console.log(e.target.value);
+  }
+
+  const dispatch = useDispatch();
+  const token = useSelector(getToken);
+  useEffect(() => {
+
+    dispatch(GetTransportsListAsync({ token }));
+  }, []);
+  const data = useSelector(getTransports);
+
+
   return (
     <div className="p-4 text-start ">
 
@@ -117,7 +135,7 @@ export function AvailableTransportList() {
 
     <MDBCol lg="3" className="py-3">
       Choose Type
-                      <select className="form-select">
+                      <select className="form-select" id="dropdown" onClick={handleSelect}>
                         <option value="All">All</option>
                         <option value="Sedan">Sedan</option>
                         <option value="Van">Van</option>
@@ -128,10 +146,10 @@ export function AvailableTransportList() {
 </div>
 
 <MDBRow>
-{data.map((data, index) => (  
+{data.filter(transport => transport.type === {value}).map((data, index) => (  
 
 <MDBCard className="m-2" style={{ width: "22rem" }} cascade ecommerce>
-<MDBCardImage cascade top src={data.image} waves />
+<MDBCardImage cascade top src={car} waves />
 <MDBCardBody cascade className="text-center">
   <MDBCardTitle tag="h5">
   {data.type}
@@ -152,7 +170,7 @@ export function AvailableTransportList() {
     <MDBCardText>
     {data.status}
   </MDBCardText>
-  {data.action}
+  <MDBBtn href='/home/transport-booking/book' >Book</MDBBtn>
   </MDBCardFooter>
 </MDBCardBody>
 </MDBCard>

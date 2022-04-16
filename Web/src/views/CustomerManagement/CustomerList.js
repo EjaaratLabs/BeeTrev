@@ -23,7 +23,6 @@ import {
 
 import DataTable from 'react-data-table-component';
 
-import { TourDetails } from './TourSetup';
 import { getToken, loginAsync } from '../../reducers/AuthSlice'
 import { GetToursList } from '../../api/TourApis';
 import { getTours, GetToursListAsync } from '../../reducers/TourProfileSlice';
@@ -116,7 +115,7 @@ const tours = [
     action: <MDBBtn href='/home/tour/add' >Add New</MDBBtn>
   },
 ]
-export function TourList() {
+export function CustomerList() {
 
   const dispatch = useDispatch();
   const token = useSelector(getToken);
@@ -130,9 +129,9 @@ export function TourList() {
     <div className="p-4 text-start ">
   
       <MDBCard alignment='center' >
-      <MDBCardHeader className="text-start"><h5> Tour Management</h5></MDBCardHeader>
+      <MDBCardHeader className="text-start"><h5> Customer Management</h5></MDBCardHeader>
         <div className="w-100 d-flex p-4 justify-content-end" >
-          <MDBBtn href='/home/tour/add' >Create New</MDBBtn>
+          <MDBBtn href='/home/customer/add' >Create New</MDBBtn>
         </div>
         <MDBRow>
           <MDBCardBody>

@@ -51,6 +51,34 @@ app.post("/api/user/login",async function (req, res, next) {
   }
   //next()
 });
+app.post("/api/user/signup",async function (req, res, next) {
+  // res.header('Access-Control-Allow-Origin', '*')
+  // res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept')
+
+  
+
+  try {
+    logger.logInfo("/api/user/signup");
+    let message = {}
+    var api = require('./API/BusinessLogic/PostUser');
+    api.input(req, message);
+    await api.process(message);
+      let response = {
+        responseBody: {},
+      };
+      api.output(response, message);
+      res.status(statusCodeMap[response.status] ? statusCodeMap[response.status] : 500)
+      res.send(response.responseBody);
+  }
+  catch (ex) {
+    logger.logInfo(ex);
+    res.status(500);
+    res.send({
+      errorMessage: "Internal Server Error Occured."
+    });
+  }
+  //next()
+});
 app.post("/api/client/login", function (req, res, next) {
   try {
     logger.logInfo("/api/client/login");

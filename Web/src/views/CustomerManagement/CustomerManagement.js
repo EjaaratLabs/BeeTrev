@@ -26,21 +26,17 @@ import {
   useMatch
 } from "react-router-dom";
 
-import { HotelList } from './HotelList';
-import { HotelSetup } from './HotelSetup';
+import { CustomerList } from './CustomerList';
+import { CustomerSetup } from './CustomerSetup';
 
-export function HotelManagement() {
+export function CustomerManagement() {
 
-  const screen1 = useSelector(state => state.childProfile.screenMode);
-  const [screen, setScreenMode] = useState("list");
-  const [details, setProfileDetails] = useState({});
-  const [detailsMode, setDetailsMode] = useState("add");
 
   var screenModule = <div></div>
 
 
   // if (screen == "list") {
-  //   screenModule = <HotelList
+  //   screenModule = <TourList
   //     openNewProfile={() => {
   //       setDetailsMode("add")
   //       setScreenMode("addscreen")
@@ -53,7 +49,7 @@ export function HotelManagement() {
   //     }} />;
   // }
   // else if (screen == "addscreen") {
-  //   screenModule = <HotelSetup details={details} detailsMode={detailsMode} closeProfileDetails={() => {
+  //   screenModule = <TourSetup details={details} detailsMode={detailsMode} closeProfileDetails={() => {
   //     setScreenMode("list")
   //   }} />;
   // }
@@ -66,9 +62,8 @@ export function HotelManagement() {
     // screenModule
 
     <Routes>
-      <Route path={`/`} element={<HotelList />} />
-      <Route path={`add`} element={<HotelSetup />} />
+      <Route path={`/`} element={<CustomerList />} />
+      <Route path={`add`} element={<CustomerSetup />} />
     </Routes>
   );
-
 }

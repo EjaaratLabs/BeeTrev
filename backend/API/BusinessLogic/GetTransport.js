@@ -18,7 +18,7 @@ class GetTransport {
         }
     }
     async output(res, message) {
-        res.responseBody.TRANSPORTS=message.TRANSPORTS;
+        res.responseBody.transports=message.TRANSPORTS;
         res.status = "Success";
     }
     inputValidation(req) {
