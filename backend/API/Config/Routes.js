@@ -151,8 +151,22 @@ module.exports = {
         controller: "createTransport",
         allowedMethod: ['POST']
     },
+    "/transaction/createcustomer": {
+        controller: "createcustomer",
+        allowedMethod: ['POST']
+
+    },
+
+    "/transaction/getcustomer": {
+        controller: "getcustomer",
+        allowedMethod: ['GET']
+    },
     "/transaction/getannouncement": {
         controller: "GetAnnouncement",
+        allowedMethod: ['GET']
+    },
+    "/transaction/getlastannouncement": {
+        controller: "GetLastAnnouncement",
         allowedMethod: ['GET']
     },
     "/transaction/gettour": {

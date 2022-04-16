@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:tourista_b2b/Home_page.dart';
 import 'package:tourista_b2b/bottom_nav.dart';
+import 'package:tourista_b2b/main.dart';
+import 'package:tourista_b2b/models/tourmodel.dart';
+import 'package:tourista_b2b/services/services.dart';
+import 'package:streaming_shared_preferences/streaming_shared_preferences.dart';
 
 class selectTour extends StatefulWidget {
   const selectTour({Key? key}) : super(key: key);
@@ -10,25 +14,19 @@ class selectTour extends StatefulWidget {
 }
 
 class _selectTourState extends State<selectTour> {
-  List aboutCard = [
-    about_card(
-        title: "HUNZA",
-        description:
-            "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec dapibus tincidunt bibendum. Maecenas eu viverra orci. Duis diam leo, porta at justo vitae, euismod aliquam nulla."),
-    about_card(
-        title: "SKARDU",
-        description:
-            "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec dapibus tincidunt bibendum. Maecenas eu viverra orci. Duis diam leo, porta at justo vitae, euismod aliquam nulla."),
-    about_card(title: "HUNZA", description: "Pakistan"),
-    about_card(title: "SKARDU", description: "03362909604"),
-    about_card(title: "HUNZA", description: "Male"),
-    about_card(title: "SKARDU", description: "18-July-2000"),
-    about_card(title: "HUNZA", description: "Islam"),
-    about_card(title: "SKARDU", description: "single"),
-    about_card(title: "NARAAN", description: "Islam"),
-    about_card(title: "QUETTA", description: "Islam"),
-    about_card(title: "GILGIT", description: "Islam"),
-  ];
+  void initState() {
+    super.initState();
+    _requestInit();
+  }
+
+  _requestInit() async {
+    var temp = await Services().gettours();
+    setState(() {
+      aboutCard = temp;
+    });
+  }
+
+  List<TourModel> aboutCard = [];
   var _dropDownValue;
   @override
   Widget build(BuildContext context) {
@@ -64,16 +62,21 @@ class _selectTourState extends State<selectTour> {
                 itemBuilder: (context, index) {
                   return Card(
                     child: new InkWell(
-                      onTap: () {
+                      onTap: () async {
+                        var preferences =
+                            await StreamingSharedPreferences.instance;
+                        preferences.setString(
+                            'tourid', aboutCard[index].id.toString());
+
                         Navigator.push(
                           context,
                           MaterialPageRoute(builder: (context) => btm_nav()),
                         );
                       },
                       child: ListTile(
-                        title: Text(aboutCard[index].title),
+                        title: Text(aboutCard[index].name),
                         subtitle: Text(
-                          aboutCard[index].description,
+                          aboutCard[index].name,
                           style: TextStyle(fontSize: 12),
                         ),
                       ),
@@ -85,11 +88,4 @@ class _selectTourState extends State<selectTour> {
       ),
     );
   }
-}
-
-class about_card {
-  String title;
-  String description;
-
-  about_card({required this.title, required this.description});
 }

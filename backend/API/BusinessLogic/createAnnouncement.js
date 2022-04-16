@@ -7,8 +7,9 @@ class createAnnouncement
     {
            // message.NAME=req.body.name;  
             //message.NAME=req.query.name;  
-            message.TITLE=req.body.TITLE;
+            //message.TITLE=req.body.TITLE;
             message.MESSAGE=req.body.MESSAGE;
+            message.TOURID=req.body.TOURID;
     }
     async process(message)
     {

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 00:11:14.987 | Info | '/transaction/gethotels' | 
 00:11:16.095 | Info | '/transaction/gettour' | 
 00:11:18.194 | Info | '/transaction/gettour' | 
@@ -49,3 +50,31 @@
 01:53:16.789 | Info | '/transaction/gethotels' | 
 02:00:49.418 | Info | '/transaction/gethotels' | 
 02:01:17.906 | Info | '/transaction/createhotels' | 
+=======
+00:26:04.698 | Info | '/transaction/gettour' | 
+01:18:27.005 | Info | '/api/user/login' | 
+01:20:37.916 | Info | '/api/user/login' | 
+01:24:27.844 | Info | '/api/user/login' | 
+01:25:26.374 | Info | '/transaction/gettour' | 
+01:26:15.756 | Info | '/api/user/login' | 
+01:26:16.733 | Info | '/transaction/gettour' | 
+01:28:36.816 | Info | '/api/user/login' | 
+01:28:37.699 | Info | '/transaction/gettour' | 
+01:31:18.818 | Info | '/api/user/login' | 
+01:31:19.724 | Info | '/transaction/gettour' | 
+01:56:52.689 | Info | '/transaction/createcustomer' | 
+01:56:53.119 | Info | ({}) | 
+01:59:55.933 | Info | '/transaction/createcustomer' | 
+01:59:55.937 | Info | ({}) | 
+02:01:19.023 | Info | '/transaction/createcustomer' | 
+02:01:19.026 | Info | ({}) | 
+02:01:40.468 | Info | '/transaction/createcustomer' | 
+02:01:40.475 | Info | ({}) | 
+02:02:15.058 | Info | '/transaction/createcustomer' | 
+02:02:15.162 | Info | ({}) | 
+02:02:45.954 | Info | '/transaction/createcustomer' | 
+02:02:45.959 | Info | ({}) | 
+02:03:55.298 | Info | '/transaction/createcustomer' | 
+02:06:25.251 | Info | '/transaction/createcustomer' | 
+02:13:43.706 | Info | '/transaction/createcustomer' | 
+>>>>>>> 98ecfb52403b2a898deaf1abe93953d0b43d3815
