@@ -1,5 +1,5 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import { CreateNewTour, GetToursList } from '../api/TourApis';
+import { CreateNewTour, DeleteTour, GetTourDetails, GetToursList } from '../api/TourApis';
 import { toast } from 'react-toastify';
 
 
@@ -37,6 +37,23 @@ export const createNewTourAsync = createAsyncThunk(
   }
 );
 
+export const GetTourDetailsAsync = createAsyncThunk(
+  'TourSlice/details',
+  async (data) => {
+    const response = await GetTourDetails(data.params, data.token);
+    console.log('res',response);
+    return response.data;
+  }
+);
+
+export const DeleteTourAsync = createAsyncThunk(
+  'TourSlice/delete',
+  async (data) => {
+    const response = await DeleteTour(data.params, data.token);
+    return response.data;
+  }
+);
+
 
 export const TourProfileSlice = createSlice({
   name: 'TourSlice',
@@ -61,7 +78,21 @@ export const TourProfileSlice = createSlice({
         state.status = 'idle';
         toast.success(action.payload.message)
         // state.profileData = action.payload.token;
+      }).addCase(GetTourDetailsAsync.pending, (state, action) => {
+        state.status = 'loading';
       })
+      .addCase(GetTourDetailsAsync.fulfilled, (state, action) => {
+        state.status = 'idle';
+        state.profileData= action.payload
+        // state.profileData = action.payload.token;
+      }).addCase(DeleteTourAsync.pending, (state, action) => {
+        state.status = 'loading';
+      })
+      .addCase(DeleteTourAsync.fulfilled, (state, action) => {
+        state.status = 'idle';
+        // state.profileData= action.payload
+        // state.profileData = action.payload.token;
+      });
   },
 });
 

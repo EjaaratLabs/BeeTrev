@@ -1,17 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-
-import loginBg from './Assets/pakistan-karakorum.webp'
-import logo from './Assets/logo.png'
-import tours from './Assets/tours.jpg'
-import hotels from './Assets/hotels.jpg'
-import transports from './Assets/transports.png'
-
-import {
-    BrowserRouter as Router, Routes, Route, Link, useParams,
-    useMatch
-  } from "react-router-dom";
-
+import { useNavigate, useLocation, Navigate,Link } from 'react-router-dom';
 import {
   MDBNavbar,
   MDBNavbarNav,
@@ -29,52 +18,116 @@ import {
   MDBCardText,
   MDBBtn,
   MDBInput,
-  MDBCardImage,
-  MDBCardFooter,
-  MDBCardLink
+  MDBNavbarBrand,
+  MDBCollapse,
+  MDBCarouselElement,
+  MDBCarouselCaption,
+  MDBCarouselItem,
+  MDBCarouselInner,
+  MDBCarousel,
+  MDBDropdown,
+  MDBDropdownToggle,
+  MDBDropdownItem,
+  MDBDropdownMenu,
+  MDBDropdownLink
 } from 'mdb-react-ui-kit';
-import { TourManagement } from './TourManagement/TourManagement';
-import { Tours } from './CustomerWeb/Tours';
-import { Hotels } from './CustomerWeb/Hotels';
-import { Transports } from './CustomerWeb/Transports';
+
+import { getToken, loginAsync, resetToken } from '../reducers/AuthSlice'
+import logo from './Assets/logo.png'
+import comakebg from './Assets/tours.jpg'
+import item1 from '../assets/signup.png'
+import item2 from '../assets/connect.png'
+
+import item3 from '../assets/sahke.png'
+
+
 
 export function Navbar() {
 
+  const [showNav, setShowNav] = useState(false);
+
   return (
-    <div>
+    <MDBNavbar expand='lg' light bgColor='light'>
+      <MDBContainer fluid>
+        <MDBNavbarBrand href='/'><img src={logo} style={{ height: "50px" }} /> TOURISTA</MDBNavbarBrand>
+        <MDBNavbarToggler
+          type='button'
+          aria-expanded='false'
+          aria-label='Toggle navigation'
+          onClick={() => setShowNav(!showNav)}
+        >
+          <MDBIcon icon='bars' fas />
+        </MDBNavbarToggler>
+        <MDBCollapse navbar show={showNav}>
+          <MDBNavbarNav left>
+            <MDBNavbarItem>
+              <MDBDropdown group className='shadow-0' >
+                <MDBDropdownToggle color='light' >Buyer</MDBDropdownToggle>
+                <MDBDropdownMenu>
+                  <MDBDropdownItem>
+                    <MDBDropdownLink href="/business">Explore projects</MDBDropdownLink>
+                  </MDBDropdownItem>
+                  <MDBDropdownItem>
+                    <MDBDropdownLink href="/signup">Become a buyer</MDBDropdownLink>
+                  </MDBDropdownItem>
+                  <MDBDropdownItem>
+                    <MDBDropdownLink href="/post-business-ad">Post an ad</MDBDropdownLink>
+                  </MDBDropdownItem>
+       
+                </MDBDropdownMenu>
+              </MDBDropdown>
+            </MDBNavbarItem>
+            <MDBNavbarItem>
+              <MDBDropdown group className='shadow-0'>
+                <MDBDropdownToggle color='light'>Vendor</MDBDropdownToggle>
+                <MDBDropdownMenu>
+                  <MDBDropdownItem>
+                    <MDBDropdownLink href="/vendor">Explore vendors</MDBDropdownLink>
+                  </MDBDropdownItem>
+                  <MDBDropdownItem>
+                    <MDBDropdownLink href="/signup">Become a vendor</MDBDropdownLink>
+                  </MDBDropdownItem>
 
-      <MDBNavbar expand='lg' light bgColor='white'>
-        <MDBContainer fluid>
-          <MDBNavbarToggler
-            aria-controls='navbarExample01'
-            aria-expanded='false'
-            aria-label='Toggle navigation'
-          >
-            <MDBIcon fas icon='bars' />
-          </MDBNavbarToggler>
-          <div className='collapse navbar-collapse w-100' id='navbarExample01' >
-            <MDBNavbarNav left className='mb-2 mb-lg-0'>
-              <MDBNavbarItem >
-                <MDBNavbarLink href='/'>
-                  <img width={'50px'} src={logo}/>
-                </MDBNavbarLink>
-              </MDBNavbarItem>
-
-            </MDBNavbarNav>
-            <MDBNavbarNav right className='mb-2 mb-lg-0 text=right d-flex justify-content-end' >
-
-
-              <MDBNavbarLink href='/login'>
-                Admin
-              </MDBNavbarLink>
-            </MDBNavbarNav>
-          </div>
-        </MDBContainer>
-      </MDBNavbar>
-
-
-    </div>
-
-    
+                </MDBDropdownMenu>
+              </MDBDropdown>
+            </MDBNavbarItem>
+            <MDBNavbarItem>
+              <MDBDropdown group className='shadow-0'>
+                <MDBDropdownToggle color='light'>Allied Services</MDBDropdownToggle>
+                <MDBDropdownMenu>
+                  <MDBDropdownItem>
+                    <MDBDropdownLink href="/allied-services">Browse allied services</MDBDropdownLink>
+                  </MDBDropdownItem>
+                
+        
+                </MDBDropdownMenu>
+              </MDBDropdown>
+            </MDBNavbarItem>
+          </MDBNavbarNav>
+          <MDBNavbarNav right className='d-flex justify-content-end'>
+          <MDBNavbarItem>
+              <MDBDropdown group className='shadow-0'>
+                <MDBDropdownToggle color='light'>Hi,</MDBDropdownToggle>
+                <MDBDropdownMenu>
+                  <MDBDropdownItem>
+                    <MDBDropdownLink href="#" ><Link className='mx-2' to="/profile-management" style={{color:"black"}}  >Profile Management</Link></MDBDropdownLink>
+                  </MDBDropdownItem>
+                  <MDBDropdownItem>
+                    <MDBDropdownLink href="#" ><Link className='mx-2' to="#"   style={{color:"black"}}  >Messages</Link></MDBDropdownLink>
+                  </MDBDropdownItem>
+                  <MDBDropdownItem>
+                    <MDBDropdownLink href="#" > <Link className='mx-2' to="#"   style={{color:"black"}}  >Sign out</Link></MDBDropdownLink>
+                  </MDBDropdownItem>
+        
+                </MDBDropdownMenu>
+              </MDBDropdown>
+            </MDBNavbarItem>: <MDBBtn href='/login' style={{backgroundColor:"#30B4BA"}}>Login</MDBBtn>
+        
+            {/* {token ?  <MDBBtn className='mx-2' href='/post-business-ad' style={{ backgroundColor: '#F7D402', color: "black" }}>Post ad</MDBBtn>  : ""
+            } */}
+          </MDBNavbarNav>
+        </MDBCollapse>
+      </MDBContainer>
+    </MDBNavbar>
   );
 }

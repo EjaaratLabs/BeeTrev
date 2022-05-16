@@ -110,7 +110,7 @@ const data1 = [
 ]
 export function AvailableTransportList() {
 
-  const [value,setValue]=useState('');
+  const [value,setValue]=useState('All');
   
   const handleSelect=(e)=>{
     setValue(e.target.value)
@@ -135,7 +135,7 @@ export function AvailableTransportList() {
 
     <MDBCol lg="3" className="py-3">
       Choose Type
-                      <select className="form-select" id="dropdown" onClick={handleSelect}>
+                      <select className="form-select" id="dropdown" onChange={handleSelect}>
                         <option value="All">All</option>
                         <option value="Sedan">Sedan</option>
                         <option value="Van">Van</option>
@@ -146,7 +146,7 @@ export function AvailableTransportList() {
 </div>
 
 <MDBRow>
-{data.filter(transport => transport.type === {value}).map((data, index) => (  
+{data.filter(transport => value=='All' || transport.type == value).map((data, index) => (  
 
 <MDBCard className="m-2" style={{ width: "22rem" }} cascade ecommerce>
 <MDBCardImage cascade top src={car} waves />

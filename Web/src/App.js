@@ -10,6 +10,9 @@ import { CustomerWeb } from './views/CustomerWeb';
 import { Tours } from './views/CustomerWeb/Tours';
 import { Hotels } from './views/CustomerWeb/Hotels';
 import { Transports } from './views/CustomerWeb/Transports';
+import { Landing1 } from './views/Landing1';
+import { TourLanding } from './views/TourLanding';
+import { TourDetails } from './views/TourDetails';
 
 function App() {
   return (
@@ -17,12 +20,15 @@ function App() {
       <Router>
         <Routes>
           < Route  path="home/*" element={< Landing />} />
-          <Route exact path="/" element={<CustomerWeb />} />
+          < Route  path="/" element={< Landing1 />} />
+          < Route  path="/tour" element={< TourLanding />} />
+          <Route exact path="/landing" element={<CustomerWeb />} />
           <Route exact path="/login" element={<Login />} />
           <Route exact path="/signup" element={<Signup />} />
           <Route exact path="/tours" element={<Tours />} />
           <Route exact path="/hotels" element={<Hotels />} />
           <Route exact path="/transports" element={<Transports />} />
+          <Route path="details/:tourId" element={<TourDetails />} />
          
         </Routes>
       </Router>

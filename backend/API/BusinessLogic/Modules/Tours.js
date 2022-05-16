@@ -16,12 +16,24 @@ class Tours
         []);
         return results && results.length>0?results:[];
     }
+    async getTourDetails(id)
+    {
+    
+        var results=await client.Query("Select * from tours where id=?",
+        [id]);
+        return results && results.length>0?results[0]:null;
+    }
     async getToursByUserId(message)
     {
     
-        var results=await client.Query("Select * from tours where createdBy = ?",
+        var results=await client.Query("Select * from tours where createdBy = ? and isDeleted = 0",
         [message.API_USER_ID]);
         return results && results.length>0?results:[];
+    }
+    async deleteTour(message)
+    {
+        var results=await client.Query("update tours set isDeleted=1 where id=?" , 
+        [message.TOUR_ID]);
     }
 }
 module.exports=new Tours();

@@ -28,6 +28,7 @@ import {
 
 import { TourList } from './TourList';
 import { TourSetup } from './TourSetup';
+import { TourProfile } from './TourProfile';
 
 export function TourManagement() {
 
@@ -68,6 +69,7 @@ export function TourManagement() {
     <Routes>
       <Route path={`/`} element={<TourList />} />
       <Route path={`add`} element={<TourSetup />} />
+      <Route path={`details/:tourId`} element={<TourProfile />} />
     </Routes>
   );
 }

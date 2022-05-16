@@ -21,12 +21,14 @@ import {
   MDBCardHeader
 } from 'mdb-react-ui-kit';
 
+import { Link } from 'react-router-dom';
+
 import DataTable from 'react-data-table-component';
 
 import { TourDetails } from './TourSetup';
 import { getToken, loginAsync } from '../../reducers/AuthSlice'
 import { GetToursList } from '../../api/TourApis';
-import { getTours, GetToursListAsync } from '../../reducers/TourProfileSlice';
+import { DeleteTourAsync, getTours, GetToursListAsync } from '../../reducers/TourProfileSlice';
 const columns = [
   {
     name: 'Tour',
@@ -51,71 +53,25 @@ const columns = [
   {
     name: 'Status',
     selector: row => row.status,
-  }
+  },
+  {
+    name: 'Detail',
+    selector: row => <Link to={"/home/tour/details/" + row.id}><MDBBtn color='warning' size='sm'>Detail</MDBBtn> </Link>,
+  },
+  {
+    name: 'Action',
+    selector: row =><DeleteTour id={row.id}/> ,
+  },
 ];
 
-const tours = [
-  {
-    id: 1,
-    name: 'Trip To Hunza',
-    days:'12',
-    departure: 'Karachi',
-    destination: 'Hunza',
-    price: '21,199',
-    status:'Active',
-    action: <MDBBtn href='/home/tour/add' >Add New</MDBBtn>
-  },
-  {
-    id: 2,
-    name: 'Trip To Hunza',
-    days:'12',
-    departure: 'Karachi',
-    destination: 'Hunza',
-    price: '21,199',
-    status:'Active',
-    action: <MDBBtn href='/home/tour/add' >Add New</MDBBtn>
-  },
-  {
-    id: 3,
-    name: 'Trip To Hunza',
-    days:'12',
-    departure: 'Karachi',
-    destination: 'Hunza',
-    price: '21,199',
-    status:'Active',
-    action: <MDBBtn href='/home/tour/add' >Add New</MDBBtn>
-  },
-  {
-    id: 4,
-    name: 'Trip To Hunza',
-    days:'12',
-    departure: 'Karachi',
-    destination: 'Hunza',
-    price: '21,199',
-    status:'Active',
-    action: <MDBBtn href='/home/tour/add' >Add New</MDBBtn>
-  },
-  {
-    id: 5,
-    name: 'Trip To Hunza',
-    days:'12',
-    departure: 'Karachi',
-    destination: 'Hunza',
-    price: '21,199',
-    status:'Active',
-    action: <MDBBtn href='/home/tour/add' >Add New</MDBBtn>
-  },
-  {
-    id: 6,
-    name: 'Trip To Hunza',
-    days:'12',
-    departure: 'Karachi',
-    destination: 'Hunza',
-    price: '21,199',
-    status:'Active',
-    action: <MDBBtn href='/home/tour/add' >Add New</MDBBtn>
-  },
-]
+function DeleteTour(props) {
+  const dispatch = useDispatch();
+  const token = useSelector(getToken);
+  
+  return <Link to="#"  onClick={()=>{
+    dispatch(DeleteTourAsync({params:{tourId:props.id}, token }));   
+  }}><MDBBtn color='danger' size='sm' href='#'>Delete</MDBBtn> </Link>
+}
 export function TourList() {
 
   const dispatch = useDispatch();
