@@ -1,5 +1,5 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import { CreateNewTour, GetToursList } from '../api/TourApis';
+import { CreateNewTour, DeleteTour, GetAllToursList, GetTourDetails, GetToursList } from '../api/TourApis';
 import { toast } from 'react-toastify';
 
 
@@ -9,7 +9,8 @@ const initialState = {
   unAssignedList: [],
   status: 'idle',
   screenMode: 'list',
-  tours: []
+  tours: [],
+  allTours: []
 };
 
 // The function below is called a thunk and allows us to perform async logic. It
@@ -18,6 +19,15 @@ const initialState = {
 // code can then be executed and other actions can be dispatched. Thunks are
 // typically used to make async requests.
 
+
+export const GetAllToursListAsync = createAsyncThunk(
+  'TourSlice/getalltour',
+  async (data) => {
+    const response = await GetAllToursList(data.formData, data.token);
+    console.log("res:  ", response)
+    return response.data;
+  }
+);
 
 export const GetToursListAsync = createAsyncThunk(
   'TourSlice/gettour',
@@ -37,6 +47,23 @@ export const createNewTourAsync = createAsyncThunk(
   }
 );
 
+export const GetTourDetailsAsync = createAsyncThunk(
+  'TourSlice/details',
+  async (data) => {
+    const response = await GetTourDetails(data.params, data.token);
+    console.log('res',response);
+    return response.data;
+  }
+);
+
+export const DeleteTourAsync = createAsyncThunk(
+  'TourSlice/delete',
+  async (data) => {
+    const response = await DeleteTour(data.params, data.token);
+    return response.data;
+  }
+);
+
 
 export const TourProfileSlice = createSlice({
   name: 'TourSlice',
@@ -49,6 +76,11 @@ export const TourProfileSlice = createSlice({
     },*/
   extraReducers: (builder) => {
     builder
+      .addCase(GetAllToursListAsync.fulfilled, (state, action) => {
+        state.status = 'idle';
+        state.allTours = action.payload.tours
+        // state.profileData = action.payload.token;
+      })
       .addCase(GetToursListAsync.fulfilled, (state, action) => {
         state.status = 'idle';
         state.tours = action.payload.tours
@@ -61,7 +93,21 @@ export const TourProfileSlice = createSlice({
         state.status = 'idle';
         toast.success(action.payload.message)
         // state.profileData = action.payload.token;
+      }).addCase(GetTourDetailsAsync.pending, (state, action) => {
+        state.status = 'loading';
       })
+      .addCase(GetTourDetailsAsync.fulfilled, (state, action) => {
+        state.status = 'idle';
+        state.profileData= action.payload
+        // state.profileData = action.payload.token;
+      }).addCase(DeleteTourAsync.pending, (state, action) => {
+        state.status = 'loading';
+      })
+      .addCase(DeleteTourAsync.fulfilled, (state, action) => {
+        state.status = 'idle';
+        // state.profileData= action.payload
+        // state.profileData = action.payload.token;
+      });
   },
 });
 
@@ -77,6 +123,8 @@ export const getProfiles = (state) => state.TourSlice.profile;
 export const getAvailableProfiles = (state) => state.TourSlice.unAssignedList;
 
 export const getTours = (state) => state.TourSlice.tours;
+
+export const getAllTours = (state) => state.TourSlice.allTours;
 
 // We can also write thunks by hand, which may contain both sync and async logic.
 // Here's an example of conditionally dispatching actions based on current state.

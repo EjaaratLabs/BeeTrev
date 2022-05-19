@@ -1,11 +1,11 @@
-var modle = require('./Modules/MembershipType');
+var modle = require('./Modules/Tours');
 
 class gettourdetails
 {
     async input(req,message)
     {
-        message.TEST = req.query.test
-        message.TEST2 = req.params.test2
+        message.TOUR_ID = req.query.tourId
+        // message.TEST2 = req.params.test2
            // message.NAME=req.body.name;  
             //message.NAME=req.query.name;  
            // message.NAME=message.API_USER_ID; 
@@ -18,16 +18,14 @@ class gettourdetails
     //    try{ 
     //    message.LIST = await modle.getmembershiptype(message)}
     //    catch(ex){console.log (ex)}
+    message.DETAILS=await modle.getTourDetails(message.TOUR_ID)
     }
     async output(res,message)
     {
-        res.responseBody.loopBackName=message.NAME;
+        res.responseBody.details=  message.DETAILS;
         res.status="Success";
-        res.responseBody.TEST=message.TEST
-        res.responseBody.TEST2=message.TEST2
-        res.responseBody.TOTAl=message.TOTAl
-        res.responseBody.message="memebership type created success"
-        res.responseBody.list= message.LIST
+        console.log(message);
+
     }
     inputValidation(req)
     {

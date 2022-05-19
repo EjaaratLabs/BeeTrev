@@ -39,11 +39,16 @@ module.exports = {
         controller: "gettourdetails",
         allowedMethod: ['GET']
     },
-
-    "/transaction/gettourdetails1/:test2": {
-        controller: "gettourdetails",
-        allowedMethod: ['GET']
+    
+    "/transaction/deletetour": {
+        controller: "deleteTour",
+        allowedMethod: ['POST']
     },
+
+    // "/transaction/gettourdetails1/:test2": {
+    //     controller: "gettourdetails",
+    //     allowedMethod: ['GET']
+    // },
 
 
     "/transaction/gethotels": {
