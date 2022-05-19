@@ -6,13 +6,13 @@ class Tours
     async createNewTour(message)
     {
     
-        var results=await client.Query("insert into tours(name,days,destination,departure,price,status,createdBy) values(?,?,?,?,?,?,?)",
-        [message.NAME, message.DAYS, message.DESTINATION, message.DEPARTURE, message.PRICE, message.STATUS, message.API_USER_ID]);
+        var results=await client.Query("insert into tours(name,days,destination,departure,price,status,createdBy,shortDescription, longDescription, quantity) values(?,?,?,?,?,?,?,?,?,?)",
+        [message.NAME, message.DAYS, message.DESTINATION, message.DEPARTURE, message.PRICE, message.STATUS, message.API_USER_ID, message.SHORT_DESC, message.LONG_DESC, message.QTY]);
     }
     async getAllTour()
     {
     
-        var results=await client.Query("Select * from tours",
+        var results=await client.Query("Select * from tours where isDeleted = 0",
         []);
         return results && results.length>0?results:[];
     }

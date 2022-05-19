@@ -1,5 +1,9 @@
 import apiUtil from '../utilities/apiHelper'
 
+export function GetAllToursList(data,token) {
+  return apiUtil.getApi('transaction/gettour', token, {})
+}
+
 export function GetToursList(data,token) {
   return apiUtil.getApi('transaction/gettourbyuserid', token, {})
 }

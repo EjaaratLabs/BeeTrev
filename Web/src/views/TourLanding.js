@@ -39,7 +39,7 @@ import item2 from '../assets/connect.png'
 import item3 from '../assets/sahke.png'
 import { Navbar } from './Navbar';
 import { Footer } from './Footer';
-import { getTours, GetToursListAsync } from '../reducers/TourProfileSlice';
+import { getAllTours, GetAllToursListAsync, getTours, GetToursListAsync } from '../reducers/TourProfileSlice';
 import place from './Assets/hunza.webp'
 
 
@@ -48,9 +48,9 @@ export function TourLanding() {
   const dispatch = useDispatch();
   useEffect(() => {
 
-    dispatch(GetToursListAsync({ token, adType: "1" }));
+    dispatch(GetAllToursListAsync({ token, adType: "1" }));
   }, []);
-  const data = useSelector(getTours);
+  const data = useSelector(getAllTours);
   console.log(data);
   let navigate = useNavigate()
   let location = useLocation()
@@ -60,7 +60,7 @@ export function TourLanding() {
   if (data) {
     var temp = data;
     if (search) {
-      temp = data.filter((x) => (x.title && x.title.toLowerCase().includes(search.toLowerCase())) || (x.description && x.description.toLowerCase().includes(search.toLowerCase())))
+      temp = data.filter((x) => (x.name && x.name.toLowerCase().includes(search.toLowerCase())) || (x.description && x.description.toLowerCase().includes(search.toLowerCase())))
     }
     temp.forEach(val => {
       list.push(<MDBCol size='12' className='my-3'>
@@ -101,7 +101,7 @@ export function TourLanding() {
       <Navbar />
       <MDBContainer>
 
-        <h3 className='pt-5  '>Businesses required services</h3>
+        <h3 className='pt-5  '>Tour</h3>
         <MDBRow className='d-flex justify-content-center '>
           <MDBCol size='8'>
 

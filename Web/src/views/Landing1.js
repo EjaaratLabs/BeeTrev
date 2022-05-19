@@ -118,7 +118,7 @@ export function Landing1() {
             <div><MDBCard style={{ maxWidth: '22rem' }}>
               <MDBCardBody>
               <img src={hunza} className="my-3" style={{ width: "300px"}}/>
-              <h4><Link to="/vendor/Leather" style={{color:"black"}}>Hunza</Link></h4>
+              <h4><Link to="/tour/hunza" style={{color:"black"}}>Hunza</Link></h4>
 
               </MDBCardBody>
             </MDBCard></div>

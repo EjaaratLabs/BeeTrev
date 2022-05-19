@@ -44,6 +44,9 @@ import { Footer } from './Footer';
 import { getProfiles, GetTourDetailsAsync } from '../reducers/TourProfileSlice';
 import ImageGallery from 'react-image-gallery';
 
+import "react-image-gallery/styles/scss/image-gallery.scss";
+import "react-image-gallery/styles/css/image-gallery.css";
+
 
 
 export function TourDetails() {
@@ -86,21 +89,20 @@ export function TourDetails() {
     <div>
       
       <Navbar />
-      <ImageGallery items={images} />
       <MDBContainer>
         <MDBRow className='d-flex justify-content-center py-5 align-items-stretch'>
         <MDBBreadcrumb>
         <MDBBreadcrumbItem>Home</MDBBreadcrumbItem>
-        <MDBBreadcrumbItem >Buyer Advertisment</MDBBreadcrumbItem>
+        <MDBBreadcrumbItem >Tour</MDBBreadcrumbItem>
         <MDBBreadcrumbItem active>Details</MDBBreadcrumbItem>
       </MDBBreadcrumb>
-          <MDBCol size='3' className='d-flex  align-items-stretch'>
+          <MDBCol size='8' className='d-flex  align-items-stretch'>
             <MDBCard className="p-2 mb-3  w-100">
               <MDBCardBody>
+              <ImageGallery items={images} />
                 {/* <Avatar round src='https://www.biography.com/.image/ar_1:1%2Cc_fill%2Ccs_srgb%2Cfl_progressive%2Cq_auto:good%2Cw_1200/MTc5ODc1NTM4NjMyOTc2Mzcz/gettyimages-693134468.jpg' size="150" /> */}
                 
-                <h5 className='mt-4' >{details?.profile?.Name}</h5>
-                <p>Karachi</p>
+                {/* <h5 className='mt-4' >{details?.profile?.Name}</h5> */}
                 {/* <StarRatings
                   rating={details?.profile?.rating}
                   starRatedColor="green"
@@ -113,54 +115,36 @@ export function TourDetails() {
               </MDBCardBody>
             </MDBCard>
           </MDBCol>
-          <MDBCol size='6' className='d-flex  align-items-stretch'>
+          <MDBCol size='4' className='d-flex  align-items-stretch'>
             <MDBCard className="p-2 mb-3  w-100">
               <MDBCardBody>
-                <MDBCardTitle><h4>Project Description</h4></MDBCardTitle>
+                <MDBCardTitle><h4 className='text-start'>{details?.details?.name}</h4></MDBCardTitle>
                 <MDBRow>
                   <div className='text-start'>
-                    <b>{details?.details?.name}</b>
-
-                    <p>{details?.details?.shortDescription}</p>
+                    <p><MDBIcon icon="map-marker-alt" /> {details?.details?.destination}</p>
+                    
+                    <p><MDBIcon icon="calendar-day" /> {details?.details?.days} Days</p>
+                    <p><MDBIcon icon="users" /> From 1 to  {details?.details?.quantity} Days</p>
+                    <p>Departure  <MDBIcon icon="map-marker-alt" />  {details?.details?.departure}</p>
+                    <h5 className='text-center mt-5'>PKR {details?.details?.price} </h5>
+                    <div className='text-center mt-5'><MDBBtn className='' href='#' style={{ backgroundColor: '#F7D402', color: "black" }}>Continue</MDBBtn></div>
                   </div>
                 </MDBRow>
 
               </MDBCardBody>
             </MDBCard>
           </MDBCol>
-          <MDBCol size='3' className='d-flex  align-items-stretch'>
-            <MDBCard className="p-2 mb-3  w-100">
-              <MDBCardBody className='text-start'>
-              <MDBCardTitle><h5>Product Dimensions</h5></MDBCardTitle>
-                Category:<b>{details?.details?.category}</b>
-                <br />
-                Quantity:<b>{details?.details?.quantity}</b>
-                <br />
-                Size:<b>{details?.details?.size}</b>
-                <br />
-                Weight:<b>{details?.details?.weight}</b>
-                <br />
-                Color:<b>{details?.details?.color}</b>
-                <br />
-              </MDBCardBody>
-            </MDBCard>
-          </MDBCol>
+          
           <MDBCol size='12'>
             <MDBCard className="px-3 py-2">
               <MDBCardBody className='text-start'>
-                <MDBCardTitle><h4>Interested ? send us a message.</h4></MDBCardTitle>
-                <div className='w-100 p-1' style={{ border: "1px solid #939496", borderRadius: "10px" }}>
-                  {/* <Editor
-                    //  editorState={editorState}
-                    toolbarClassName="toolbarClassName"
-                    wrapperClassName="wrapperClassName"
-                    editorClassName="editorClassName"
-                  //  onEditorStateChange={this.onEditorStateChange}
-                  /> */}
-                  </div>
+                <MDBCardTitle><h5>Overview</h5></MDBCardTitle>
+                <p>{details?.details?.shortDescription}</p>
+                <MDBCardTitle><h5>Description</h5></MDBCardTitle>
+                <p>{details?.details?.longDescription}</p>
                 <div className='w-100  py-3 d-flex  justify-content-between' >
-                <MDBBtn href='/business' style={{backgroundColor:"#30B4BA"}}><MDBIcon icon="arrow-left" /> Back to list</MDBBtn>
-                  <MDBBtn className='mx-2' href='#' style={{ backgroundColor: '#F7D402', color: "black" }}>Send</MDBBtn>
+                <MDBBtn href='/tour' style={{backgroundColor:"#30B4BA"}}><MDBIcon icon="arrow-left" /> Back to list</MDBBtn>
+                  
                 </div>
               </MDBCardBody>
             </MDBCard>
