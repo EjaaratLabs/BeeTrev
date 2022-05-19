@@ -101,7 +101,7 @@ export const TourProfile = (props) => {
           <a >Home</a>
         </MDBBreadcrumbItem>
         <MDBBreadcrumbItem>
-          <a href='/home/tour'>tour</a>
+          <a href='/home/tour'>Tour</a>
         </MDBBreadcrumbItem>
         <MDBBreadcrumbItem active>{formData.details.name}</MDBBreadcrumbItem>
       </MDBBreadcrumb>
@@ -126,7 +126,7 @@ export const TourProfile = (props) => {
                 <MDBTabs fill className='mb-3'>
                 <MDBTabsItem>
                     <MDBTabsLink onClick={() => handleFillClick('tab1')} active={fillActive === 'tab1'}>
-                      Overview
+                      Details
                     </MDBTabsLink>
                   </MDBTabsItem>
                   <MDBTabsItem>
@@ -140,7 +140,7 @@ export const TourProfile = (props) => {
                 <MDBTabsContent>
                   <MDBTabsPane show={fillActive === 'tab1'}><div>
                   
-    <MDBTable>
+    <MDBTable >
       <MDBTableBody>
         <tr>
           <th scope='row'>Name</th>
@@ -166,11 +166,23 @@ export const TourProfile = (props) => {
           <th scope='row'>Status</th>
           <td>{formData.details.status}</td>
         </tr>
+        <tr>
+          <th scope='row'>Quantity</th>
+          <td>{formData.details.quantity}</td>
+        </tr>
+        <tr>
+          <th scope='row'>Overview</th>
+          <td>{formData.details.shortDescription}</td>
+        </tr>
+        <tr>
+          <th scope='row'>Description</th>
+          <td>{formData.details.longDescription}</td>
+        </tr>
       </MDBTableBody>
     </MDBTable>
                     </div></MDBTabsPane>
                   <MDBTabsPane show={fillActive === 'tab2'}><div>
-                  <MDBCard alignment='center' >
+                  <MDBCard alignment='left' >
         <MDBRow>
           <MDBCardBody>
             <DataTable
