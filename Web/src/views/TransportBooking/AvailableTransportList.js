@@ -133,20 +133,11 @@ export function AvailableTransportList() {
 
 <div>
 
-    <MDBCol lg="3" className="py-3">
-      Choose Type
-                      <select className="form-select" id="dropdown" onClick={handleSelect}>
-                        <option value="All">All</option>
-                        <option value="Sedan">Sedan</option>
-                        <option value="Van">Van</option>
-                        <option value="SUV">SUV</option>
-                      </select>
-                    </MDBCol>
 
 </div>
 
 <MDBRow>
-{data.filter(transport => transport.type === {value}).map((data, index) => (  
+{data.map((data, index) => (  
 
 <MDBCard className="m-2" style={{ width: "22rem" }} cascade ecommerce>
 <MDBCardImage cascade top src={car} waves />

@@ -19,7 +19,7 @@ class _btm_navState extends State<btm_nav> {
     homePage(),
     guestList(),
     profile(),
-    actions(),
+    // actions(),
   ];
   void _onItemTapped(int index) {
     setState(() {
@@ -104,14 +104,14 @@ class _btm_navState extends State<btm_nav> {
                   color: _selectedIndex == 2 ? Color(0xffa014eb) : Colors.grey),
               height: 20,
             ),
-            FlatButton(
-              onPressed: () {
-                _onItemTapped(3);
-              },
-              child: Icon(Icons.settings,
-                  color: _selectedIndex == 3 ? Color(0xffa014eb) : Colors.grey),
-              height: 20,
-            ),
+            // FlatButton(
+            //   onPressed: () {
+            //     _onItemTapped(3);
+            //   },
+            //   child: Icon(Icons.settings,
+            //       color: _selectedIndex == 3 ? Color(0xffa014eb) : Colors.grey),
+            //   height: 20,
+            // ),
           ],
         ),
         // child:   BottomNavigationBar(
