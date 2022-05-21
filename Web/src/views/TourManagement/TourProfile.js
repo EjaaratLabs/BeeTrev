@@ -36,6 +36,12 @@ import { getToken } from '../../reducers/AuthSlice';
 import { useParams } from 'react-router';
 import slider1 from '../Assets/slider1.png'
 import { getCustomer, GetCustomersListAsync } from '../../reducers/CustomerProfileSlice';
+
+import ImageGallery from 'react-image-gallery';
+
+import "react-image-gallery/styles/scss/image-gallery.scss";
+import "react-image-gallery/styles/css/image-gallery.css";
+
 const statusMap = { "1": "Active", "2": "Suspended", "3": "Dropped" };
 
 const columns = [
@@ -46,8 +52,36 @@ const columns = [
   {
     name: 'Phone Number',
     selector: row => row.customerPhone,
+  },
+  {
+    name: 'Email',
+    selector: row => row.email,
+  },
+  {
+    name: 'No. of People',
+    selector: row => row.quantity,
+  },
+  {
+    name: 'Booking Status',
+    selector: row => (row.bookingStatus?"Active":"Pending"),
   }
 ];
+
+const images = [
+  {
+    original: 'https://picsum.photos/id/1018/1000/600/',
+    thumbnail: 'https://picsum.photos/id/1018/250/150/',
+  },
+  {
+    original: 'https://picsum.photos/id/1015/1000/600/',
+    thumbnail: 'https://picsum.photos/id/1015/250/150/',
+  },
+  {
+    original: 'https://picsum.photos/id/1019/1000/600/',
+    thumbnail: 'https://picsum.photos/id/1019/250/150/',
+  },
+];
+
 
 
 export const TourProfile = (props) => {
@@ -112,11 +146,8 @@ export const TourProfile = (props) => {
           <MDBContainer>
             <MDBRow >
               <MDBCol size="12">
+              <ImageGallery items={images} />
 
-                <img
-                  src={slider1}
-                  style={{ height: "300px", width: "100%", objectFit: "cover", objectPosition: "center"}}
-                />
 
                 <h4 className='mt-3'>{formData.name}</h4>
                 {/* <p className=''> {badge} </p> */}
@@ -141,7 +172,7 @@ export const TourProfile = (props) => {
                   <MDBTabsPane show={fillActive === 'tab1'}><div>
                   
     <MDBTable >
-      <MDBTableBody>
+      <MDBTableBody >
         <tr>
           <th scope='row'>Name</th>
           <td>{formData.details.name}</td>

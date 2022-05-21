@@ -39,10 +39,20 @@ import item1 from '../assets/signup.png'
 import item2 from '../assets/connect.png'
 
 import item3 from '../assets/sahke.png'
+import { getUser, GetUserDetailAsync } from '../reducers/UserProfileSlice';
 
 
 
 export function Navbar() {
+  const dispatch = useDispatch();
+  const token = useSelector(getToken);
+  useEffect(() => {
+
+    dispatch(GetUserDetailAsync({ token }));
+  }, []);
+  const userData = useSelector(getUser);
+
+  console.log(userData)
 
   const [showNav, setShowNav] = useState(false);
 
@@ -105,12 +115,13 @@ export function Navbar() {
             </MDBNavbarItem>
           </MDBNavbarNav>
           <MDBNavbarNav right className='d-flex justify-content-end'>
+          {token ? 
           <MDBNavbarItem>
               <MDBDropdown group className='shadow-0'>
-                <MDBDropdownToggle color='light'>Hi,</MDBDropdownToggle>
+                <MDBDropdownToggle color='light'>Hi, {userData.name}</MDBDropdownToggle>
                 <MDBDropdownMenu>
                   <MDBDropdownItem>
-                    <MDBDropdownLink href="#" ><Link className='mx-2' to="/profile-management" style={{color:"black"}}  >Profile Management</Link></MDBDropdownLink>
+                    <MDBDropdownLink href="#" ><Link className='mx-2' to="/home/dashboard" style={{color:"black"}}  >Dashboard</Link></MDBDropdownLink>
                   </MDBDropdownItem>
                   <MDBDropdownItem>
                     <MDBDropdownLink href="#" ><Link className='mx-2' to="#"   style={{color:"black"}}  >Messages</Link></MDBDropdownLink>
@@ -122,7 +133,7 @@ export function Navbar() {
                 </MDBDropdownMenu>
               </MDBDropdown>
             </MDBNavbarItem>: <MDBBtn href='/login' style={{backgroundColor:"#30B4BA"}}>Login</MDBBtn>
-        
+            }
             {/* {token ?  <MDBBtn className='mx-2' href='/post-business-ad' style={{ backgroundColor: '#F7D402', color: "black" }}>Post ad</MDBBtn>  : ""
             } */}
           </MDBNavbarNav>

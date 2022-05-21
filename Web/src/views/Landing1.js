@@ -118,14 +118,21 @@ export function Landing1() {
             <div><MDBCard style={{ maxWidth: '22rem' }}>
               <MDBCardBody>
               <img src={hunza} className="my-3" style={{ width: "300px"}}/>
-              <h4><Link to="/tour/hunza" style={{color:"black"}}>Hunza</Link></h4>
+              <h4><Link to="/tour/Hunza" style={{color:"black"}}>Hunza</Link></h4>
+
+              </MDBCardBody>
+            </MDBCard></div>
+            <div><MDBCard style={{ maxWidth: '22rem' }}>
+              <MDBCardBody>
+              <img src={hunza} className="my-3" style={{ width: "300px"}}/>
+              <h4><Link to="/tour/Gilgit" style={{color:"black"}}>Gilgit</Link></h4>
 
               </MDBCardBody>
             </MDBCard></div>
             <div><MDBCard style={{ maxWidth: '22rem' }}>
               <MDBCardBody>
               <img src={skardu} className="my-3" style={{ width: "300px"}} />
-              <h4><Link to="/vendor/Apparels"style={{color:"black"}}>Skardu</Link></h4>
+              <h4><Link to="/tour/Skardu"style={{color:"black"}}>Skardu</Link></h4>
 
               </MDBCardBody>
             </MDBCard></div>
@@ -134,14 +141,14 @@ export function Landing1() {
             <div><MDBCard style={{ maxWidth: '22rem' }}>
               <MDBCardBody>
               <img src={swat} className="my-3" style={{ width: "300px"}}/>
-              <h4><Link to="/vendor/Printing and packaging"style={{color:"black"}}>Swat</Link></h4>
+              <h4><Link to="/tour/Swat"style={{color:"black"}}>Swat</Link></h4>
 
               </MDBCardBody>
             </MDBCard></div>
             <div><MDBCard style={{ maxWidth: '22rem' }}>
               <MDBCardBody>
               <img src={naran} className="my-3" style={{ width: "300px"}}/>
-              <h4><Link to="/vendor/Food & Beverages"style={{color:"black"}}>Naran</Link></h4>
+              <h4><Link to="/tour/Naran"style={{color:"black"}}>Naran</Link></h4>
 
               </MDBCardBody>
             </MDBCard></div>
@@ -149,7 +156,7 @@ export function Landing1() {
             <div><MDBCard style={{ maxWidth: '22rem' }}>
               <MDBCardBody>
               <img src={shogran} className="my-3" style={{ width: "300px"}}/>
-              <h4><Link to="/vendor/Soaps & Detergents"style={{color:"black"}}>Shogran</Link></h4>
+              <h4><Link to="/tour/Shogran"style={{color:"black"}}>Shogran</Link></h4>
 
               </MDBCardBody>
             </MDBCard></div>
@@ -157,7 +164,7 @@ export function Landing1() {
             <div><MDBCard style={{ maxWidth: '22rem' }}>
               <MDBCardBody>
               <img src={kashmir} className="my-3" style={{ width: "300px"}}/>
-              <h4><Link to="/vendor/Footwear"style={{color:"black"}}>Kashmir</Link></h4>
+              <h4><Link to="/tour/Kashmir"style={{color:"black"}}>Kashmir</Link></h4>
 
               </MDBCardBody>
             </MDBCard></div>

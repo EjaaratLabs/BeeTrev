@@ -6,8 +6,8 @@ class Customers
     async createCustomers(message)
     {
     
-        var results=await client.Query("insert into customertourmap(name,customerPhone,tourid) values(?,?,?)",
-        [message.NAME,message.CUSTOMERPHONE,message.TOURID]);
+        var results=await client.Query("insert into customertourmap(name,customerPhone,tourid,email,quantity) values(?,?,?,?,?)",
+        [message.NAME,message.CUSTOMERPHONE,message.TOURID,message.EMAIL,message.QTY]);
     }
     async getCustomers(message)
     {

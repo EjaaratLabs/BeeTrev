@@ -1,7 +1,7 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { CreateNewTour, DeleteTour, GetTourDetails, GetToursList } from '../api/TourApis';
 import { toast } from 'react-toastify';
-import { GetCustomersList } from '../api/CustomerApis';
+import { CreateCustomers, GetCustomersList } from '../api/CustomerApis';
 
 
 const initialState = {
@@ -29,7 +29,14 @@ export const GetCustomersListAsync = createAsyncThunk(
   }
 );
 
-
+export const createNewCustomerAsync = createAsyncThunk(
+  'CustomerSlice/createcustomer',
+  async (data) => {
+    console.log(data)
+    const response = await CreateCustomers(data.formData, data.token);
+    return response.data;
+  }
+);
 
 export const CustomerProfileSlice = createSlice({
   name: 'CustomerSlice',
@@ -45,6 +52,14 @@ export const CustomerProfileSlice = createSlice({
       .addCase(GetCustomersListAsync.fulfilled, (state, action) => {
         state.status = 'idle';
         state.customers = action.payload.list
+        // state.profileData = action.payload.token;
+      })
+      .addCase(createNewCustomerAsync.pending, (state, action) => {
+        state.status = 'loading';
+      })
+      .addCase(createNewCustomerAsync.fulfilled, (state, action) => {
+        state.status = 'idle';
+        toast.success(action.payload.message)
         // state.profileData = action.payload.token;
       })
   },
