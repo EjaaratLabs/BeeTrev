@@ -53,7 +53,7 @@ import { createNewCustomerAsync } from '../reducers/CustomerProfileSlice';
 
 export function TourBooking() {
 
-  const token = useSelector(getToken);
+  const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJhZG1pbiIsImlhdCI6MTY1MjYzMTYwOX0.Iv0ffsGRfzvsiwZP6K--_9jYgxJnLJc1FbVehj8R8IY"
   const [formData, setFormData] = useState({});
   const dispatch = useDispatch();
   const handleChange = event => {
@@ -89,11 +89,7 @@ export function TourBooking() {
   //const [showNav, setShowNav] = useState(false);
   const details = useSelector(state => state.TourSlice.profileData);
   console.log(details);
-  if (!token) {
-    //alert("Hello");
-    return <Navigate to={{ pathname: '/login', state: { from: location } }} />
-    // setUserName("")
-  }
+  
 
   const images = [
     {
@@ -146,7 +142,7 @@ export function TourBooking() {
         success="right" name='EMAIL' value={formData.EMAIL} onChange={handleChange} />
     </MDBCol>
     <MDBCol lg="6" className="py-1">
-      <MDBInput label= {"Quantity (upto " +details?.details?.quantity+")"} icon="envelope" group type="text" validate error="wrong"
+      <MDBInput label= {"No. of People (upto " +details?.details?.quantity+")"} icon="envelope" group type="text" validate error="wrong"
         success="right" name='QTY' value={formData.QTY} onChange={handleChange} />
     </MDBCol>
     </MDBRow>

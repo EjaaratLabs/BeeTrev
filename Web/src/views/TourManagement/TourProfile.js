@@ -35,12 +35,13 @@ import { GetTourDetailsAsync } from '../../reducers/TourProfileSlice';
 import { getToken } from '../../reducers/AuthSlice';
 import { useParams } from 'react-router';
 import slider1 from '../Assets/slider1.png'
-import { getCustomer, GetCustomersListAsync } from '../../reducers/CustomerProfileSlice';
+import { getCustomer, GetCustomersListAsync, updateBookingStatusAsync } from '../../reducers/CustomerProfileSlice';
 
 import ImageGallery from 'react-image-gallery';
 
 import "react-image-gallery/styles/scss/image-gallery.scss";
 import "react-image-gallery/styles/css/image-gallery.css";
+import { Link } from 'react-router-dom';
 
 const statusMap = { "1": "Active", "2": "Suspended", "3": "Dropped" };
 
@@ -63,9 +64,22 @@ const columns = [
   },
   {
     name: 'Booking Status',
-    selector: row => (row.bookingStatus?"Active":"Pending"),
+    selector: row => (row.bookingStatus == 1?"Active":"Pending"),
+  },
+  {
+    name: 'Action',
+    selector: row =>(row.bookingStatus == 0? <Active id={row.id}/>: "Active") ,
   }
 ];
+
+function Active(props) {
+  const dispatch = useDispatch();
+  const token = useSelector(getToken);
+  
+  return <Link to="#"  onClick={()=>{
+    dispatch(updateBookingStatusAsync({params:{id:props.id}, token }));
+  }}><MDBBtn color='danger' size='sm' >Active Booking</MDBBtn> </Link>
+}
 
 const images = [
   {

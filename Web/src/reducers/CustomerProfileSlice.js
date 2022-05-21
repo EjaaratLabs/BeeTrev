@@ -1,7 +1,7 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { CreateNewTour, DeleteTour, GetTourDetails, GetToursList } from '../api/TourApis';
 import { toast } from 'react-toastify';
-import { CreateCustomers, GetCustomersList } from '../api/CustomerApis';
+import { CreateCustomers, GetCustomersList, updateBookingStatus } from '../api/CustomerApis';
 
 
 const initialState = {
@@ -38,6 +38,14 @@ export const createNewCustomerAsync = createAsyncThunk(
   }
 );
 
+export const updateBookingStatusAsync = createAsyncThunk(
+  'CustomerSlice/updatebookingstatus',
+  async (data) => {
+    const response = await updateBookingStatus(data.params, data.token);
+    return response.data;
+  }
+);
+
 export const CustomerProfileSlice = createSlice({
   name: 'CustomerSlice',
   initialState,
@@ -62,6 +70,14 @@ export const CustomerProfileSlice = createSlice({
         toast.success(action.payload.message)
         // state.profileData = action.payload.token;
       })
+      .addCase(updateBookingStatusAsync.pending, (state, action) => {
+        state.status = 'loading';
+      })
+      .addCase(updateBookingStatusAsync.fulfilled, (state, action) => {
+        state.status = 'idle';
+        // state.profileData= action.payload
+        // state.profileData = action.payload.token;
+      });
   },
 });
 

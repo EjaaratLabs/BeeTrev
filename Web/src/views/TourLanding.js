@@ -96,11 +96,11 @@ export function TourLanding() {
       </MDBCol>)
     })
   }
-  if (!token) {
-    //alert("Hello");
-    return <Navigate to={{ pathname: '/login', state: { from: location } }} />
-    // setUserName("")
-  }
+  // if (!token) {
+  //   //alert("Hello");
+  //   return <Navigate to={{ pathname: '/login', state: { from: location } }} />
+  //   // setUserName("")
+  // }
 
   return (
     <div>

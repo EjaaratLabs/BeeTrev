@@ -124,10 +124,8 @@ export function Navbar() {
                     <MDBDropdownLink href="#" ><Link className='mx-2' to="/home/dashboard" style={{color:"black"}}  >Dashboard</Link></MDBDropdownLink>
                   </MDBDropdownItem>
                   <MDBDropdownItem>
-                    <MDBDropdownLink href="#" ><Link className='mx-2' to="#"   style={{color:"black"}}  >Messages</Link></MDBDropdownLink>
-                  </MDBDropdownItem>
-                  <MDBDropdownItem>
-                    <MDBDropdownLink href="#" > <Link className='mx-2' to="#"   style={{color:"black"}}  >Sign out</Link></MDBDropdownLink>
+                    <MDBDropdownLink onClick={() => dispatch(resetToken({
+                }))}> <Link className='mx-2' to="#"   style={{color:"black"}}  >Sign out</Link></MDBDropdownLink>
                   </MDBDropdownItem>
         
                 </MDBDropdownMenu>

@@ -64,11 +64,7 @@ export function TourDetails() {
   //const [showNav, setShowNav] = useState(false);
   const details = useSelector(state => state.TourSlice.profileData);
   console.log(details);
-  if (!token) {
-    //alert("Hello");
-    return <Navigate to={{ pathname: '/login', state: { from: location } }} />
-    // setUserName("")
-  }
+  
 
   const images = [
     {

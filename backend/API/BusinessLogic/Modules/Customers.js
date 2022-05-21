@@ -16,5 +16,10 @@ class Customers
         [message.TOURID]);
         return results && results.length>0?results:[];
     }
+    async updateBookingStatus(message)
+    {
+        var results=await client.Query("update customertourmap set bookingStatus=1 where id=?" , 
+        [message.ID]);
+    }
 }
 module.exports=new Customers();

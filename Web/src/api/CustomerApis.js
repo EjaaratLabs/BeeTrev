@@ -7,3 +7,7 @@ export function GetCustomersList(data,token) {
 export function CreateCustomers(data,token) {
   return apiUtil.postApi('transaction/createcustomer', token, data)
 }
+
+export function updateBookingStatus(data,token) {
+  return apiUtil.postApi('transaction/updatebookingstatus', token, data)
+}
