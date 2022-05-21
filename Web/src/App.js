@@ -13,6 +13,7 @@ import { Transports } from './views/CustomerWeb/Transports';
 import { Landing1 } from './views/Landing1';
 import { TourLanding } from './views/TourLanding';
 import { TourDetails } from './views/TourDetails';
+import { TourBooking } from './views/TourBooking';
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
           < Route  path="home/*" element={< Landing />} />
           < Route  path="/" element={< Landing1 />} />
           < Route  path="/tour" element={< TourLanding />} />
+          < Route  path="/tour/:tourCategory" element={< TourLanding />} />
           <Route exact path="/landing" element={<CustomerWeb />} />
           <Route exact path="/login" element={<Login />} />
           <Route exact path="/signup" element={<Signup />} />
@@ -29,6 +31,7 @@ function App() {
           <Route exact path="/hotels" element={<Hotels />} />
           <Route exact path="/transports" element={<Transports />} />
           <Route path="details/:tourId" element={<TourDetails />} />
+          <Route path="booking/:tourId" element={<TourBooking />} />
          
         </Routes>
       </Router>

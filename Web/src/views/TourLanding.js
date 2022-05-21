@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { useNavigate, useLocation, Navigate } from 'react-router-dom';
+import { useNavigate, useLocation, Navigate, useParams } from 'react-router-dom';
 import {
   MDBNavbar,
   MDBNavbarNav,
@@ -44,11 +44,12 @@ import place from './Assets/hunza.webp'
 
 
 export function TourLanding() {
+  let params = useParams();
   const token = useSelector(getToken);
   const dispatch = useDispatch();
   useEffect(() => {
 
-    dispatch(GetAllToursListAsync({ token, adType: "1" }));
+    dispatch(GetAllToursListAsync({ token }));
   }, []);
   const data = useSelector(getAllTours);
   console.log(data);
@@ -59,8 +60,13 @@ export function TourLanding() {
   var list = [];
   if (data) {
     var temp = data;
+    if(params.tourCategory)
+    {
+      temp = data.filter((x) => (x.name && x.name.toLowerCase().includes(params.tourCategory.toLowerCase())) || (x.destination && x.destination.toLowerCase().includes(params.tourCategory.toLowerCase())))
+    }
+    
     if (search) {
-      temp = data.filter((x) => (x.name && x.name.toLowerCase().includes(search.toLowerCase())) || (x.description && x.description.toLowerCase().includes(search.toLowerCase())))
+      temp = data.filter((x) => (x.name && x.name.toLowerCase().includes(search.toLowerCase())) || (x.destination && x.destination.toLowerCase().includes(search.toLowerCase())) )
     }
     temp.forEach(val => {
       list.push(<MDBCol size='12' className='my-3'>
@@ -90,18 +96,17 @@ export function TourLanding() {
       </MDBCol>)
     })
   }
-  if (!token) {
-    //alert("Hello");
-    return <Navigate to={{ pathname: '/login', state: { from: location } }} />
-    // setUserName("")
-  }
+  // if (!token) {
+  //   //alert("Hello");
+  //   return <Navigate to={{ pathname: '/login', state: { from: location } }} />
+  //   // setUserName("")
+  // }
 
   return (
     <div>
       <Navbar />
       <MDBContainer>
-
-        <h3 className='pt-5  '>Tour</h3>
+      <h3 className='pt-5  '>{params&& params.tourCategory?params?.tourCategory:""} Tour</h3>
         <MDBRow className='d-flex justify-content-center '>
           <MDBCol size='8'>
 

@@ -44,6 +44,11 @@ module.exports = {
         controller: "deleteTour",
         allowedMethod: ['POST']
     },
+    
+    "/transaction/updatebookingstatus": {
+        controller: "updateBookingStatus",
+        allowedMethod: ['POST']
+    },
 
     // "/transaction/gettourdetails1/:test2": {
     //     controller: "gettourdetails",
