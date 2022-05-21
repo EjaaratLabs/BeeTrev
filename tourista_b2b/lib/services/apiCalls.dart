@@ -8,7 +8,7 @@ import 'package:streaming_shared_preferences/streaming_shared_preferences.dart';
 class ApiCalls {
   final LoginToken loginToken;
   String baseApiUrl;
-  ApiCalls({required this.loginToken, this.baseApiUrl = "172.16.225.20:3100"});
+  ApiCalls({required this.loginToken, this.baseApiUrl = "172.16.5.84:3100"});
 
   ///CONSTANTS FOR API CALLS
   ///eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJjbGllbnQiLCJpYXQiOjE2MTQ5NTE5MTl9.NhFa1eFf4Z1DNxmXUSVWt9VWDdsGch_w31yD5a5Muew

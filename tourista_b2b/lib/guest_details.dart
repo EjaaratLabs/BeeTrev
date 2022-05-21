@@ -26,7 +26,7 @@ class _guest_detailsState extends State<guest_details> {
                   icon: Icon(Icons.arrow_back)),
               centerTitle: true,
               title: Text(
-                "profile",
+                "Status",
                 style: TextStyle(fontSize: 16),
               ),
               elevation: 8,
