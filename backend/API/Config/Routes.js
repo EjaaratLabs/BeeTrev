@@ -176,6 +176,10 @@ module.exports = {
         controller: "getcustomer",
         allowedMethod: ['GET']
     },
+    "/transaction/getEvents": {
+        controller: "getEvents",
+        allowedMethod: ['GET']
+    },
     "/transaction/getannouncement": {
         controller: "GetAnnouncement",
         allowedMethod: ['GET']

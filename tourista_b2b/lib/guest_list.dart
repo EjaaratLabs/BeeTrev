@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:tourista_b2b/basic_info.dart';
 import 'package:tourista_b2b/guest_details.dart';
 import 'package:tourista_b2b/models/customerModel.dart';
 import 'package:tourista_b2b/services/services.dart';
@@ -39,7 +40,7 @@ class _guestListState extends State<guestList> {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
-        title: Text("Select Tour"),
+        title: Text("Guest List"),
         backgroundColor: Color(0xffa014eb),
       ),
       body: SingleChildScrollView(
@@ -72,11 +73,22 @@ class _guestListState extends State<guestList> {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => guest_details()),
+                            // builder: (context) => b_info(
+                            //       guestid: aboutCard[index].id,
+                            //     )
+                            builder: (context) => b_info(
+                              guestid: aboutCard[index].id,
+                            ),
+                          ),
                         );
                       },
                       child: ListTile(
-                        title: Text(aboutCard[index].name),
+                        title: Row(
+                          children: [
+                            Text(aboutCard[index].id),
+                            Text(aboutCard[index].name),
+                          ],
+                        ),
                         subtitle: Text(
                           aboutCard[index].customerPhone,
                           style: TextStyle(fontSize: 12),

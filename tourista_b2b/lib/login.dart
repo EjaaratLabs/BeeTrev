@@ -76,15 +76,15 @@ class _loginState extends State<login> {
             Row(
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
-                FlatButton(
-                  onPressed: () {},
-                  color: Colors.transparent,
-                  child: Text(
-                    'forgot your password?',
-                    style: TextStyle(fontSize: 14),
-                  ),
-                  textColor: Colors.grey,
-                ),
+                // FlatButton(
+                //   onPressed: () {},
+                //   color: Colors.transparent,
+                //   child: Text(
+                //     'forgot your password?',
+                //     style: TextStyle(fontSize: 14),
+                //   ),
+                //   textColor: Colors.grey,
+                // ),
               ],
             ),
             Padding(

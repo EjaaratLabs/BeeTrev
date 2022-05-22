@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:tourista_b2b/models/annuncementModel.dart';
 import 'package:tourista_b2b/models/customerModel.dart';
+import 'package:tourista_b2b/models/eventsModel.dart';
 import 'package:tourista_b2b/models/lastannuncementModel.dart';
 import 'package:tourista_b2b/models/tourmodel.dart';
 import 'package:streaming_shared_preferences/streaming_shared_preferences.dart';
@@ -44,6 +45,26 @@ class Services {
     print(domainsMap);
     List<dynamic> list = domainsMap['list'];
     var mapedList = list.map((e) => CustomerModel.fromMap(e)).toList();
+
+    return mapedList;
+  }
+
+  Future<List<EventsModel>> getevents() async {
+    //change to get login token from cache
+    // var loginTokenString = loginToken.token;
+    var preferences = await StreamingSharedPreferences.instance;
+    var tourid = preferences.getString("tourid", defaultValue: "").getValue();
+    var loginTokenString = await Auth().getLoginTokenString();
+    String route = "/transaction/getEvents";
+
+    var response =
+        await ApiCalls(loginToken: LoginToken(token: loginTokenString))
+            .getApiRequest(route, queryParams: {"tourid": tourid});
+
+    var domainsMap = jsonDecode(response.body);
+    print(domainsMap);
+    List<dynamic> list = domainsMap['list'];
+    var mapedList = list.map((e) => EventsModel.fromMap(e)).toList();
 
     return mapedList;
   }

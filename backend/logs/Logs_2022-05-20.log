@@ -1,3 +1,27 @@
+<<<<<<< HEAD
+23:00:49.676 | Info | '/api/user/login' | 
+23:00:51.284 | Info | '/transaction/gettourbyuserid' | 
+23:00:54.851 | Info | '/transaction/getlastannouncement' | 
+23:00:58.904 | Info | '/transaction/getcustomer' | 
+23:19:27.541 | Info | '/transaction/getlastannouncement' | 
+23:19:30.053 | Info | '/transaction/getcustomer' | 
+23:19:58.604 | Info | '/api/user/login' | 
+23:19:59.475 | Info | '/transaction/gettourbyuserid' | 
+23:20:01.394 | Info | '/transaction/getlastannouncement' | 
+23:20:03.052 | Info | '/transaction/getcustomer' | 
+23:22:16.902 | Info | '/api/user/login' | 
+23:22:17.864 | Info | '/transaction/gettourbyuserid' | 
+23:22:19.766 | Info | '/transaction/getlastannouncement' | 
+23:22:22.037 | Info | '/transaction/getcustomer' | 
+23:25:35.910 | Info | '/api/user/login' | 
+23:25:36.821 | Info | '/transaction/gettourbyuserid' | 
+23:25:38.789 | Info | '/transaction/getlastannouncement' | 
+23:25:40.854 | Info | '/transaction/getcustomer' | 
+23:27:43.342 | Info | '/api/user/login' | 
+23:27:44.293 | Info | '/transaction/gettourbyuserid' | 
+23:27:46.503 | Info | '/transaction/getlastannouncement' | 
+23:27:49.254 | Info | '/transaction/getcustomer' | 
+=======
 22:35:08.922 | Info | '/transaction/myprofile' | 
 22:35:54.148 | Info | '/transaction/myprofile' | 
 22:35:54.205 | Info | '/transaction/gettour' | 
@@ -163,3 +187,4 @@
 23:59:00.316 | Info | '/transaction/gettourdetails' | 
 23:59:10.297 | Info | '/transaction/myprofile' | 
 23:59:10.372 | Info | '/transaction/gettourdetails' | 
+>>>>>>> 86a57a9822ebcdf1d85e2343ce5ef1b3e75bc428
