@@ -51,7 +51,7 @@ import { createNewCustomerAsync } from '../reducers/CustomerProfileSlice';
 
 
 
-export function TourBooking() {
+export function HotelBooking() {
 
   const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJhZG1pbiIsImlhdCI6MTY1MjYzMTYwOX0.Iv0ffsGRfzvsiwZP6K--_9jYgxJnLJc1FbVehj8R8IY"
   const [formData, setFormData] = useState({});

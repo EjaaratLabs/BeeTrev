@@ -27,8 +27,7 @@ import {
   MDBCarouselInner,
   MDBCarousel,
   MDBBreadcrumb,
-  MDBBreadcrumbItem,
-  MDBDropdown
+  MDBBreadcrumbItem
 } from 'mdb-react-ui-kit';
 // import StarRatings from 'react-star-ratings';
 import { getToken, loginAsync, resetToken, getUserData } from '../reducers/AuthSlice'
@@ -47,48 +46,25 @@ import ImageGallery from 'react-image-gallery';
 
 import "react-image-gallery/styles/scss/image-gallery.scss";
 import "react-image-gallery/styles/css/image-gallery.css";
-import { createNewCustomerAsync } from '../reducers/CustomerProfileSlice';
+import { GetHotelDetailsAsync } from '../reducers/HotelProfileSlice';
 
 
 
-export function TourBooking() {
-
-  const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJhZG1pbiIsImlhdCI6MTY1MjYzMTYwOX0.Iv0ffsGRfzvsiwZP6K--_9jYgxJnLJc1FbVehj8R8IY"
-  const [formData, setFormData] = useState({});
-  const dispatch = useDispatch();
-  const handleChange = event => {
-    var data = formData;
-    data[event.target.name] = event.target.value;
-    setFormData(data);
-  }
-  const handleDate = event => {
-    var data = formData;
-
-    data[event.target.name] = new Date(event.target.value);
-    setFormData(data);
-  }
-
-  const onSubmit = () => {
-    
-    formData['TOURID']=params.tourId;
-    console.log(formData);
-    dispatch(createNewCustomerAsync({ formData, token }));
-
-
-  }
-
+export function HotelDetails() {
   let params = useParams();
+  const dispatch = useDispatch();
+  const token = useSelector(getToken);
   useEffect(() => {
 
-    dispatch(GetTourDetailsAsync({ params:{tourId:params.tourId,}, token }))
+    dispatch(GetHotelDetailsAsync({ params:{hotelId:params.hotelId,}, token }))
   }, []);
 
   const [rating, setRating] = useState(5);
   let navigate = useNavigate()
   let location = useLocation()
   //const [showNav, setShowNav] = useState(false);
-  const details = useSelector(state => state.TourSlice.profileData);
-  
+  const details = useSelector(state => state.HotelSlice.profileData);
+  console.log(details);
   
 
   const images = [
@@ -114,48 +90,55 @@ export function TourBooking() {
         <MDBRow className='d-flex justify-content-center py-5 align-items-stretch'>
         <MDBBreadcrumb>
         <MDBBreadcrumbItem>Home</MDBBreadcrumbItem>
-        <MDBBreadcrumbItem >Tour</MDBBreadcrumbItem>
-        <MDBBreadcrumbItem >Details</MDBBreadcrumbItem>
-        <MDBBreadcrumbItem active>Booking</MDBBreadcrumbItem>
+        <MDBBreadcrumbItem >Hotel</MDBBreadcrumbItem>
+        <MDBBreadcrumbItem active>Details</MDBBreadcrumbItem>
       </MDBBreadcrumb>
-          
+          <MDBCol size='8' className='d-flex  align-items-stretch'>
+            <MDBCard className="p-2 mb-3  w-100">
+              <MDBCardBody>
+              <ImageGallery items={images} />
+                {/* <Avatar round src='https://www.biography.com/.image/ar_1:1%2Cc_fill%2Ccs_srgb%2Cfl_progressive%2Cq_auto:good%2Cw_1200/MTc5ODc1NTM4NjMyOTc2Mzcz/gettyimages-693134468.jpg' size="150" /> */}
+                
+                {/* <h5 className='mt-4' >{details?.profile?.Name}</h5> */}
+                {/* <StarRatings
+                  rating={details?.profile?.rating}
+                  starRatedColor="green"
+                  starDimension="20px"
+                  starSpacing="1px"
+                  //  changeRating={this.changeRating}
+                  numberOfStars={5}
+                  name='rating'
+                /> */}
+              </MDBCardBody>
+            </MDBCard>
+          </MDBCol>
+          <MDBCol size='4' className='d-flex  align-items-stretch'>
+            <MDBCard className="p-2 mb-3  w-100">
+              <MDBCardBody>
+                <MDBCardTitle><h4 className='text-start'>{details?.details?.hotelName}</h4></MDBCardTitle>
+                <MDBRow>
+                  <div className='text-start'>
+                    <p><MDBIcon icon="map-marker-alt" /> {details?.details?.hotelLocation}</p>
+                    
+                    <h5 className='text-center mt-5'>PKR {details?.details?.roomPrice} </h5>
+                    <div className='text-center mt-5'><MDBBtn className='' href={'/hotel/booking/' + details?.details?.id} style={{ backgroundColor: '#F7D402', color: "black" }}>Book Now</MDBBtn></div>
+                  </div>
+                </MDBRow>
+
+              </MDBCardBody>
+            </MDBCard>
+          </MDBCol>
           
           <MDBCol size='12'>
             <MDBCard className="px-3 py-2">
               <MDBCardBody className='text-start'>
-              <form>
-
-<div className="grey-text text-start">
-
-  <MDBRow>
-    <h5>{details?.details?.name}</h5>
-    <MDBCol lg="6" className="py-1">
-      <MDBInput label="Name" icon="envelope" group type="text" validate error="wrong"
-        success="right" name='NAME' value={formData.NAME} onChange={handleChange} />
-    </MDBCol>
-    <MDBCol lg="6" className="py-1">
-      <MDBInput label="Phome Number" icon="envelope" group type="text" validate error="wrong"
-        success="right"  name='CUSTOMERPHONE' value={formData.CUSTOMERPHONE} onChange={handleChange} />
-    </MDBCol>
-    <MDBCol lg="6" className="py-1">
-      <MDBInput label="Email" icon="envelope" group type="text" validate error="wrong"
-        success="right" name='EMAIL' value={formData.EMAIL} onChange={handleChange} />
-    </MDBCol>
-    <MDBCol lg="6" className="py-1">
-      <MDBInput label= {"No. of People (upto " +details?.details?.quantity+")"} icon="envelope" group type="text" validate error="wrong"
-        success="right" name='QTY' value={formData.QTY} onChange={handleChange} />
-    </MDBCol>
-    </MDBRow>
-  <hr />
-</div>
-<div className="text-end w-100">
-  <MDBBtn className="mx-2  my-5" href='#' onClick={onSubmit}>Book</MDBBtn>
-</div>
-</form>
-
-
+                <MDBCardTitle><h5>Facilities</h5></MDBCardTitle>
+                <p>{details?.details?.hotelFacilities}</p>
+                
+                <MDBCardTitle><h5>Description</h5></MDBCardTitle>
+                <p>{details?.details?.hotelDescription}</p>
                 <div className='w-100  py-3 d-flex  justify-content-between' >
-                <MDBBtn href={'/details/' + details?.details?.id} style={{backgroundColor:"#30B4BA"}}><MDBIcon icon="arrow-left" /> Back to tour</MDBBtn>
+                <MDBBtn href='/hotel' style={{backgroundColor:"#30B4BA"}}><MDBIcon icon="arrow-left" /> Back to list</MDBBtn>
                   
                 </div>
               </MDBCardBody>

@@ -14,6 +14,9 @@ import { Landing1 } from './views/Landing1';
 import { TourLanding } from './views/TourLanding';
 import { TourDetails } from './views/TourDetails';
 import { TourBooking } from './views/TourBooking';
+import { HotelLanding } from './views/HotelLanding';
+import { HotelDetails } from './views/HotelDetails';
+import { HotelBooking } from './views/HotelBooking';
 
 function App() {
   return (
@@ -32,6 +35,9 @@ function App() {
           <Route exact path="/transports" element={<Transports />} />
           <Route path="details/:tourId" element={<TourDetails />} />
           <Route path="booking/:tourId" element={<TourBooking />} />
+          <Route path="/hotel" element={<HotelLanding />} />
+          <Route path="/hotel/details/:hotelId" element={<HotelDetails />} />
+          <Route path="/hotel/booking/:hotelId" element={<HotelBooking />} />
          
         </Routes>
       </Router>

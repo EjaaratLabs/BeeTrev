@@ -103,7 +103,7 @@ export function Landing1() {
               <h2>Custom works make the dream happen</h2>
               <p>A place for entrepreneurs and vendors to connect.</p>
               <MDBBtn className='mx-2' style={{ backgroundColor: '#F7D402', color: "black" }} href="/tour" >Find a Tour</MDBBtn>
-              <MDBBtn className='mx-2' href='/business' style={{backgroundColor:"#30B4BA"}} >Find a project</MDBBtn>
+              <MDBBtn className='mx-2' href='/hotel' style={{backgroundColor:"#30B4BA"}} >Find a Hotel</MDBBtn>
             </MDBCarouselCaption>
           </MDBCarouselItem>
 
