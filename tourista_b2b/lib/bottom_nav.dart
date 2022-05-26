@@ -19,7 +19,7 @@ class _btm_navState extends State<btm_nav> {
     homePage(),
     guestList(),
     profile(),
-    actions(),
+    // actions(),
   ];
   void _onItemTapped(int index) {
     setState(() {
@@ -59,7 +59,7 @@ class _btm_navState extends State<btm_nav> {
       body: _btmNav.elementAt(_selectedIndex),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       floatingActionButton: SizedBox(
-        height: 40.0,
+        height: 30.0,
         width: 40.0,
         child: FloatingActionButton(
           onPressed: () {
@@ -74,7 +74,7 @@ class _btm_navState extends State<btm_nav> {
       ),
       bottomNavigationBar: BottomAppBar(
         shape: CircularNotchedRectangle(),
-        notchMargin: 9.0,
+        notchMargin: 0.0,
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
@@ -94,7 +94,7 @@ class _btm_navState extends State<btm_nav> {
               },
               child: Icon(Icons.people,
                   color: _selectedIndex == 1 ? Color(0xffa014eb) : Colors.grey),
-              height: 20,
+              height: 40,
             ),
             FlatButton(
               onPressed: () {
@@ -104,14 +104,14 @@ class _btm_navState extends State<btm_nav> {
                   color: _selectedIndex == 2 ? Color(0xffa014eb) : Colors.grey),
               height: 20,
             ),
-            FlatButton(
-              onPressed: () {
-                _onItemTapped(3);
-              },
-              child: Icon(Icons.settings,
-                  color: _selectedIndex == 3 ? Color(0xffa014eb) : Colors.grey),
-              height: 20,
-            ),
+            // FlatButton(
+            //   onPressed: () {
+            //     _onItemTapped(3);
+            //   },
+            //   child: Icon(Icons.settings,
+            //       color: _selectedIndex == 3 ? Color(0xffa014eb) : Colors.grey),
+            //   height: 20,
+            // ),
           ],
         ),
         // child:   BottomNavigationBar(

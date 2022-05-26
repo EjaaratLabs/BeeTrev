@@ -7,3 +7,7 @@ export function GetHotelsList(data,token) {
 export function CreateNewHotel(data,token) {
   return apiUtil.postApi('transaction/createhotels', token, data)
 }
+
+export function GetHotelDetails(data,token) {
+  return apiUtil.getApi('transaction/gethoteldetails', token, data)
+}

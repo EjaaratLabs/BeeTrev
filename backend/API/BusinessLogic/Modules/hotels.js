@@ -24,5 +24,13 @@ class hotels
         [message.API_USER_ID]);
         return results && results.length>0?results:[];
     }
+
+    async getHotelDetails(id)
+    {
+    
+        var results=await client.Query("Select * from hotels where id=?",
+        [id]);
+        return results && results.length>0?results[0]:null;
+    }
 }
 module.exports=new hotels();

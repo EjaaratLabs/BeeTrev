@@ -91,6 +91,18 @@ export function TourSetup() {
                       <MDBInput label="Status" icon="envelope" group type="text" validate error="wrong"
                         success="right" name='STATUS' value={formData.STATUS} onChange={handleChange} />
                     </MDBCol>
+                    <MDBCol lg="12" className="py-1">
+                      <MDBInput label="Overview" icon="envelope" group type="text" validate error="wrong"
+                        success="right" name='SHORT_DESC' value={formData.SHORT_DESC} onChange={handleChange} />
+                    </MDBCol>
+                    <MDBCol lg="12" className="py-1">
+                      <MDBInput label="Description" icon="envelope" group type="text" validate error="wrong"
+                        success="right" name='LONG_DESC' value={formData.LONG_DESC} onChange={handleChange} />
+                    </MDBCol>
+                    <MDBCol lg="4" className="py-1">
+                      <MDBInput label="Quantity" icon="envelope" group type="number" validate error="wrong"
+                        success="right" name='QTY' value={formData.QTY} onChange={handleChange} />
+                    </MDBCol>
                     </MDBRow>
                   <hr />
                 </div>

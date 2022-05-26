@@ -85,11 +85,11 @@ export function Landing() {
               <Link to={`/home/transport-booking`} >Transport Booking</Link>
             </div>
           </div>
-          <div className="custom-sidebar-menu-item">
+          {/* <div className="custom-sidebar-menu-item">
             <div className="custom-sidebar-menu-item-inner">
               <Link to={`/home/create-website`} >Website Creation</Link>
             </div>
-          </div>
+          </div> */}
           <div className="custom-sidebar-menu-item">
             <div className="custom-sidebar-menu-item-inner">
             <MDBBtn onClick={() => dispatch(resetToken({
