@@ -9,6 +9,6 @@ module.exports = {
     host: 'localhost',
     user: 'root',
     password: '',
-    database: 'tourista b2b',
+    database: 'beetrev2',
   },
 }
