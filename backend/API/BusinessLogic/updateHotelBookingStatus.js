@@ -1,7 +1,7 @@
 
-var modle = require('./Modules/Customers');
+var modle = require('./Modules/HotelCustomers');
 
-class updateHotelBookingStatus
+class updateBookingStatus
 {
     async input(req,message)
     {
@@ -29,4 +29,4 @@ class updateHotelBookingStatus
     }
     
 }
-module.exports= new updateHotelBookingStatus();
+module.exports= new updateBookingStatus();

@@ -69,16 +69,16 @@ export function HotelDetails() {
 
   const images = [
     {
-      original: 'https://picsum.photos/id/1018/1000/600/',
-      thumbnail: 'https://picsum.photos/id/1018/250/150/',
+      original: 'https://foxbusinessmarket.com/wp-content/uploads/2022/01/hotl.jpg',
+      thumbnail: 'https://foxbusinessmarket.com/wp-content/uploads/2022/01/hotl.jpg',
     },
     {
-      original: 'https://picsum.photos/id/1015/1000/600/',
-      thumbnail: 'https://picsum.photos/id/1015/250/150/',
+      original: 'http://cdn.cnn.com/cnnnext/dam/assets/140127103345-peninsula-shanghai-deluxe-mock-up.jpg',
+      thumbnail: 'http://cdn.cnn.com/cnnnext/dam/assets/140127103345-peninsula-shanghai-deluxe-mock-up.jpg',
     },
     {
-      original: 'https://picsum.photos/id/1019/1000/600/',
-      thumbnail: 'https://picsum.photos/id/1019/250/150/',
+      original: 'https://www.luxurytravelmagazine.com/images/article/2021July/Raffles_Istanbul.jpg',
+      thumbnail: 'https://www.luxurytravelmagazine.com/images/article/2021July/Raffles_Istanbul.jpg',
     },
   ];
 

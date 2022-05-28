@@ -47,7 +47,8 @@ import ImageGallery from 'react-image-gallery';
 
 import "react-image-gallery/styles/scss/image-gallery.scss";
 import "react-image-gallery/styles/css/image-gallery.css";
-import { createNewCustomerAsync } from '../reducers/CustomerProfileSlice';
+import { createNewCustomerAsync, createNewHotelCustomerAsync } from '../reducers/CustomerProfileSlice';
+import { GetHotelDetailsAsync } from '../reducers/HotelProfileSlice';
 
 
 
@@ -70,9 +71,9 @@ export function HotelBooking() {
 
   const onSubmit = () => {
     
-    formData['TOURID']=params.tourId;
+    formData['HOTELID']=params.hotelId;
     console.log(formData);
-    dispatch(createNewCustomerAsync({ formData, token }));
+    dispatch(createNewHotelCustomerAsync({ formData, token }));
 
 
   }
@@ -80,14 +81,14 @@ export function HotelBooking() {
   let params = useParams();
   useEffect(() => {
 
-    dispatch(GetTourDetailsAsync({ params:{tourId:params.tourId,}, token }))
+    dispatch(GetHotelDetailsAsync({ params:{hotelId:params.hotelId,}, token }))
   }, []);
 
   const [rating, setRating] = useState(5);
   let navigate = useNavigate()
   let location = useLocation()
   //const [showNav, setShowNav] = useState(false);
-  const details = useSelector(state => state.TourSlice.profileData);
+  const details = useSelector(state => state.HotelSlice.profileData);
   
   
 
@@ -128,22 +129,18 @@ export function HotelBooking() {
 <div className="grey-text text-start">
 
   <MDBRow>
-    <h5>{details?.details?.name}</h5>
+    <h5>{details?.details?.hotelName}</h5>
     <MDBCol lg="6" className="py-1">
       <MDBInput label="Name" icon="envelope" group type="text" validate error="wrong"
         success="right" name='NAME' value={formData.NAME} onChange={handleChange} />
     </MDBCol>
     <MDBCol lg="6" className="py-1">
-      <MDBInput label="Phome Number" icon="envelope" group type="text" validate error="wrong"
+      <MDBInput label="Phone Number" icon="envelope" group type="text" validate error="wrong"
         success="right"  name='CUSTOMERPHONE' value={formData.CUSTOMERPHONE} onChange={handleChange} />
     </MDBCol>
     <MDBCol lg="6" className="py-1">
       <MDBInput label="Email" icon="envelope" group type="text" validate error="wrong"
         success="right" name='EMAIL' value={formData.EMAIL} onChange={handleChange} />
-    </MDBCol>
-    <MDBCol lg="6" className="py-1">
-      <MDBInput label= {"No. of People (upto " +details?.details?.quantity+")"} icon="envelope" group type="text" validate error="wrong"
-        success="right" name='QTY' value={formData.QTY} onChange={handleChange} />
     </MDBCol>
     </MDBRow>
   <hr />
@@ -155,7 +152,7 @@ export function HotelBooking() {
 
 
                 <div className='w-100  py-3 d-flex  justify-content-between' >
-                <MDBBtn href={'/details/' + details?.details?.id} style={{backgroundColor:"#30B4BA"}}><MDBIcon icon="arrow-left" /> Back to tour</MDBBtn>
+                <MDBBtn href={'/hotel/details/' + details?.details?.id} style={{backgroundColor:"#30B4BA"}}><MDBIcon icon="arrow-left" /> Back to hotel</MDBBtn>
                   
                 </div>
               </MDBCardBody>

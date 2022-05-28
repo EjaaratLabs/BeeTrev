@@ -123,13 +123,13 @@ export function TourLanding() {
                     setSearch(e.target.value)
                   }} />
                 <br />
-                <h5>Categories</h5>
+                {/* <h5>Categories</h5>
                 <MDBCheckbox name='flexCheck' value='Leather' id='flexCheckDefault' label='Leather' />
                 <MDBCheckbox name='flexCheck' value='Apparel & textile' id='flexCheckChecked' label='Apparel & textile' />
                 <MDBCheckbox name='flexCheck' value='Footware' id='flexCheckChecked' label='Footware' />
                 <MDBCheckbox name='flexCheck' value='Printing & packagin' id='flexCheckChecked' label='Printing & packaging' />
                 <MDBCheckbox name='flexCheck' value='Soaps & detergents' id='flexCheckChecked' label='Soaps & detergents' />
-                <MDBCheckbox name='flexCheck' value='Food & beverages' id='flexCheckChecked' label='Food & beverages' />
+                <MDBCheckbox name='flexCheck' value='Food & beverages' id='flexCheckChecked' label='Food & beverages' /> */}
                 <hr />
                 <h5>Location</h5>
                 <select className="form-select">

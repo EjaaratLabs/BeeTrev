@@ -54,6 +54,11 @@ module.exports = {
         controller: "updateBookingStatus",
         allowedMethod: ['POST']
     },
+    
+    "/transaction/updatehotelbookingstatus": {
+        controller: "updateHotelBookingStatus",
+        allowedMethod: ['POST']
+    },
 
     // "/transaction/gettourdetails1/:test2": {
     //     controller: "gettourdetails",
@@ -171,11 +176,23 @@ module.exports = {
         allowedMethod: ['POST']
 
     },
+    
+    "/transaction/createhotelcustomer": {
+        controller: "createhotelcustomer",
+        allowedMethod: ['POST']
+
+    },
 
     "/transaction/getcustomer": {
         controller: "getcustomer",
         allowedMethod: ['GET']
     },
+    
+    "/transaction/gethotelcustomer": {
+        controller: "gethotelcustomer",
+        allowedMethod: ['GET']
+    },
+
     "/transaction/getEvents": {
         controller: "getEvents",
         allowedMethod: ['GET']

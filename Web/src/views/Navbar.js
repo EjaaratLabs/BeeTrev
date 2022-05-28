@@ -69,7 +69,7 @@ export function Navbar() {
           <MDBIcon icon='bars' fas />
         </MDBNavbarToggler>
         <MDBCollapse navbar show={showNav}>
-          <MDBNavbarNav left>
+          {/* <MDBNavbarNav left>
             <MDBNavbarItem>
               <MDBDropdown group className='shadow-0' >
                 <MDBDropdownToggle color='light' >Buyer</MDBDropdownToggle>
@@ -113,7 +113,7 @@ export function Navbar() {
                 </MDBDropdownMenu>
               </MDBDropdown>
             </MDBNavbarItem>
-          </MDBNavbarNav>
+          </MDBNavbarNav> */}
           <MDBNavbarNav right className='d-flex justify-content-end'>
           {token ? 
           <MDBNavbarItem>
@@ -121,7 +121,7 @@ export function Navbar() {
                 <MDBDropdownToggle color='light'>Hi, {userData.name}</MDBDropdownToggle>
                 <MDBDropdownMenu>
                   <MDBDropdownItem>
-                    <MDBDropdownLink href="#" ><Link className='mx-2' to="/home/dashboard" style={{color:"black"}}  >Dashboard</Link></MDBDropdownLink>
+                    <MDBDropdownLink  ><Link className='mx-2' to="/home/dashboard" style={{color:"black"}}  >Dashboard</Link></MDBDropdownLink>
                   </MDBDropdownItem>
                   <MDBDropdownItem>
                     <MDBDropdownLink onClick={() => dispatch(resetToken({

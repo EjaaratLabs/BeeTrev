@@ -6,7 +6,7 @@ class hotels
     async createNewType(message)
     {
     
-        var results=await client.Query("insert into hotels(hotelName,hotelLocation,roomPrice,hotelFacilities,hotelDescription,hotelStatus) values(?,?,?,?,?,?)",
+        var results=await client.Query("insert into hotels(hotelName,hotelLocation,roomPrice,hotelFacilities,hotelDescription,hotelStatus,createdBy) values(?,?,?,?,?,?)",
         [message.HOTELNAME, message.HOTELLOCATION,message.ROOMPRICE,message.HOTELFACILITIES,message.HOTELDESCRIPTION,message.HOTELSTATUS,]);
     }
     async gethotels()
