@@ -7,3 +7,7 @@ export function GetTransportsList(data,token) {
 export function CreateNewTransport(data,token) {
   return apiUtil.postApi('transaction/createtransport', token, data)
 }
+
+export function GetTransportDetails(data,token) {
+  return apiUtil.getApi('transaction/gettransportdetails', token, data)
+}

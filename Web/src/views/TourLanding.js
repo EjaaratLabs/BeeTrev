@@ -28,19 +28,16 @@ import {
   MDBCheckbox,
   MDBDropdownMenu,
   MDBDropdownItem,
-  MDBDropdownLink
+  MDBDropdownLink,
+  slider
 } from 'mdb-react-ui-kit';
 import { getToken, loginAsync, resetToken } from '../reducers/AuthSlice'
-import logo from '../assets/logo.png'
-import comakebg from '../assets/comkaebg.png'
-import item1 from '../assets/signup.png'
-import item2 from '../assets/connect.png'
-
-import item3 from '../assets/sahke.png'
 import { Navbar } from './Navbar';
 import { Footer } from './Footer';
 import { getAllTours, GetAllToursListAsync, getTours, GetToursListAsync } from '../reducers/TourProfileSlice';
 import place from './Assets/hunza.webp'
+import InputRange from 'react-input-range';
+import "react-input-range/lib/css/index.css";
 
 
 export function TourLanding() {
@@ -57,6 +54,16 @@ export function TourLanding() {
   let location = useLocation()
   const [showNav, setShowNav] = useState(false);
   const [search, setSearch] = useState("");
+  const [value,setValue]=useState('All');
+  
+  const [destination,setDestination]=useState('All');
+  const [val, setVal] = React.useState({ min: 0, max: 100000 });
+    
+  const handleSelect=(e)=>{
+    setValue(e.target.value)
+    console.log(e.target.value);
+  }
+
   var list = [];
   if (data) {
     var temp = data;
@@ -67,6 +74,14 @@ export function TourLanding() {
     
     if (search) {
       temp = data.filter((x) => (x.name && x.name.toLowerCase().includes(search.toLowerCase())) || (x.destination && x.destination.toLowerCase().includes(search.toLowerCase())) )
+    }
+    
+    if (value != 'All' || destination != 'All') {
+      temp = data.filter((x) => (x.departure && x.departure.toLowerCase().includes(value.toLowerCase())) || (x.destination && x.destination.toLowerCase().includes(destination.toLowerCase())))
+    }
+    
+    if (val.max <= 100000) {
+      temp = data.filter((x) => (x.price >= val.min) && (x.price <= val.max))
     }
     temp.forEach(val => {
       list.push(<MDBCol size='12' className='my-3'>
@@ -123,20 +138,22 @@ export function TourLanding() {
                     setSearch(e.target.value)
                   }} />
                 <br />
-                {/* <h5>Categories</h5>
-                <MDBCheckbox name='flexCheck' value='Leather' id='flexCheckDefault' label='Leather' />
-                <MDBCheckbox name='flexCheck' value='Apparel & textile' id='flexCheckChecked' label='Apparel & textile' />
-                <MDBCheckbox name='flexCheck' value='Footware' id='flexCheckChecked' label='Footware' />
-                <MDBCheckbox name='flexCheck' value='Printing & packagin' id='flexCheckChecked' label='Printing & packaging' />
-                <MDBCheckbox name='flexCheck' value='Soaps & detergents' id='flexCheckChecked' label='Soaps & detergents' />
-                <MDBCheckbox name='flexCheck' value='Food & beverages' id='flexCheckChecked' label='Food & beverages' /> */}
+                <h5>Departure</h5>
+                <select className="form-select" onChange={handleSelect}>
+                  <option value="All">---All---</option>
+                  <option value="Karachi">Karachi</option>
+                  <option value="Lahore">Lahore</option>
+                  <option value="Islamabad">Islamabad</option>
+                </select>
                 <hr />
-                <h5>Location</h5>
-                <select className="form-select">
-                  <option>---All---</option>
-                  <option value="1">Karachi</option>
-                  <option value="2">Lahore</option>
-                  <option value="3">Islamabad</option>
+                <h5>Destination</h5>
+                <select className="form-select" onChange={(e) => {
+                    setDestination(e.target.value)
+                  }}>
+                  <option value="All">---All---</option>
+                  <option value="Hunza">Hunza</option>
+                  <option value="Gilgit">Gilgit</option>
+                  <option value="Swat">Swat</option>
                 </select>
                 <hr />
                 <h5>Quantity</h5>
@@ -144,7 +161,16 @@ export function TourLanding() {
                 <MDBCheckbox name='flexCheck' value='2' id='flexCheckChecked' label='251 - 500' />
                 <MDBCheckbox name='flexCheck' value='3' id='flexCheckChecked' label='501 - 1000' />
                 <MDBCheckbox name='flexCheck' value='4' id='flexCheckChecked' label='1000+' />
-
+                <hr />
+                <h5 className=" mb-4">Price</h5>
+<InputRange
+            step={5000}
+            maxValue={100000}
+            minValue={0}
+            value={val}
+            onChange={setVal}
+            onChangeComplete={args => console.log(args)}
+          />
               </MDBCardBody>
             </MDBCard>
           </MDBCol>

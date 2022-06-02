@@ -45,6 +45,11 @@ module.exports = {
         allowedMethod: ['GET']
     },
     
+    "/transaction/gettransportdetails": {
+        controller: "gettransportdetails",
+        allowedMethod: ['GET']
+    },
+    
     "/transaction/deletetour": {
         controller: "deleteTour",
         allowedMethod: ['POST']
@@ -190,6 +195,11 @@ module.exports = {
     
     "/transaction/gethotelcustomer": {
         controller: "gethotelcustomer",
+        allowedMethod: ['GET']
+    },
+    
+    "/transaction/gettransportcustomer": {
+        controller: "gettransportcustomer",
         allowedMethod: ['GET']
     },
 

@@ -8,6 +8,10 @@ export function GetHotelCustomersList(data,token) {
   return apiUtil.getApi('transaction/gethotelcustomer', token, data)
 }
 
+export function GetTransportCustomersList(data,token) {
+  return apiUtil.getApi('transaction/gettransportcustomer', token, data)
+}
+
 export function CreateCustomers(data,token) {
   return apiUtil.postApi('transaction/createcustomer', token, data)
 }

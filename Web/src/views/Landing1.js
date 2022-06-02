@@ -310,7 +310,7 @@ export function Landing1() {
           </Carousel>;
         </MDBRow> */}
       </MDBContainer>
-  {/* <Footer/> */}
+  <Footer/>
 
     </div>
   );

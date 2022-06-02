@@ -1,7 +1,7 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { CreateNewTour, DeleteTour, GetTourDetails, GetToursList } from '../api/TourApis';
 import { toast } from 'react-toastify';
-import { CreateCustomers, CreateHotelCustomers, GetCustomersList, GetHotelCustomersList, updateBookingStatus, updateHotelBookingStatus } from '../api/CustomerApis';
+import { CreateCustomers, CreateHotelCustomers, GetCustomersList, GetHotelCustomersList, GetTransportCustomersList, updateBookingStatus, updateHotelBookingStatus } from '../api/CustomerApis';
 
 
 const initialState = {
@@ -11,7 +11,8 @@ const initialState = {
   status: 'idle',
   screenMode: 'list',
   customers: {},
-  hotelCustomers: {}
+  hotelCustomers: {},
+  transportCustomers: {}
 };
 
 // The function below is called a thunk and allows us to perform async logic. It
@@ -34,6 +35,15 @@ export const GetHotelCustomersListAsync = createAsyncThunk(
   'CustomerSlice/gethotelcustomer',
   async (data) => {
     const response = await GetHotelCustomersList(data.params, data.token);
+    console.log("res:  ", response)
+    return response.data;
+  }
+);
+
+export const GetTransportCustomersListAsync = createAsyncThunk(
+  'CustomerSlice/gettransportcustomer',
+  async (data) => {
+    const response = await GetTransportCustomersList(data.params, data.token);
     console.log("res:  ", response)
     return response.data;
   }
@@ -94,6 +104,11 @@ export const CustomerProfileSlice = createSlice({
         state.hotelCustomers = action.payload.list
         // state.profileData = action.payload.token;
       })
+      .addCase(GetTransportCustomersListAsync.fulfilled, (state, action) => {
+        state.status = 'idle';
+        state.transportCustomers = action.payload.list
+        // state.profileData = action.payload.token;
+      })
       .addCase(createNewCustomerAsync.pending, (state, action) => {
         state.status = 'loading';
       })
@@ -143,6 +158,8 @@ export const getAvailableProfiles = (state) => state.CustomerSlice.unAssignedLis
 export const getCustomer = (state) => state.CustomerSlice.customers;
 
 export const getHotelCustomer = (state) => state.CustomerSlice.hotelCustomers;
+
+export const getTransportCustomer = (state) => state.CustomerSlice.transportCustomers;
 
 // We can also write thunks by hand, which may contain both sync and async logic.
 // Here's an example of conditionally dispatching actions based on current state.

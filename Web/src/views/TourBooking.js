@@ -30,6 +30,7 @@ import {
   MDBBreadcrumbItem,
   MDBDropdown
 } from 'mdb-react-ui-kit';
+import { Toast, ToastContainer } from 'react-bootstrap';
 // import StarRatings from 'react-star-ratings';
 import { getToken, loginAsync, resetToken, getUserData } from '../reducers/AuthSlice'
 import logo from '../assets/logo.png'
@@ -53,6 +54,10 @@ import { createNewCustomerAsync } from '../reducers/CustomerProfileSlice';
 
 export function TourBooking() {
 
+  const [showA, setShowA] = useState(false);
+
+  const toggleShowA = () => setShowA(!showA);
+
   const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJhZG1pbiIsImlhdCI6MTY1MjYzMTYwOX0.Iv0ffsGRfzvsiwZP6K--_9jYgxJnLJc1FbVehj8R8IY"
   const [formData, setFormData] = useState({});
   const dispatch = useDispatch();
@@ -72,7 +77,10 @@ export function TourBooking() {
     
     formData['TOURID']=params.tourId;
     console.log(formData);
-    dispatch(createNewCustomerAsync({ formData, token }));
+    dispatch(createNewCustomerAsync({ formData, token }))
+    .then(()=>{
+      toggleShowA()
+    })
 
 
   }
@@ -118,6 +126,21 @@ export function TourBooking() {
         <MDBBreadcrumbItem >Details</MDBBreadcrumbItem>
         <MDBBreadcrumbItem active>Booking</MDBBreadcrumbItem>
       </MDBBreadcrumb>
+
+      <ToastContainer position="top-end" className="p-3">
+      <Toast show={showA} onClose={toggleShowA}>
+          <Toast.Header>
+            <img
+              src="holder.js/20x20?text=%20"
+              className="rounded me-2"
+              alt=""
+            />
+            <strong className="me-auto">Bootstrap</strong>
+            <small>11 mins ago</small>
+          </Toast.Header>
+          <Toast.Body>Woohoo, you're reading this text in a Toast!</Toast.Body>
+        </Toast>
+        </ToastContainer>
           
           
           <MDBCol size='12'>

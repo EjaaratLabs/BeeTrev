@@ -23,5 +23,12 @@ class Transports
         [message.API_USER_ID]);
         return results && results.length>0?results:[];
     }
+    async getTransportDetails(id)
+    {
+    
+        var results=await client.Query("Select * from transports where id=?",
+        [id]);
+        return results && results.length>0?results[0]:null;
+    }
 }
 module.exports=new Transports();
