@@ -48,11 +48,11 @@ import ImageGallery from 'react-image-gallery';
 
 import "react-image-gallery/styles/scss/image-gallery.scss";
 import "react-image-gallery/styles/css/image-gallery.css";
-import { createNewCustomerAsync } from '../reducers/CustomerProfileSlice';
+import { createNewCustomerAsync, createNewTransportCustomerAsync } from '../reducers/CustomerProfileSlice';
 
 
 
-export function TourBooking() {
+export function TransportBooking() {
 
   const [showA, setShowA] = useState(false);
 
@@ -75,9 +75,9 @@ export function TourBooking() {
 
   const onSubmit = () => {
     
-    formData['TOURID']=params.tourId;
+    formData['TRANSPORTID']=params.transportId;
     console.log(formData);
-    dispatch(createNewCustomerAsync({ formData, token }))
+    dispatch(createNewTransportCustomerAsync({ formData, token }))
     .then(()=>{
       toggleShowA()
     })
@@ -122,7 +122,7 @@ export function TourBooking() {
         <MDBRow className='d-flex justify-content-center py-5 align-items-stretch'>
         <MDBBreadcrumb>
         <MDBBreadcrumbItem>Home</MDBBreadcrumbItem>
-        <MDBBreadcrumbItem >Tour</MDBBreadcrumbItem>
+        <MDBBreadcrumbItem >Transport</MDBBreadcrumbItem>
         <MDBBreadcrumbItem >Details</MDBBreadcrumbItem>
         <MDBBreadcrumbItem active>Booking</MDBBreadcrumbItem>
       </MDBBreadcrumb>
@@ -163,10 +163,6 @@ export function TourBooking() {
     <MDBCol lg="6" className="py-1">
       <MDBInput label="Email" icon="envelope" group type="text" validate error="wrong"
         success="right" name='EMAIL' value={formData.EMAIL} onChange={handleChange} />
-    </MDBCol>
-    <MDBCol lg="6" className="py-1">
-      <MDBInput label= {"No. of People (upto " +details?.details?.quantity+")"} icon="envelope" group type="text" validate error="wrong"
-        success="right" name='QTY' value={formData.QTY} onChange={handleChange} />
     </MDBCol>
     </MDBRow>
   <hr />

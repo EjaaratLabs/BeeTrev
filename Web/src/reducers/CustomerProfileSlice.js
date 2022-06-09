@@ -1,7 +1,7 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { CreateNewTour, DeleteTour, GetTourDetails, GetToursList } from '../api/TourApis';
 import { toast } from 'react-toastify';
-import { CreateCustomers, CreateHotelCustomers, GetCustomersList, GetHotelCustomersList, GetTransportCustomersList, updateBookingStatus, updateHotelBookingStatus } from '../api/CustomerApis';
+import { CreateCustomers, CreateHotelCustomers, CreateTransportCustomers, GetCustomersList, GetHotelCustomersList, GetTransportCustomersList, updateBookingStatus, updateHotelBookingStatus, updateTransportBookingStatus } from '../api/CustomerApis';
 
 
 const initialState = {
@@ -67,6 +67,15 @@ export const createNewHotelCustomerAsync = createAsyncThunk(
   }
 );
 
+export const createNewTransportCustomerAsync = createAsyncThunk(
+  'CustomerSlice/createtransportcustomer',
+  async (data) => {
+    console.log(data)
+    const response = await CreateTransportCustomers(data.formData, data.token);
+    return response.data;
+  }
+);
+
 export const updateBookingStatusAsync = createAsyncThunk(
   'CustomerSlice/updatebookingstatus',
   async (data) => {
@@ -79,6 +88,14 @@ export const updateHotelBookingStatusAsync = createAsyncThunk(
   'CustomerSlice/updatehotelbookingstatus',
   async (data) => {
     const response = await updateHotelBookingStatus(data.params, data.token);
+    return response.data;
+  }
+);
+
+export const updateTransportBookingStatusAsync = createAsyncThunk(
+  'CustomerSlice/updatetransportbookingstatus',
+  async (data) => {
+    const response = await updateTransportBookingStatus(data.params, data.token);
     return response.data;
   }
 );
@@ -125,6 +142,14 @@ export const CustomerProfileSlice = createSlice({
         toast.success(action.payload.message)
         // state.profileData = action.payload.token;
       })
+      .addCase(createNewTransportCustomerAsync.pending, (state, action) => {
+        state.status = 'loading';
+      })
+      .addCase(createNewTransportCustomerAsync.fulfilled, (state, action) => {
+        state.status = 'idle';
+        toast.success(action.payload.message)
+        // state.profileData = action.payload.token;
+      })
       .addCase(updateBookingStatusAsync.pending, (state, action) => {
         state.status = 'loading';
       })
@@ -137,6 +162,14 @@ export const CustomerProfileSlice = createSlice({
         state.status = 'loading';
       })
       .addCase(updateHotelBookingStatusAsync.fulfilled, (state, action) => {
+        state.status = 'idle';
+        // state.profileData= action.payload
+        // state.profileData = action.payload.token;
+      })
+      .addCase(updateTransportBookingStatusAsync.pending, (state, action) => {
+        state.status = 'loading';
+      })
+      .addCase(updateTransportBookingStatusAsync.fulfilled, (state, action) => {
         state.status = 'idle';
         // state.profileData= action.payload
         // state.profileData = action.payload.token;

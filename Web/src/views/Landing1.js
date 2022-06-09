@@ -104,6 +104,7 @@ export function Landing1() {
               <p>Explore and Create a best tour for your holidays</p>
               <MDBBtn className='mx-2' style={{ backgroundColor: '#F7D402', color: "black" }} href="/tour" >Find a Tour</MDBBtn>
               <MDBBtn className='mx-2' href='/hotel' style={{backgroundColor:"#30B4BA"}} >Find a Hotel</MDBBtn>
+              <MDBBtn className='mx-2' href='/transport' style={{backgroundColor:"#30B4BA"}} >Find a Transport</MDBBtn>
             </MDBCarouselCaption>
           </MDBCarouselItem>
 

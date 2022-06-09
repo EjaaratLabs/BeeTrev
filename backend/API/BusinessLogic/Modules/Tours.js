@@ -30,6 +30,13 @@ class Tours
         [message.API_USER_ID]);
         return results && results.length>0?results:[];
     }
+    async getCollabTours(message)
+    {
+    
+        var results=await client.Query("Select * from tours where createdBy != ? and isDeleted = 0",
+        [message.API_USER_ID]);
+        return results && results.length>0?results:[];
+    }
     async deleteTour(message)
     {
         var results=await client.Query("update tours set isDeleted=1 where id=?" , 

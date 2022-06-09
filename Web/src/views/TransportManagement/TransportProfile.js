@@ -35,7 +35,7 @@ import { GetTourDetailsAsync } from '../../reducers/TourProfileSlice';
 import { getToken } from '../../reducers/AuthSlice';
 import { useParams } from 'react-router';
 import slider1 from '../Assets/slider1.png'
-import { getCustomer, GetCustomersListAsync, getHotelCustomer, GetHotelCustomersListAsync, getTransportCustomer, GetTransportCustomersListAsync, updateBookingStatusAsync, updateHotelBookingStatusAsync } from '../../reducers/CustomerProfileSlice';
+import { getCustomer, GetCustomersListAsync, getHotelCustomer, GetHotelCustomersListAsync, getTransportCustomer, GetTransportCustomersListAsync, updateBookingStatusAsync, updateHotelBookingStatusAsync, updateTransportBookingStatusAsync } from '../../reducers/CustomerProfileSlice';
 
 import ImageGallery from 'react-image-gallery';
 
@@ -74,7 +74,7 @@ function Active(props) {
   const token = useSelector(getToken);
   
   return <Link to="" onClick={()=>{
-    dispatch(updateHotelBookingStatusAsync({params:{id:props.id}, token }));
+    dispatch(updateTransportBookingStatusAsync({params:{id:props.id}, token }));
   }}><MDBBtn color='danger' size='sm' >Active Booking</MDBBtn> </Link>
 }
 
@@ -145,9 +145,9 @@ export const TransportProfile = (props) => {
           <a >Home</a>
         </MDBBreadcrumbItem>
         <MDBBreadcrumbItem>
-          <a href='/home/hotel'>Hotel</a>
+          <a href='/home/transport'>Transport</a>
         </MDBBreadcrumbItem>
-        <MDBBreadcrumbItem active>{formData.details.hotelName}</MDBBreadcrumbItem>
+        <MDBBreadcrumbItem active>{formData.details.company + ' ' + formData.details.model}</MDBBreadcrumbItem>
       </MDBBreadcrumb>
       <MDBCard alignment='center' >
 

@@ -20,10 +20,18 @@ export function CreateHotelCustomers(data,token) {
   return apiUtil.postApi('transaction/createhotelcustomer', token, data)
 }
 
+export function CreateTransportCustomers(data,token) {
+  return apiUtil.postApi('transaction/createtransportcustomer', token, data)
+}
+
 export function updateBookingStatus(data,token) {
   return apiUtil.postApi('transaction/updatebookingstatus', token, data)
 }
 
 export function updateHotelBookingStatus(data,token) {
   return apiUtil.postApi('transaction/updatehotelbookingstatus', token, data)
+}
+
+export function updateTransportBookingStatus(data,token) {
+  return apiUtil.postApi('transaction/updatetransportbookingstatus', token, data)
 }

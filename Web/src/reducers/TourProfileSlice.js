@@ -1,5 +1,5 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import { CreateNewTour, DeleteTour, GetAllToursList, GetTourDetails, GetToursList } from '../api/TourApis';
+import { CreateNewTour, DeleteTour, GetAllToursList, GetCollabToursList, GetTourDetails, GetToursList } from '../api/TourApis';
 import { toast } from 'react-toastify';
 
 
@@ -10,7 +10,8 @@ const initialState = {
   status: 'idle',
   screenMode: 'list',
   tours: [],
-  allTours: []
+  allTours: [],
+  collabTours: []
 };
 
 // The function below is called a thunk and allows us to perform async logic. It
@@ -33,6 +34,15 @@ export const GetToursListAsync = createAsyncThunk(
   'TourSlice/gettour',
   async (data) => {
     const response = await GetToursList(data.formData, data.token);
+    console.log("res:  ", response)
+    return response.data;
+  }
+);
+
+export const GetCollabToursListAsync = createAsyncThunk(
+  'TourSlice/getcollabtour',
+  async (data) => {
+    const response = await GetCollabToursList(data.formData, data.token);
     console.log("res:  ", response)
     return response.data;
   }
@@ -86,6 +96,11 @@ export const TourProfileSlice = createSlice({
         state.tours = action.payload.tours
         // state.profileData = action.payload.token;
       })
+      .addCase(GetCollabToursListAsync.fulfilled, (state, action) => {
+        state.status = 'idle';
+        state.collabTours = action.payload.tours
+        // state.profileData = action.payload.token;
+      })
       .addCase(createNewTourAsync.pending, (state, action) => {
         state.status = 'loading';
       })
@@ -125,6 +140,8 @@ export const getAvailableProfiles = (state) => state.TourSlice.unAssignedList;
 export const getTours = (state) => state.TourSlice.tours;
 
 export const getAllTours = (state) => state.TourSlice.allTours;
+
+export const getCollabTours = (state) => state.TourSlice.collabTours;
 
 // We can also write thunks by hand, which may contain both sync and async logic.
 // Here's an example of conditionally dispatching actions based on current state.
