@@ -1,3 +1,27 @@
+<<<<<<< HEAD
+01:06:07.596 | Info | '/api/user/login' | 
+01:06:08.614 | Info | '/transaction/gettourbyuserid' | 
+01:27:03.529 | Info | '/api/user/login' | 
+01:27:10.014 | Info | '/api/user/login' | 
+01:27:10.831 | Info | '/transaction/gettourbyuserid' | 
+01:27:15.187 | Info | '/api/user/login' | 
+01:27:15.381 | Info | '/transaction/gettourbyuserid' | 
+01:27:19.137 | Info | '/api/user/login' | 
+01:27:19.327 | Info | '/transaction/gettourbyuserid' | 
+01:29:32.603 | Info | '/api/user/login' | 
+01:29:32.826 | Info | '/transaction/gettourbyuserid' | 
+01:54:15.575 | Info | '/api/user/login' | 
+03:02:07.257 | Info | '/api/user/login' | 
+03:02:07.712 | Info | '/api/user/login' | 
+03:02:07.743 | Info | '/api/user/login' | 
+03:02:07.758 | Info | '/api/user/login' | 
+03:02:07.807 | Info | '/api/user/login' | 
+23:21:57.053 | Info | '/api/user/login' | 
+23:21:58.526 | Info | '/transaction/gettourbyuserid' | 
+23:43:06.479 | Info | '/api/user/login' | 
+23:43:06.740 | Info | '/transaction/gettourbyuserid' | 
+23:43:12.818 | Info | '/transaction/getlastannouncement' | 
+=======
 00:00:08.956 | Info | '/transaction/updatebookingstatus' | 
 00:00:13.691 | Info | '/transaction/gettourdetails' | 
 00:00:13.706 | Info | '/transaction/getcustomer' | 
@@ -146,3 +170,4 @@
 23:18:14.034 | Info | '/transaction/myprofile' | 
 23:19:08.581 | Info | '/transaction/myprofile' | 
 23:19:08.653 | Info | '/transaction/gettour' | 
+>>>>>>> aa56c6284a5c3885809d6dcbba59f8ee1221d842

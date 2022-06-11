@@ -30,11 +30,11 @@ class _homePageState extends State<homePage> {
   @override
   Widget build(BuildContext context) {
     return Column(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       //crossAxisAlignment: CrossAxisAlignment.center,
       children: [
         Align(
-          alignment: Alignment.center,
+          //alignment: Alignment.center,
           child: Container(
             width: 150.0,
             height: 150.0,
@@ -61,13 +61,13 @@ class _homePageState extends State<homePage> {
         //         "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec dapibus tincidunt bibendum. Maecenas eu viverra orci. Duis diam leo, porta at justo vitae, euismod aliquam nulla."),
         //   ),
         // ),
-        Card(
-          child: ListTile(
-            title: Text("Current Event"),
-            subtitle: Text(
-                "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec dapibus tincidunt bibendum. Maecenas eu viverra orci. Duis diam leo, porta at justo vitae, euismod aliquam nulla."),
-          ),
-        ),
+        // Card(
+        //   child: ListTile(
+        //     title: Text("Current Event"),
+        //     subtitle: Text(
+        //         "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec dapibus tincidunt bibendum. Maecenas eu viverra orci. Duis diam leo, porta at justo vitae, euismod aliquam nulla."),
+        //   ),
+        // ),
         Card(
           child: ListTile(
             title: Text("Itenary Plan"),

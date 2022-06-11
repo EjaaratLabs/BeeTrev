@@ -1,3 +1,11 @@
+<<<<<<< HEAD
+23:28:18.608 | Info | '/api/user/login' | 
+23:28:20.193 | Info | '/transaction/gettourbyuserid' | 
+23:35:28.996 | Info | '/api/user/login' | 
+23:35:29.912 | Info | '/transaction/gettourbyuserid' | 
+23:35:31.888 | Info | '/transaction/getlastannouncement' | 
+23:35:35.939 | Info | '/transaction/getcustomer' | 
+=======
 22:48:24.817 | Info | '/transaction/myprofile' | 
 22:48:51.117 | Info | '/transaction/myprofile' | 
 22:48:51.184 | Info | '/transaction/gettour' | 
@@ -64,3 +72,4 @@
 23:28:26.702 | Info | '/transaction/gettransportbyuserid' | 
 23:28:28.157 | Info | '/transaction/gethotelshistory' | 
 23:28:32.611 | Info | '/transaction/gettransportbyuserid' | 
+>>>>>>> aa56c6284a5c3885809d6dcbba59f8ee1221d842
