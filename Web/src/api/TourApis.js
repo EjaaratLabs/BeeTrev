@@ -8,6 +8,10 @@ export function GetToursList(data,token) {
   return apiUtil.getApi('transaction/gettourbyuserid', token, {})
 }
 
+export function GetCollabToursList(data,token) {
+  return apiUtil.getApi('transaction/getcollabtour', token, {})
+}
+
 export function CreateNewTour(data,token) {
   return apiUtil.postApi('transaction/createtour', token, data)
 }

@@ -1,6 +1,6 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { toast } from 'react-toastify';
-import { CreateNewTransport, GetTransportsList } from '../api/TransportApis';
+import { CreateNewTransport, GetTransportDetails, GetTransportsList } from '../api/TransportApis';
 
 
 const initialState = {
@@ -36,6 +36,15 @@ export const createNewTransportAsync = createAsyncThunk(
   }
 );
 
+export const GetTransportDetailsAsync = createAsyncThunk(
+  'TransportSlice/details',
+  async (data) => {
+    const response = await GetTransportDetails(data.params, data.token);
+    console.log('res',response);
+    return response.data;
+  }
+);
+
 export const TransportProfileSlice = createSlice({
   name: 'TransportSlice',
   initialState,
@@ -58,6 +67,14 @@ export const TransportProfileSlice = createSlice({
       .addCase(createNewTransportAsync.fulfilled, (state, action) => {
         state.status = 'idle';
         toast.success(action.payload.message)
+        // state.profileData = action.payload.token;
+      })
+      .addCase(GetTransportDetailsAsync.pending, (state, action) => {
+        state.status = 'loading';
+      })
+      .addCase(GetTransportDetailsAsync.fulfilled, (state, action) => {
+        state.status = 'idle';
+        state.profileData= action.payload
         // state.profileData = action.payload.token;
       })
   },

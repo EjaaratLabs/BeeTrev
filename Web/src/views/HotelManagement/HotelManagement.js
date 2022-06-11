@@ -28,6 +28,7 @@ import {
 
 import { HotelList } from './HotelList';
 import { HotelSetup } from './HotelSetup';
+import { HotelProfile } from './HotelProfile';
 
 export function HotelManagement() {
 
@@ -68,6 +69,7 @@ export function HotelManagement() {
     <Routes>
       <Route path={`/`} element={<HotelList />} />
       <Route path={`add`} element={<HotelSetup />} />
+      <Route path={`details/:hotelId`} element={<HotelProfile />} />
     </Routes>
   );
 

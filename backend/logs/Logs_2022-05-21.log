@@ -337,4 +337,30 @@
 01:38:55.595 | Info | '/transaction/gettourdetails' | 
 01:39:03.409 | Info | '/transaction/createcustomer' | 
 01:39:20.071 | Info | '/transaction/myprofile' | 
+<<<<<<< HEAD
+01:57:49.570 | Info | '/api/user/login' | 
+01:57:49.653 | Info | '/transaction/myprofile' | 
+01:57:54.073 | Info | '/transaction/gettourbyuserid' | 
+01:57:57.492 | Info | '/transaction/gettourbyuserid' | 
+01:57:58.882 | Info | '/transaction/gethotelshistory' | 
+01:58:00.005 | Info | '/transaction/gettransportbyuserid' | 
+01:58:01.875 | Info | '/transaction/gethotelshistory' | 
+01:58:03.271 | Info | '/transaction/gettransportbyuserid' | 
+01:58:05.546 | Info | '/transaction/gettourbyuserid' | 
+01:58:08.901 | Info | '/transaction/gethotelshistory' | 
+01:58:14.234 | Info | '/transaction/gethotelshistory' | 
+01:58:16.052 | Info | '/transaction/gettransportbyuserid' | 
+01:58:17.889 | Info | '/transaction/gettransportbyuserid' | 
+01:58:30.228 | Info | '/transaction/gettransportbyuserid' | 
+01:58:46.453 | Info | '/transaction/gethotelshistory' | 
+01:58:47.371 | Info | '/transaction/myprofile' | 
+02:45:19.825 | Info | '/transaction/myprofile' | 
+02:45:30.196 | Info | '/api/user/login' | 
+02:45:30.245 | Info | '/transaction/myprofile' | 
+02:45:31.512 | Info | '/transaction/gettransportbyuserid' | 
+02:45:32.791 | Info | '/transaction/gethotelshistory' | 
+02:45:33.948 | Info | '/transaction/gethotelshistory' | 
+02:45:44.521 | Info | '/transaction/gettourbyuserid' | 
+=======
 >>>>>>> 86a57a9822ebcdf1d85e2343ce5ef1b3e75bc428
+>>>>>>> a05f12e0c8d055df6fc94406fcd0c3a29bc4ef3f

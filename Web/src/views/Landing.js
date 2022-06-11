@@ -37,6 +37,7 @@ import { Webiste, WebsiteSetup } from './WebsiteCreation/WebsiteSetup';
 import { resetToken } from './../reducers/AuthSlice'
 import { CustomerManagement } from './CustomerManagement/CustomerManagement';
 import { Dashboard } from './Dashboard/Dashboard';
+import { TourCollabManagement } from './CollabTour/TourCollabManagement';
 
 export function Landing() {
 
@@ -85,6 +86,11 @@ export function Landing() {
               <Link to={`/home/transport-booking`} >Transport Booking</Link>
             </div>
           </div>
+          <div className="custom-sidebar-menu-item">
+            <div className="custom-sidebar-menu-item-inner">
+              <Link to={`/home/collaborate-tour`} >Collaborate Tour</Link>
+            </div>
+          </div>
           {/* <div className="custom-sidebar-menu-item">
             <div className="custom-sidebar-menu-item-inner">
               <Link to={`/home/create-website`} >Website Creation</Link>
@@ -109,6 +115,7 @@ export function Landing() {
             <Route path={`transport/*`} element={ <TransportManagement />} />
             <Route path={`hotel-booking/*`} element={ <HotelBooking />} />
             <Route path={`transport-booking/*`} element={ <TransportBooking />} />
+            <Route path={`collaborate-tour/*`} element={ <TourCollabManagement />} />
             <Route path={`create-website/*`} element={ <WebsiteSetup />} />
 
           </Routes>

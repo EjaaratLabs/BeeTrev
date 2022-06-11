@@ -100,10 +100,11 @@ export function Landing1() {
           <MDBCarouselItem className='active'>
             <MDBCarouselElement src={hero} alt='...' style={{ height: "600px"}} />
             <MDBCarouselCaption style={{ marginBottom: "200px",  background: "rgba(0, 0, 0, .6)"}}>
-              <h2>Custom works make the dream happen</h2>
-              <p>A place for entrepreneurs and vendors to connect.</p>
+              <h2>Book your dream tour with us</h2>
+              <p>Explore and Create a best tour for your holidays</p>
               <MDBBtn className='mx-2' style={{ backgroundColor: '#F7D402', color: "black" }} href="/tour" >Find a Tour</MDBBtn>
-              <MDBBtn className='mx-2' href='/business' style={{backgroundColor:"#30B4BA"}} >Find a project</MDBBtn>
+              <MDBBtn className='mx-2' href='/hotel' style={{backgroundColor:"#30B4BA"}} >Find a Hotel</MDBBtn>
+              <MDBBtn className='mx-2' href='/transport' style={{backgroundColor:"#30B4BA"}} >Find a Transport</MDBBtn>
             </MDBCarouselCaption>
           </MDBCarouselItem>
 
@@ -170,7 +171,7 @@ export function Landing1() {
             </MDBCard></div>
           </Carousel>;
         </MDBRow>
-        <MDBRow className='text-center '>
+        {/* <MDBRow className='text-center '>
         <hr />
           <h2 className='mb-5 mt-2'>Simple process</h2>
           <MDBCol>
@@ -263,9 +264,9 @@ export function Landing1() {
             </MDBCard></div>
           
           </Carousel>;
-        </MDBRow>
+        </MDBRow> */}
         
-        <MDBRow>
+        {/* <MDBRow>
           <hr />
           <h1>Co-make journey</h1>
           <h5>
@@ -308,7 +309,7 @@ export function Landing1() {
             </MDBCard></div>
          
           </Carousel>;
-        </MDBRow>
+        </MDBRow> */}
       </MDBContainer>
   <Footer/>
 

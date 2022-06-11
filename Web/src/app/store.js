@@ -12,6 +12,7 @@ import TransportProfileSlice from '../reducers/TransportProfileSlice';
 import HotelProfileSlice from '../reducers/HotelProfileSlice';
 import UserProfileSlice from '../reducers/UserProfileSlice';
 import CustomerProfileSlice from '../reducers/CustomerProfileSlice';
+import CollaborationProfileSlice from '../reducers/CollaborationProfileSlice';
 
 const persistConfig = {
   key: 'root',
@@ -28,7 +29,8 @@ const reducers = combineReducers({
   TransportSlice: TransportProfileSlice,
   HotelSlice: HotelProfileSlice,
   UserSlice: UserProfileSlice,
-  CustomerSlice: CustomerProfileSlice
+  CustomerSlice: CustomerProfileSlice,
+  CollaborationSlice: CollaborationProfileSlice
 });
 
 const _persistedReducer = persistReducer(persistConfig, reducers);

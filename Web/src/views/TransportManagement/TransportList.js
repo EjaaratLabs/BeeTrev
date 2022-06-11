@@ -25,6 +25,7 @@ import DataTable from 'react-data-table-component';
 import { getTransports, GetTransportsListAsync } from '../../reducers/TransportProfileSlice';
 
 import { getToken, loginAsync } from '../../reducers/AuthSlice'
+import { Link } from 'react-router-dom';
 
 const columns = [
   {
@@ -46,7 +47,11 @@ const columns = [
   {
     name: 'Status',
     selector: row => row.status,
-  }
+  },
+  {
+    name: 'Detail',
+    selector: row => <Link to={"/home/transport/details/" + row.id}><MDBBtn color='warning' size='sm'>Detail</MDBBtn> </Link>,
+  },
   
 ];
 

@@ -136,7 +136,7 @@ export function TourDetails() {
               <MDBCardBody className='text-start'>
                 <MDBCardTitle><h5>Overview</h5></MDBCardTitle>
                 <p>{details?.details?.shortDescription}</p>
-                <textarea disabled style={{width : "100%", height : "200px"}}>{details?.details?.shortDescription}</textarea>
+                {/* <textarea disabled style={{width : "100%", height : "200px"}}>{details?.details?.shortDescription}</textarea> */}
                 <MDBCardTitle><h5>Description</h5></MDBCardTitle>
                 <p>{details?.details?.longDescription}</p>
                 <div className='w-100  py-3 d-flex  justify-content-between' >

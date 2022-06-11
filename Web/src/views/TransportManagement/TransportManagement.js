@@ -28,6 +28,7 @@ import {
 
 import { TransportList } from './TransportList';
 import { TransportSetup } from './TransportSetup';
+import { TransportProfile } from './TransportProfile';
 
 export function TransportManagement() {
 
@@ -67,6 +68,7 @@ export function TransportManagement() {
     <Routes>
       <Route path={`/`} element={<TransportList />} />
       <Route path={`add`} element={<TransportSetup />} />
+      <Route path={`details/:transportId`} element={<TransportProfile />} />
     </Routes>
   );
 }

@@ -33,7 +33,7 @@ import {
 } from 'mdb-react-ui-kit';
 
 import { getToken, loginAsync, resetToken } from '../reducers/AuthSlice'
-import logo from '../assets/logo1.png'
+import logo from './Assets/logo.png'
 import comakebg from '../assets/comkaebg.png'
 import item1 from '../assets/fb.png'
 import item2 from '../assets/insta.png'
@@ -54,7 +54,7 @@ export function Footer() {
       <div className='w-100 text-start py-5' style={{ backgroundColor: "#0A043C" }}>
         <MDBRow className=' mx-0'>
           <MDBCol size='4'>
-            <img src={logo} style={{ height: "50px" }} className="mb-5" />
+            <img src={logo} style={{ height: "100px" }} className="mb-5 mx-2" />
             <br />
             <div className='px-3' style={{ color: "white" }}>Terms and condition</div>
             <div className='px-3 mt-3' style={{ color: "white" }}>
@@ -66,7 +66,7 @@ export function Footer() {
           </MDBCol>
           <MDBCol size='2'>
            
-            <Link  to="#" style={{color:"white"}}> Home </Link><br/>
+            <Link  to="/" style={{color:"white"}}> Home </Link><br/>
             <Link  to="#" style={{color:"white"}}> How it works </Link><br/>
             <Link  to="#" style={{color:"white"}}> Explore categories </Link><br/>
             <Link  to="#" style={{color:"white"}}> Sign up to post </Link><br/>
@@ -105,8 +105,8 @@ export function Footer() {
       <div className='text-center py-3' style={{ backgroundColor: "#0A043C",color:"white"}}>
         <hr />
         &copy; {new Date().getFullYear()} Copyright:{' '}
-        <a className='text-light' href='https://comakely.com/'>
-          CoMakely, All rights Reserved
+        <a className='text-light' href='/'>
+          Tourista, All rights Reserved
         </a>
       </div>
     </MDBFooter>

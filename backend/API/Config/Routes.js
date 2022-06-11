@@ -40,6 +40,16 @@ module.exports = {
         allowedMethod: ['GET']
     },
     
+    "/transaction/gethoteldetails": {
+        controller: "gethoteldetails",
+        allowedMethod: ['GET']
+    },
+    
+    "/transaction/gettransportdetails": {
+        controller: "gettransportdetails",
+        allowedMethod: ['GET']
+    },
+    
     "/transaction/deletetour": {
         controller: "deleteTour",
         allowedMethod: ['POST']
@@ -47,6 +57,16 @@ module.exports = {
     
     "/transaction/updatebookingstatus": {
         controller: "updateBookingStatus",
+        allowedMethod: ['POST']
+    },
+    
+    "/transaction/updatehotelbookingstatus": {
+        controller: "updateHotelBookingStatus",
+        allowedMethod: ['POST']
+    },
+    
+    "/transaction/updatetransportbookingstatus": {
+        controller: "updateTransportBookingStatus",
         allowedMethod: ['POST']
     },
 
@@ -166,11 +186,43 @@ module.exports = {
         allowedMethod: ['POST']
 
     },
+    
+    "/transaction/createcollaboration": {
+        controller: "createCollaboration",
+        allowedMethod: ['POST']
+
+    },
+    
+    "/transaction/createhotelcustomer": {
+        controller: "createhotelcustomer",
+        allowedMethod: ['POST']
+    },
+    
+    "/transaction/createtransportcustomer": {
+        controller: "createtransportcustomer",
+        allowedMethod: ['POST']
+    },
 
     "/transaction/getcustomer": {
         controller: "getcustomer",
         allowedMethod: ['GET']
     },
+    
+    "/transaction/gethotelcustomer": {
+        controller: "gethotelcustomer",
+        allowedMethod: ['GET']
+    },
+    
+    "/transaction/gettransportcustomer": {
+        controller: "gettransportcustomer",
+        allowedMethod: ['GET']
+    },
+    
+    "/transaction/gettourcollaborate": {
+        controller: "GetTourCollaborate",
+        allowedMethod: ['GET']
+    },
+
     "/transaction/getEvents": {
         controller: "getEvents",
         allowedMethod: ['GET']
@@ -193,6 +245,10 @@ module.exports = {
     },
     "/transaction/gettourbyuserid": {
         controller: "GetTourHistory",
+        allowedMethod: ['GET']
+    },
+    "/transaction/getcollabtour": {
+        controller: "GetCollabTour",
         allowedMethod: ['GET']
     },
     "/transaction/gettransportbyuserid": {

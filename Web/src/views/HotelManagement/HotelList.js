@@ -24,6 +24,7 @@ import {
 import DataTable from 'react-data-table-component';
 import { getHotels, GetHotelsListAsync } from '../../reducers/HotelProfileSlice';
 import { getToken } from '../../reducers/AuthSlice';
+import { Link } from 'react-router-dom';
 
 const columns = [
   {
@@ -49,8 +50,15 @@ const columns = [
   {
     name: 'Status',
     selector: row => row.hotelStatus,
-  }
-  
+  },
+  {
+    name: 'Detail',
+    selector: row => <Link to={"/home/hotel/details/" + row.id}><MDBBtn color='warning' size='sm'>Detail</MDBBtn> </Link>,
+  },
+  // {
+  //   name: 'Action',
+  //   selector: row =><DeleteTour id={row.id}/> ,
+  // },
 ];
 
 const data1 = [
