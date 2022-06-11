@@ -1,0 +1,6 @@
+00:03:59.691 | Info | '/transaction/getEvents' | 
+00:07:32.051 | Info | '/api/user/login' | 
+00:07:32.941 | Info | '/transaction/gettourbyuserid' | 
+00:07:35.808 | Info | '/transaction/getlastannouncement' | 
+00:07:38.145 | Info | '/transaction/getcustomer' | 
+00:07:47.484 | Info | '/transaction/getEvents' | 

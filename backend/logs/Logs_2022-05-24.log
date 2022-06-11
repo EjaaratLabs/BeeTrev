@@ -1,0 +1,7 @@
+23:50:30.092 | Info | '/api/user/login' | 
+23:50:30.548 | Info | ({'message':'connect ECONNREFUSED 127.0.0.1:3306','code':'ECONNREFUSED','errno':-4078,'sqlState':undefined,'sqlMessage':undefined}) | 
+23:50:58.806 | Info | '/api/user/login' | 
+23:50:59.621 | Info | '/transaction/gettourbyuserid' | 
+23:51:01.978 | Info | '/transaction/getlastannouncement' | 
+23:51:04.134 | Info | '/transaction/getcustomer' | 
+23:51:14.078 | Info | '/transaction/getEvents' | 

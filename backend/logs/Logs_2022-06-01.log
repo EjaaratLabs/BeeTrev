@@ -1,0 +1,6 @@
+23:28:18.608 | Info | '/api/user/login' | 
+23:28:20.193 | Info | '/transaction/gettourbyuserid' | 
+23:35:28.996 | Info | '/api/user/login' | 
+23:35:29.912 | Info | '/transaction/gettourbyuserid' | 
+23:35:31.888 | Info | '/transaction/getlastannouncement' | 
+23:35:35.939 | Info | '/transaction/getcustomer' | 

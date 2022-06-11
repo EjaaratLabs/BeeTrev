@@ -1,0 +1,13 @@
+00:05:58.056 | Info | '/api/user/login' | 
+00:05:59.188 | Info | '/transaction/gettourbyuserid' | 
+00:06:03.998 | Info | '/api/user/login' | 
+00:06:04.277 | Info | '/transaction/gettourbyuserid' | 
+00:13:56.797 | Info | '/api/user/login' | 
+00:13:56.970 | Info | '/transaction/gettourbyuserid' | 
+02:27:40.453 | Info | '/api/user/login' | 
+02:27:40.649 | Info | '/transaction/gettourbyuserid' | 
+04:06:58.738 | Info | '/api/user/login' | 
+04:06:58.907 | Info | '/transaction/gettourbyuserid' | 
+04:07:08.822 | Info | '/transaction/getlastannouncement' | 
+04:30:06.278 | Info | '/transaction/getlastannouncement' | 
+04:50:25.647 | Info | '/transaction/getlastannouncement' | 
