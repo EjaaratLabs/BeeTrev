@@ -187,6 +187,12 @@ module.exports = {
 
     },
     
+    "/transaction/createcollaboration": {
+        controller: "createCollaboration",
+        allowedMethod: ['POST']
+
+    },
+    
     "/transaction/createhotelcustomer": {
         controller: "createhotelcustomer",
         allowedMethod: ['POST']
@@ -209,6 +215,11 @@ module.exports = {
     
     "/transaction/gettransportcustomer": {
         controller: "gettransportcustomer",
+        allowedMethod: ['GET']
+    },
+    
+    "/transaction/gettourcollaborate": {
+        controller: "GetTourCollaborate",
         allowedMethod: ['GET']
     },
 
