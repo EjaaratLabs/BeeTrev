@@ -29,17 +29,33 @@ import {
   MDBDropdownMenu,
   MDBDropdownItem,
   MDBDropdownLink,
-  slider
+  slider,
+  MDBModal,
+  MDBModalDialog,
+  MDBModalContent,
+  MDBModalHeader,
+  MDBModalTitle,
+  MDBModalBody,
+  MDBModalFooter,
+  MDBTabs,
+  MDBTabsItem,
+  MDBTabsLink,
+  MDBTabsContent,
+  MDBTabsPane,
+  MDBCardHeader
 } from 'mdb-react-ui-kit';
 import { getToken, loginAsync, resetToken } from '../../reducers/AuthSlice'
 import { getAllTours, GetAllToursListAsync, getCollabTours, GetCollabToursListAsync, getTours, GetToursListAsync } from '../../reducers/TourProfileSlice';
-import place from '../Assets/hunza.webp'
+import collab from '../Assets/collaboration.png'
 import InputRange from 'react-input-range';
 import "react-input-range/lib/css/index.css";
 import { getCollaboration, GetTourCollaborateAsync } from '../../reducers/CollaborationProfileSlice';
 
 
 export function CollaborationList() {
+  const [basicModal, setBasicModal] = useState(false);
+
+  const toggleShow = () => setBasicModal(!basicModal);
   let params = useParams();
   const token = useSelector(getToken);
   const dispatch = useDispatch();
@@ -48,60 +64,51 @@ export function CollaborationList() {
     dispatch(GetTourCollaborateAsync({ token }));
   }, []);
   const data = useSelector(getCollaboration);
-  console.log(data);
+  console.log('collaborations', data);
   let navigate = useNavigate()
   let location = useLocation()
   const [showNav, setShowNav] = useState(false);
-  const [search, setSearch] = useState("");
-  const [value,setValue]=useState('All');
-  
-  const [destination,setDestination]=useState('All');
-  const [val, setVal] = React.useState({ min: 0, max: 100000 });
-    
-  const handleSelect=(e)=>{
-    setValue(e.target.value)
-    console.log(e.target.value);
-  }
 
+  const [fillActive, setFillActive] = useState('tab1');
+ 
+  const handleFillClick = (value) => {
+    if (value === fillActive) {
+      return;
+    }
+
+    setFillActive(value);
+  };
+  
   var list = [];
   if (data) {
     var temp = data;
-    if(params.tourCategory)
-    {
-      temp = data.filter((x) => (x.name && x.name.toLowerCase().includes(params.tourCategory.toLowerCase())) || (x.destination && x.destination.toLowerCase().includes(params.tourCategory.toLowerCase())))
-    }
-    
-    if (search) {
-      temp = data.filter((x) => (x.name && x.name.toLowerCase().includes(search.toLowerCase())) || (x.destination && x.destination.toLowerCase().includes(search.toLowerCase())) )
-    }
-    
-    if (value != 'All' || destination != 'All') {
-      temp = data.filter((x) => (x.departure && x.departure.toLowerCase().includes(value.toLowerCase())) || (x.destination && x.destination.toLowerCase().includes(destination.toLowerCase())))
-    }
-    
-    if (val.max <= 100000) {
-      temp = data.filter((x) => (x.price >= val.min) && (x.price <= val.max))
-    }
     temp.forEach(val => {
       list.push(<MDBCol size='12' className='my-3'>
         <MDBCard className="">
           <MDBCardBody className='text-start'>
             <MDBRow>
-            <MDBCol size='4'>
+            <MDBCol size='3'>
                <div>
-                 <img src={place} width="190px"/>
+                 <img src={collab} width="120px"/>
                </div>
               </MDBCol>
               <MDBCol size='5'>
-                <h5 className='text-left'>{val.name}</h5>
-                <div className='text-left'><MDBIcon icon="map-marker-alt" /> {val.destination}</div>
-                <p className='mt-5'><MDBIcon icon="users" /> From 1 to {val.quantity}</p>
+                <h5 className='text-left'>Tour: {val.name}</h5>
+                <div className='text-left'>Operator Name: {val.Name}</div>
               </MDBCol>
               <MDBCol size='3' className='text-end'>
-                <div className='text-left'><MDBIcon icon="calendar-day" /> {val.days} Days</div>
-                <div className='text-left'>Price: {val.price}</div>
+                <div className='text-left'><MDBIcon icon="users" /> Guests {val.collaborationQuantity}</div>
+                <div className='text-left'>Amount: {val.collaborationPrice}</div>
                 <br />
-                <MDBBtn href={'/home/collaborate-tour/details/' + val.id} style={{ backgroundColor: "#30B4BA" }} >View details</MDBBtn></MDBCol>
+                <MDBBtn onClick={toggleShow}>View Details</MDBBtn></MDBCol>
+                <MDBRow className='d-flex justify-content-center '>
+                  <MDBCol size='2'>
+                    <MDBBtn href={'/home/collaborate-tour/details/' + val.id} style={{ backgroundColor: "#30B4BA" }} >Accept</MDBBtn>
+                  </MDBCol>
+                  <MDBCol size='2'>
+                    <MDBBtn href={'/home/collaborate-tour/details/' + val.id} style={{ backgroundColor: "#30B4BA" }} >Decline</MDBBtn>
+                  </MDBCol>
+                </MDBRow>
             </MDBRow>
 
 
@@ -110,90 +117,72 @@ export function CollaborationList() {
       </MDBCol>)
     })
   }
-  // if (!token) {
-  //   //alert("Hello");
-  //   return <Navigate to={{ pathname: '/login', state: { from: location } }} />
-  //   // setUserName("")
-  // }
 
   return (
     <div>
-      <MDBContainer>
-      <h3 className='pt-5  '>{params&& params.tourCategory?params?.tourCategory:""} Collaborate Tour</h3>
-        <MDBRow className='d-flex justify-content-center '>
-          <MDBCol size='8'>
 
-          </MDBCol>
-        </MDBRow>
-        
-          {/*  {list}*/}
-            <MDBCard>
+      <MDBCard>
+      <MDBCardHeader className="text-start"><h5 style={{ marginBottom: 0 }}>Collaboration Management</h5></MDBCardHeader>
+        <MDBCardBody>
+          <MDBContainer>
+            <MDBRow >
 
-              <MDBCardBody className='text-start'>
+      <MDBCol size="12">
+                <MDBTabs fill className='mb-3'>
+                <MDBTabsItem>
+                    <MDBTabsLink onClick={() => handleFillClick('tab1')} active={fillActive === 'tab1'}>
+                      Collaboration Requests Recieved
+                    </MDBTabsLink>
+                  </MDBTabsItem>
+                  <MDBTabsItem>
+                    <MDBTabsLink onClick={() => handleFillClick('tab2')} active={fillActive === 'tab2'}>
+                      My Collaboration Requests
+                    </MDBTabsLink>
+                  </MDBTabsItem>
 
-              <MDBRow className='d-flex justify-content-start py-2'>
-                <MDBCol>
-                <h5>Search</h5>
-                <MDBInput label="Search a tour" className=" mb-2" icon="envelope" group type="email" validate error="wrong"
-                  success="right" value={search} onChange={(e) => {
-                    setSearch(e.target.value)
-                  }} />
-                
-                </MDBCol>
-                <MDBCol>
-                <h5>Departure</h5>
-                <select className="form-select" onChange={handleSelect}>
-                  <option value="All">---All---</option>
-                  <option value="Karachi">Karachi</option>
-                  <option value="Lahore">Lahore</option>
-                  <option value="Islamabad">Islamabad</option>
-                </select>
-                </MDBCol>
-                <MDBCol>
-                <h5>Destination</h5>
-                <select className="form-select" onChange={(e) => {
-                    setDestination(e.target.value)
-                  }}>
-                  <option value="All">---All---</option>
-                  <option value="Hunza">Hunza</option>
-                  <option value="Gilgit">Gilgit</option>
-                  <option value="Swat">Swat</option>
-                </select>
-                
-                </MDBCol>
-                <MDBCol>
-                <h5>Quantity</h5>
-                <select className="form-select" onChange={(e) => {
-                    setDestination(e.target.value)
-                  }}>
-                  <option value="All">---All---</option>
-                  <option value="Hunza">Hunza</option>
-                  <option value="Gilgit">Gilgit</option>
-                  <option value="Swat">Swat</option>
-                </select>
-                
-                </MDBCol>
-                <MDBCol>
-                <h5 className=" mb-4">Price</h5>
-<InputRange
-            step={5000}
-            maxValue={100000}
-            minValue={0}
-            value={val}
-            onChange={setVal}
-            onChangeComplete={args => console.log(args)}
-          />
-          </MDBCol>
-          </MDBRow>
-              </MDBCardBody>
-            </MDBCard>
-          
-          <MDBCol size='7'>
-            {list}
-          </MDBCol>
+                </MDBTabs>
 
-        
-      </MDBContainer>
+                <MDBTabsContent>
+                  <MDBTabsPane show={fillActive === 'tab1'}><div>
+                  <MDBRow className='d-flex justify-content-center '>
+                    <MDBCol size='8'>
+                    {list}
+                    </MDBCol>
+                  </MDBRow>
+                  </div></MDBTabsPane>
+
+                  <MDBTabsPane show={fillActive === 'tab2'}><div>
+
+                  </div></MDBTabsPane>
+                </MDBTabsContent>
+              </MDBCol>
+
+              </MDBRow>
+          </MDBContainer>
+        </MDBCardBody>
+
+      </MDBCard>
+
+      
+    <MDBModal show={basicModal} setShow={setBasicModal} tabIndex='-1'>
+      <MDBModalDialog>
+        <MDBModalContent>
+          <MDBModalHeader>
+            <MDBModalTitle>Operator Information</MDBModalTitle>
+            <MDBBtn className='btn-close' color='none' onClick={toggleShow}></MDBBtn>
+          </MDBModalHeader>
+          <MDBModalBody>
+            <div></div>
+          </MDBModalBody>
+
+          <MDBModalFooter>
+            <MDBBtn color='secondary' onClick={toggleShow}>
+              Close
+            </MDBBtn>
+          </MDBModalFooter>
+        </MDBModalContent>
+      </MDBModalDialog>
+    </MDBModal>
 
 
     </div>

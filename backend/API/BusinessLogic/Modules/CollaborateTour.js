@@ -12,7 +12,7 @@ class CollaborateTour
     async getTourCollaborate(message)
     {
     
-        var results=await client.Query("Select * from tourcollaborate inner join tours on tourcollaborate.tourId = tours.id where tours.createdBy = ?",
+        var results=await client.Query("Select * from tourcollaborate inner join tours  on tourcollaborate.tourId = tours.id inner join users on tours.createdBy=users.UserName where tours.createdBy = ?",
         [message.API_USER_ID]);
         return results && results.length>0?results:[];
     }

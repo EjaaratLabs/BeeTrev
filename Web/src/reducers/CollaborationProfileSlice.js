@@ -77,7 +77,7 @@ export const getProfiles = (state) => state.CollaborationSlice.profile;
 
 export const getAvailableProfiles = (state) => state.CollaborationSlice.unAssignedList;
 
-export const getCollaboration = (state) => state.CustomerSlice.collaborations;
+export const getCollaboration = (state) => state.CollaborationSlice.collaborations;
 
 // We can also write thunks by hand, which may contain both sync and async logic.
 // Here's an example of conditionally dispatching actions based on current state.

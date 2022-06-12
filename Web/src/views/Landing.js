@@ -30,14 +30,11 @@ import {
 } from "react-router-dom";
 import { HotelManagement } from './HotelManagement/HotelManagement';
 import { TransportManagement } from './TransportManagement/TransportManagement';
-import { HotelBooking } from './HotelBooking/HotelBooking';
-import { TransportBooking } from './TransportBooking/TransportBooking';
 import logo from './Assets/logo.png'
-import { Webiste, WebsiteSetup } from './WebsiteCreation/WebsiteSetup';
 import { resetToken } from './../reducers/AuthSlice'
-import { CustomerManagement } from './CustomerManagement/CustomerManagement';
 import { Dashboard } from './Dashboard/Dashboard';
 import { TourCollabManagement } from './CollabTour/TourCollabManagement';
+import { CollaborationList } from './CollaborationManagement/CollaborationList';
 
 export function Landing() {
 
@@ -63,11 +60,6 @@ export function Landing() {
           </div>
           <div className="custom-sidebar-menu-item">
             <div className="custom-sidebar-menu-item-inner">
-              <Link to={`/home/customer`} >Customer Management</Link>
-            </div>
-          </div>
-          <div className="custom-sidebar-menu-item">
-            <div className="custom-sidebar-menu-item-inner">
               <Link to={`/home/hotel`} >Hotel Management</Link>
             </div>
           </div>
@@ -78,12 +70,7 @@ export function Landing() {
           </div>
           <div className="custom-sidebar-menu-item">
             <div className="custom-sidebar-menu-item-inner">
-              <Link to={`/home/hotel-booking`} >Hotel Booking</Link>
-            </div>
-          </div>
-          <div className="custom-sidebar-menu-item">
-            <div className="custom-sidebar-menu-item-inner">
-              <Link to={`/home/transport-booking`} >Transport Booking</Link>
+              <Link to={`/home/collaboration`} >Collaboration Management</Link>
             </div>
           </div>
           <div className="custom-sidebar-menu-item">
@@ -91,11 +78,7 @@ export function Landing() {
               <Link to={`/home/collaborate-tour`} >Collaborate Tour</Link>
             </div>
           </div>
-          {/* <div className="custom-sidebar-menu-item">
-            <div className="custom-sidebar-menu-item-inner">
-              <Link to={`/home/create-website`} >Website Creation</Link>
-            </div>
-          </div> */}
+          
           <div className="custom-sidebar-menu-item">
             <div className="custom-sidebar-menu-item-inner">
             <MDBBtn onClick={() => dispatch(resetToken({
@@ -110,13 +93,10 @@ export function Landing() {
           <Routes>
             <Route path={`dashboard/*`} element={ <Dashboard />} />
             <Route path={`tour/*`} element={ <TourManagement />} />
-            <Route path={`customer/*`} element={ <CustomerManagement />} />
             <Route path={`hotel/*`} element={ <HotelManagement />} />
             <Route path={`transport/*`} element={ <TransportManagement />} />
-            <Route path={`hotel-booking/*`} element={ <HotelBooking />} />
-            <Route path={`transport-booking/*`} element={ <TransportBooking />} />
             <Route path={`collaborate-tour/*`} element={ <TourCollabManagement />} />
-            <Route path={`create-website/*`} element={ <WebsiteSetup />} />
+            <Route path={`collaboration/*`} element={ <CollaborationList />} />
 
           </Routes>
 
