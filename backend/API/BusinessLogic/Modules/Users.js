@@ -23,6 +23,13 @@ class users
         [userId]);
         return results && results.length>0?results[0]:null;
     }
+    async getUserType(userId)
+    {
+    
+        var results=await client.Query("Select userType from users where UserName=?",
+        [userId]);
+        return results && results.length>0?results[0]:null;
+    }
     async updateUserPassword(message)
     {
     

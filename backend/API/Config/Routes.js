@@ -141,6 +141,10 @@ module.exports = {
         controller: "GetProfile",
         allowedMethod: ['GET']
     },
+    "/transaction/getusertype": {
+        controller: "GetUserType",
+        allowedMethod: ['GET']
+    },
     "/transaction/changepassword": {
         controller: "ChangePassword",
         allowedMethod: ['POST']

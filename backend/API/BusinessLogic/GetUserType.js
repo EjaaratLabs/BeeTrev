@@ -2,7 +2,7 @@ var modle= require('./Modules/Users');
 var systemConfig = require('./Modules/SystemConfigurations');
 var Axios=require('axios');
 
-class GetProfile{
+class GetUserType{
     async input(req, message) {
        
        
@@ -13,7 +13,7 @@ class GetProfile{
     async process(message) {
        
         try {
-            message.USER=await modle.getUserbyUserName(message.API_USER_ID)
+            message.USER=await modle.getUserType(message.API_USER_ID)
            
         }
         catch (ex) {
@@ -22,11 +22,6 @@ class GetProfile{
     }
     async output(res, message) {
         res.responseBody.details=message.USER?{
-            name:message.USER.Name,
-            phone:message.USER.Phone,
-            address:message.USER.Address,
-            center:message.USER.centername,
-            email:message.USER.Email,
             type:message.USER.userType
         }:{}
         res.status = "Success";
@@ -37,4 +32,4 @@ class GetProfile{
 
 }
 
-module.exports = new GetProfile();
+module.exports = new GetUserType();
