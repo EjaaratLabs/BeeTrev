@@ -12,21 +12,26 @@ class CollaborateTour
     async getTourCollaborate(message)
     {
     
-        var results=await client.Query("Select * from tourcollaborate inner join tours  on tourcollaborate.tourId = tours.id inner join users on tours.createdBy=users.UserName where tours.createdBy = ?",
+        var results=await client.Query("Select * from tourcollaborate inner join tours  on tourcollaborate.tourId = tours.id inner join users on tourcollaborate.operatorId=users.UserName where tours.createdBy = ?",
         [message.API_USER_ID]);
         return results && results.length>0?results:[];
     }
-    // async getCustomers(message)
-    // {
+    async getMyTourCollaborate(message)
+    {
     
-    //     var results=await client.Query("Select * from customertourmap where tourid = ?",
-    //     [message.TOURID]);
-    //     return results && results.length>0?results:[];
-    // }
-    // async updateBookingStatus(message)
-    // {
-    //     var results=await client.Query("update customertourmap set bookingStatus=1 where id=?" , 
-    //     [message.ID]);
-    // }
+        var results=await client.Query("Select * from tourcollaborate inner join tours on tourcollaborate.tourId = tours.id where tourcollaborate.operatorId = ?",
+        [message.API_USER_ID]);
+        return results && results.length>0?results:[];
+    }
+    async updateCollaborateStatus(message)
+    {
+        var results=await client.Query("update tourcollaborate set collaborateStatus=1 where collaborationId=?" , 
+        [message.ID]);
+    }
+    async declineCollaborateStatus(message)
+    {
+        var results=await client.Query("update tourcollaborate set collaborateStatus=2 where collaborationId=?" , 
+        [message.ID]);
+    }
 }
 module.exports=new CollaborateTour();

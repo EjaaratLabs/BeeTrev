@@ -32,5 +32,10 @@ class hotels
         [id]);
         return results && results.length>0?results[0]:null;
     }
+    async deleteHotel(message)
+    {
+        var results=await client.Query("update hotels set isDeleted=1 where id=?" , 
+        [message.HOTEL_ID]);
+    }
 }
 module.exports=new hotels();

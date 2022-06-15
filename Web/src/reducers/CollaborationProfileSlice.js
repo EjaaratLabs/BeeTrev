@@ -1,7 +1,7 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { CreateNewTour, DeleteTour, GetTourDetails, GetToursList } from '../api/TourApis';
 import { toast } from 'react-toastify';
-import { createCollaboration, GetTourCollaborate } from '../api/CollaborationApis';
+import { createCollaboration, declineCollaborateStatus, GetMyT0ourCollaborate, GetMyTourCollaborate, GetTourCollaborate, updateCollaborateStatus } from '../api/CollaborationApis';
 
 
 const initialState = {
@@ -10,7 +10,8 @@ const initialState = {
   unAssignedList: [],
   status: 'idle',
   screenMode: 'list',
-  collaborations: {}
+  collaborations: {},
+  myCollaborations: {}
 };
 
 // The function below is called a thunk and allows us to perform async logic. It
@@ -38,6 +39,32 @@ export const GetTourCollaborateAsync = createAsyncThunk(
   }
 );
 
+export const GetMyTourCollaborateAsync = createAsyncThunk(
+  'CollaborationSlice/getmytourcollaborate',
+  async (data) => {
+    const response = await GetMyTourCollaborate(data.params, data.token);
+    console.log("res:  ", response)
+    return response.data;
+  }
+);
+
+export const updateCollaborateStatusAsync = createAsyncThunk(
+  'CollaborationSlice/updatecollaboratestatus',
+  async (data) => {
+    const response = await updateCollaborateStatus(data.params, data.token);
+    console.log("res:  ", response)
+    return response.data;
+  }
+);
+
+export const declineCollaborateStatusAsync = createAsyncThunk(
+  'CollaborationSlice/declinecollaboratestatus',
+  async (data) => {
+    const response = await declineCollaborateStatus(data.params, data.token);
+    console.log("res:  ", response)
+    return response.data;
+  }
+);
 
 export const CollaborationProfileSlice = createSlice({
   name: 'CollaborationSlice',
@@ -55,12 +82,31 @@ export const CollaborationProfileSlice = createSlice({
         state.collaborations = action.payload.list
         // state.profileData = action.payload.token;
       })
+      .addCase(GetMyTourCollaborateAsync.fulfilled, (state, action) => {
+        state.status = 'idle';
+        state.myCollaborations = action.payload.list
+        // state.profileData = action.payload.token;
+      })
       .addCase(createNewCollaborationAsync.pending, (state, action) => {
         state.status = 'loading';
       })
       .addCase(createNewCollaborationAsync.fulfilled, (state, action) => {
         state.status = 'idle';
         toast.success(action.payload.message)
+        // state.profileData = action.payload.token;
+      })
+      .addCase(updateCollaborateStatusAsync.pending, (state, action) => {
+        state.status = 'loading';
+      })
+      .addCase(updateCollaborateStatusAsync.fulfilled, (state, action) => {
+        state.status = 'idle';
+        // state.profileData = action.payload.token;
+      })
+      .addCase(declineCollaborateStatusAsync.pending, (state, action) => {
+        state.status = 'loading';
+      })
+      .addCase(declineCollaborateStatusAsync.fulfilled, (state, action) => {
+        state.status = 'idle';
         // state.profileData = action.payload.token;
       });
   },
@@ -78,6 +124,8 @@ export const getProfiles = (state) => state.CollaborationSlice.profile;
 export const getAvailableProfiles = (state) => state.CollaborationSlice.unAssignedList;
 
 export const getCollaboration = (state) => state.CollaborationSlice.collaborations;
+
+export const getMyCollaboration = (state) => state.CollaborationSlice.myCollaborations;
 
 // We can also write thunks by hand, which may contain both sync and async logic.
 // Here's an example of conditionally dispatching actions based on current state.

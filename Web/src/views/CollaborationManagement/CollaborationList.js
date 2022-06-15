@@ -1,12 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { useNavigate, useLocation, Navigate, useParams } from 'react-router-dom';
+import { useNavigate, useLocation, Navigate, useParams, Link } from 'react-router-dom';
 import {
-  MDBNavbar,
-  MDBNavbarNav,
-  MDBNavbarItem,
-  MDBNavbarLink,
-  MDBNavbarToggler,
   MDBContainer,
   MDBFooter,
   MDBRow,
@@ -17,18 +12,6 @@ import {
   MDBCardTitle,
   MDBCardText,
   MDBBtn,
-  MDBInput,
-  MDBNavbarBrand,
-  MDBCollapse,
-  MDBCarouselElement,
-  MDBCarouselCaption,
-  MDBCarouselItem,
-  MDBCarouselInner,
-  MDBCarousel,
-  MDBCheckbox,
-  MDBDropdownMenu,
-  MDBDropdownItem,
-  MDBDropdownLink,
   slider,
   MDBModal,
   MDBModalDialog,
@@ -49,21 +32,52 @@ import { getAllTours, GetAllToursListAsync, getCollabTours, GetCollabToursListAs
 import collab from '../Assets/collaboration.png'
 import InputRange from 'react-input-range';
 import "react-input-range/lib/css/index.css";
-import { getCollaboration, GetTourCollaborateAsync } from '../../reducers/CollaborationProfileSlice';
+import { declineCollaborateStatusAsync, getCollaboration, getMyCollaboration, GetMyTourCollaborateAsync, GetTourCollaborateAsync, updateCollaborateStatusAsync } from '../../reducers/CollaborationProfileSlice';
 
+
+
+function Status(props) {
+  const dispatch = useDispatch();
+  const token = useSelector(getToken);
+  
+  return (
+  <>
+  <MDBCol size='2'>
+  <Link to="#"  onClick={()=>{
+    console.log(props.id);
+    dispatch(updateCollaborateStatusAsync({params:{id:props.id}, token }));
+  }}><MDBBtn style={{ backgroundColor: "#30B4BA" }} >Accept</MDBBtn> </Link>
+  </MDBCol>
+  
+  <MDBCol size='2'>
+  <Link to="#"  onClick={()=>{
+    dispatch(declineCollaborateStatusAsync({params:{id:props.id}, token }));
+  }}><MDBBtn color='danger' >Decline</MDBBtn> </Link>
+  </MDBCol>
+  </>
+  )
+}
 
 export function CollaborationList() {
   const [basicModal, setBasicModal] = useState(false);
+  let details = {};
 
-  const toggleShow = () => setBasicModal(!basicModal);
+  const toggleShow = (e) => {
+    details = e;
+    console.log(details.Name);
+    setBasicModal(!basicModal);
+  }
+  
   let params = useParams();
   const token = useSelector(getToken);
   const dispatch = useDispatch();
   useEffect(() => {
 
     dispatch(GetTourCollaborateAsync({ token }));
+    dispatch(GetMyTourCollaborateAsync({ token }));
   }, []);
   const data = useSelector(getCollaboration);
+  const data1 = useSelector(getMyCollaboration);
   console.log('collaborations', data);
   let navigate = useNavigate()
   let location = useLocation()
@@ -78,6 +92,7 @@ export function CollaborationList() {
 
     setFillActive(value);
   };
+  
   
   var list = [];
   if (data) {
@@ -100,15 +115,44 @@ export function CollaborationList() {
                 <div className='text-left'><MDBIcon icon="users" /> Guests {val.collaborationQuantity}</div>
                 <div className='text-left'>Amount: {val.collaborationPrice}</div>
                 <br />
-                <MDBBtn onClick={toggleShow}>View Details</MDBBtn></MDBCol>
+                <MDBBtn  onClick={()=>toggleShow(val)}>View Details</MDBBtn></MDBCol>
                 <MDBRow className='d-flex justify-content-center '>
-                  <MDBCol size='2'>
-                    <MDBBtn href={'/home/collaborate-tour/details/' + val.id} style={{ backgroundColor: "#30B4BA" }} >Accept</MDBBtn>
-                  </MDBCol>
-                  <MDBCol size='2'>
-                    <MDBBtn href={'/home/collaborate-tour/details/' + val.id} style={{ backgroundColor: "#30B4BA" }} >Decline</MDBBtn>
-                  </MDBCol>
+                  
+                {val.collaborateStatus == 0?<Status id={val.collaborationId} />: val.collaborateStatus == 1? "Accepted":"Declined"}
+                  
                 </MDBRow>
+            </MDBRow>
+
+
+          </MDBCardBody>
+        </MDBCard>
+      </MDBCol>)
+    })
+  }
+  
+  var list1 = [];
+  if (data1) {
+    var temp = data1;
+    temp.forEach(val => {
+      list1.push(<MDBCol size='12' className='my-3'>
+        <MDBCard className="">
+          <MDBCardBody className='text-start'>
+            <MDBRow>
+            <MDBCol size='3'>
+               <div>
+                 <img src={collab} width="120px"/>
+               </div>
+              </MDBCol>
+              <MDBCol size='5'>
+                <h5 className='text-left'>Tour: {val.name}</h5>
+                <div className='text-left'>Collaboration Status: {val.collaborateStatus == 0? "Pending": val.collaborateStatus == 1? "Accepted":"Declined"}</div>
+              </MDBCol>
+              <MDBCol size='3' className='text-end'>
+                <div className='text-left'><MDBIcon icon="users" /> Guests {val.collaborationQuantity}</div>
+                <div className='text-left'>Amount: {val.collaborationPrice}</div>
+                <br />
+                </MDBCol>
+                
             </MDBRow>
 
 
@@ -152,7 +196,11 @@ export function CollaborationList() {
                   </div></MDBTabsPane>
 
                   <MDBTabsPane show={fillActive === 'tab2'}><div>
-
+                  <MDBRow className='d-flex justify-content-center '>
+                    <MDBCol size='8'>
+                    {list1}
+                    </MDBCol>
+                  </MDBRow>
                   </div></MDBTabsPane>
                 </MDBTabsContent>
               </MDBCol>
@@ -172,7 +220,10 @@ export function CollaborationList() {
             <MDBBtn className='btn-close' color='none' onClick={toggleShow}></MDBBtn>
           </MDBModalHeader>
           <MDBModalBody>
-            <div></div>
+            <div>Name: {details.Name}</div>
+            <div>Phone: {details.Phone}</div>
+            <div>Email: {details.Email}</div>
+            <div>Address: {details.Address}</div>
           </MDBModalBody>
 
           <MDBModalFooter>

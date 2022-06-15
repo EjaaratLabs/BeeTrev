@@ -30,5 +30,10 @@ class Transports
         [id]);
         return results && results.length>0?results[0]:null;
     }
+    async deleteTransport(message)
+    {
+        var results=await client.Query("update transports set isDeleted=1 where id=?" , 
+        [message.TRANSPORT_ID]);
+    }
 }
 module.exports=new Transports();
