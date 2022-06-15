@@ -22,7 +22,7 @@ import {
 } from 'mdb-react-ui-kit';
 
 import DataTable from 'react-data-table-component';
-import { getTransports, GetTransportsListAsync } from '../../reducers/TransportProfileSlice';
+import { DeleteTransportAsync, getTransports, GetTransportsListAsync } from '../../reducers/TransportProfileSlice';
 
 import { getToken, loginAsync } from '../../reducers/AuthSlice'
 import { Link } from 'react-router-dom';
@@ -52,51 +52,21 @@ const columns = [
     name: 'Detail',
     selector: row => <Link to={"/home/transport/details/" + row.id}><MDBBtn color='warning' size='sm'>Detail</MDBBtn> </Link>,
   },
-  
+  {
+    name: 'Action',
+    selector: row =><DeleteTransport id={row.id}/> ,
+  },
 ];
 
-const data1 = [
-  {
-    id: 1,
-    type: 'Sedan',
-    company:'Corolla',
-    model: '2018',
-    price: '5,000',
-    status:'Active'
-  },
-  {
-    id: 2,
-    type: 'Sedan',
-    company:'City',
-    model: '2019',
-    price: '6,000',
-    status:'Active'
-  },
-  {
-    id: 3,
-    type: 'Van',
-    company:'Hiace',
-    model: '2015',
-    price: '10,000',
-    status:'Active'
-  },
-  {
-    id: 4,
-    type: 'SUV',
-    company:'Fortuner',
-    model: '2016',
-    price: '15,000',
-    status:'Active'
-  },
-  {
-    id: 5,
-    type: 'SUV',
-    company:'Land Cruiser',
-    model: '2014',
-    price: '17,000',
-    status:'Active'
-  }
-]
+function DeleteTransport(props) {
+  const dispatch = useDispatch();
+  const token = useSelector(getToken);
+  
+  return <Link to="#"  onClick={()=>{
+    dispatch(DeleteTransportAsync({params:{transportId:props.id}, token }));   
+  }}><MDBBtn color='danger' size='sm' href='#'>Delete</MDBBtn> </Link>
+}
+
 export function TransportList() {
 
   const dispatch = useDispatch();

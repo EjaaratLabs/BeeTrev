@@ -12,14 +12,14 @@ class Transports
     async getAllTransport()
     {
     
-        var results=await client.Query("Select * from transports",
+        var results=await client.Query("Select * from transports where isDeleted = 0",
         []);
         return results && results.length>0?results:[];
     }
     async getTransportsByUserId(message)
     {
     
-        var results=await client.Query("Select * from transports where createdBy = ?",
+        var results=await client.Query("Select * from transports where createdBy = ? and isDeleted = 0",
         [message.API_USER_ID]);
         return results && results.length>0?results:[];
     }

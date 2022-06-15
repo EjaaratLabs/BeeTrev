@@ -12,7 +12,7 @@ class hotels
     async gethotels()
     {
     
-        var results=await client.Query("Select * from hotels",
+        var results=await client.Query("Select * from hotels where isDeleted = 0",
         []);
         return results && results.length>0?results:[];
     }
@@ -20,7 +20,7 @@ class hotels
     async gethotelsbyuserid(message)
     {
     
-        var results=await client.Query("Select * from hotels where createdBy = ?",
+        var results=await client.Query("Select * from hotels where createdBy = ? and isDeleted = 0",
         [message.API_USER_ID]);
         return results && results.length>0?results:[];
     }

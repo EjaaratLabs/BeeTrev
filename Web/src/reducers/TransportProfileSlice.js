@@ -1,6 +1,6 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { toast } from 'react-toastify';
-import { CreateNewTransport, GetTransportDetails, GetTransportsList } from '../api/TransportApis';
+import { CreateNewTransport, deleteTransport, GetTransportDetails, GetTransportsList } from '../api/TransportApis';
 
 
 const initialState = {
@@ -45,6 +45,14 @@ export const GetTransportDetailsAsync = createAsyncThunk(
   }
 );
 
+export const DeleteTransportAsync = createAsyncThunk(
+  'TransportSlice/delete',
+  async (data) => {
+    const response = await deleteTransport(data.params, data.token);
+    return response.data;
+  }
+);
+
 export const TransportProfileSlice = createSlice({
   name: 'TransportSlice',
   initialState,
@@ -77,6 +85,14 @@ export const TransportProfileSlice = createSlice({
         state.profileData= action.payload
         // state.profileData = action.payload.token;
       })
+      .addCase(DeleteTransportAsync.pending, (state, action) => {
+        state.status = 'loading';
+      })
+      .addCase(DeleteTransportAsync.fulfilled, (state, action) => {
+        state.status = 'idle';
+        // state.profileData= action.payload
+        // state.profileData = action.payload.token;
+      });
   },
 });
 

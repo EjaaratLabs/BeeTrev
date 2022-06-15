@@ -11,3 +11,7 @@ export function CreateNewHotel(data,token) {
 export function GetHotelDetails(data,token) {
   return apiUtil.getApi('transaction/gethoteldetails', token, data)
 }
+
+export function deleteHotel(data,token) {
+  return apiUtil.postApi('transaction/deletehotel', token, data)
+}

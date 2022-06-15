@@ -11,3 +11,7 @@ export function CreateNewTransport(data,token) {
 export function GetTransportDetails(data,token) {
   return apiUtil.getApi('transaction/gettransportdetails', token, data)
 }
+
+export function deleteTransport(data,token) {
+  return apiUtil.postApi('transaction/deletetransport', token, data)
+}
