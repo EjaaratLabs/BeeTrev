@@ -23,6 +23,13 @@ class Tours
         [id]);
         return results && results.length>0?results[0]:null;
     }
+    async getTourDescp()
+    {
+    
+        var results=await client.Query("Select * from tours where longDescription=?",
+        []);
+        return results && results.length>0?results[0]:null;
+    }
     async getToursByUserId(message)
     {
     

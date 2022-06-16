@@ -116,6 +116,14 @@ class _loginState extends State<login> {
                               MaterialPageRoute(
                                   builder: (context) => selectTour()),
                             );
+                          } else {
+                            showDialog<String>(
+                                context: context,
+                                builder: (BuildContext context) => AlertDialog(
+                                      title: const Text('Error'),
+                                      content: const Text(
+                                          'Invalid User name and Password'),
+                                    ));
                           }
                           // Navigator.push(context, MaterialPageRoute(builder:(context)=>news_feed1()),);
                         },

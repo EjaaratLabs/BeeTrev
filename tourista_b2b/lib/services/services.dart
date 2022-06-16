@@ -29,6 +29,26 @@ class Services {
     return mapedList;
   }
 
+  Future<TourModel> gettoursdescp() async {
+    //change to get login token from cache
+    // var loginTokenString = loginToken.token;
+    var preferences = await StreamingSharedPreferences.instance;
+    var tourid = preferences.getString("tourid", defaultValue: "").getValue();
+    var loginTokenString = await Auth().getLoginTokenString();
+    String route = "/transaction/gettourdetails";
+
+    var response =
+        await ApiCalls(loginToken: LoginToken(token: loginTokenString))
+            .getApiRequest(route, queryParams: {"tourId": tourid});
+
+    var domainsMap = jsonDecode(response.body);
+    print(domainsMap);
+
+    var mapedList = TourModel.fromMap(domainsMap['details']);
+
+    return mapedList;
+  }
+
   Future<List<CustomerModel>> getcustomer() async {
     //change to get login token from cache
     // var loginTokenString = loginToken.token;
