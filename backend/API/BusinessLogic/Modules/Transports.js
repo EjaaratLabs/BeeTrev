@@ -12,14 +12,14 @@ class Transports
     async getAllTransport()
     {
     
-        var results=await client.Query("Select * from transports",
+        var results=await client.Query("Select * from transports where isDeleted = 0",
         []);
         return results && results.length>0?results:[];
     }
     async getTransportsByUserId(message)
     {
     
-        var results=await client.Query("Select * from transports where createdBy = ?",
+        var results=await client.Query("Select * from transports where createdBy = ? and isDeleted = 0",
         [message.API_USER_ID]);
         return results && results.length>0?results:[];
     }
@@ -29,6 +29,11 @@ class Transports
         var results=await client.Query("Select * from transports where id=?",
         [id]);
         return results && results.length>0?results[0]:null;
+    }
+    async deleteTransport(message)
+    {
+        var results=await client.Query("update transports set isDeleted=1 where id=?" , 
+        [message.TRANSPORT_ID]);
     }
 }
 module.exports=new Transports();

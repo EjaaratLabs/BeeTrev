@@ -39,8 +39,7 @@ export function Dashboard() {
     dispatch(GetUserDetailAsync({ token }));
   }, []);
   const data = useSelector(getUser);
-
-  console.log(data)
+  console.log(data);
 
   return (
     <div className="p-4 text-start ">
@@ -49,8 +48,18 @@ export function Dashboard() {
       <MDBCardHeader>Dashboard</MDBCardHeader>
       <MDBCardBody>
         <MDBCardTitle>Welcome back, {data.name}!</MDBCardTitle>
-        <MDBCardText>With supporting text below as a natural lead-in to additional content.</MDBCardText>
-        <MDBBtn href='#'>Go somewhere</MDBBtn>
+        
+      </MDBCardBody>
+    </MDBCard>
+    
+    <MDBCard className='my-4'>
+      <MDBCardHeader>Vendor Details</MDBCardHeader>
+      <MDBCardBody>
+        <MDBCardText>Name: {data.name}</MDBCardText>
+        <MDBCardText>Phone: {data.phone}</MDBCardText>
+        <MDBCardText>Email: {data.email}</MDBCardText>
+        <MDBCardText>Address: {data.address}</MDBCardText>
+        
       </MDBCardBody>
     </MDBCard>
     

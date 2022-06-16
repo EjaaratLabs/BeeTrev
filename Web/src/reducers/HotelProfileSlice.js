@@ -1,6 +1,6 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 
-import { CreateNewHotel, GetHotelDetails, GetHotelsList } from '../api/HotelApis';
+import { CreateNewHotel, deleteHotel, GetHotelDetails, GetHotelsList } from '../api/HotelApis';
 import { toast } from 'react-toastify';
 
 
@@ -47,6 +47,15 @@ export const GetHotelDetailsAsync = createAsyncThunk(
   }
 );
 
+export const DeleteHotelAsync = createAsyncThunk(
+  'HotelSlice/delete',
+  async (data) => {
+    const response = await deleteHotel(data.params, data.token);
+    return response.data;
+  }
+);
+
+
 export const HotelProfileSlice = createSlice({
   name: 'HotelSlice',
   initialState,
@@ -79,6 +88,14 @@ export const HotelProfileSlice = createSlice({
         state.profileData= action.payload
         // state.profileData = action.payload.token;
       })
+      .addCase(DeleteHotelAsync.pending, (state, action) => {
+        state.status = 'loading';
+      })
+      .addCase(DeleteHotelAsync.fulfilled, (state, action) => {
+        state.status = 'idle';
+        // state.profileData= action.payload
+        // state.profileData = action.payload.token;
+      });
   },
 });
 

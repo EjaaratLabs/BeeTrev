@@ -55,6 +55,16 @@ module.exports = {
         allowedMethod: ['POST']
     },
     
+    "/transaction/deletetransport": {
+        controller: "deleteTransport",
+        allowedMethod: ['POST']
+    },
+    
+    "/transaction/deletehotel": {
+        controller: "deleteHotel",
+        allowedMethod: ['POST']
+    },
+    
     "/transaction/updatebookingstatus": {
         controller: "updateBookingStatus",
         allowedMethod: ['POST']
@@ -67,6 +77,16 @@ module.exports = {
     
     "/transaction/updatetransportbookingstatus": {
         controller: "updateTransportBookingStatus",
+        allowedMethod: ['POST']
+    },
+    
+    "/transaction/updatecollaboratestatus": {
+        controller: "updateCollaborateStatus",
+        allowedMethod: ['POST']
+    },
+    
+    "/transaction/declinecollaboratestatus": {
+        controller: "declineCollaborateStatus",
         allowedMethod: ['POST']
     },
 
@@ -119,6 +139,10 @@ module.exports = {
     },
     "/transaction/myprofile": {
         controller: "GetProfile",
+        allowedMethod: ['GET']
+    },
+    "/transaction/getusertype": {
+        controller: "GetUserType",
         allowedMethod: ['GET']
     },
     "/transaction/changepassword": {
@@ -220,6 +244,11 @@ module.exports = {
     
     "/transaction/gettourcollaborate": {
         controller: "GetTourCollaborate",
+        allowedMethod: ['GET']
+    },
+    
+    "/transaction/getmytourcollaborate": {
+        controller: "GetMyTourCollaborate",
         allowedMethod: ['GET']
     },
 

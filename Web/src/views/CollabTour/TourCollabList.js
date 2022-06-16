@@ -119,11 +119,7 @@ export function TourCollabList() {
     <div>
       <MDBContainer>
       <h3 className='pt-5  '>{params&& params.tourCategory?params?.tourCategory:""} Collaborate Tour</h3>
-        <MDBRow className='d-flex justify-content-center '>
-          <MDBCol size='8'>
-
-          </MDBCol>
-        </MDBRow>
+        
         
           {/*  {list}*/}
             <MDBCard>
@@ -187,9 +183,12 @@ export function TourCollabList() {
               </MDBCardBody>
             </MDBCard>
           
-          <MDBCol size='7'>
-            {list}
+
+          <MDBRow className='d-flex justify-content-center '>
+          <MDBCol size='8'>
+          {list}
           </MDBCol>
+        </MDBRow>
 
         
       </MDBContainer>

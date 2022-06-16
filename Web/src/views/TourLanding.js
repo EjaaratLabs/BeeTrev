@@ -2,11 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate, useLocation, Navigate, useParams } from 'react-router-dom';
 import {
-  MDBNavbar,
-  MDBNavbarNav,
-  MDBNavbarItem,
-  MDBNavbarLink,
-  MDBNavbarToggler,
   MDBContainer,
   MDBFooter,
   MDBRow,
@@ -18,17 +13,7 @@ import {
   MDBCardText,
   MDBBtn,
   MDBInput,
-  MDBNavbarBrand,
-  MDBCollapse,
-  MDBCarouselElement,
-  MDBCarouselCaption,
-  MDBCarouselItem,
-  MDBCarouselInner,
-  MDBCarousel,
   MDBCheckbox,
-  MDBDropdownMenu,
-  MDBDropdownItem,
-  MDBDropdownLink,
   slider
 } from 'mdb-react-ui-kit';
 import { getToken, loginAsync, resetToken } from '../reducers/AuthSlice'
@@ -80,7 +65,7 @@ export function TourLanding() {
       temp = data.filter((x) => (x.departure && x.departure.toLowerCase().includes(value.toLowerCase())) || (x.destination && x.destination.toLowerCase().includes(destination.toLowerCase())))
     }
     
-    if (val.max <= 100000) {
+    if (val.max < 100000 || val.max > 0) {
       temp = data.filter((x) => (x.price >= val.min) && (x.price <= val.max))
     }
     temp.forEach(val => {
