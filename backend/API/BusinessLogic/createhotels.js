@@ -13,6 +13,7 @@ class createhotels
             message.HOTELFACILITIES=req.body.hotelFacilities
             message.HOTELDESCRIPTION=req.body.hotelDescription 
             message.HOTELSTATUS=req.body.hotelStatus
+            message.IMAGE=req.body.image
              
     }
     async process(message)

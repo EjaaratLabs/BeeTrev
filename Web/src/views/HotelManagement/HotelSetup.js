@@ -89,6 +89,10 @@ export function HotelSetup() {
                       <MDBInput textarea label="Description" icon="envelope" group type="text" validate error="wrong"
                         success="right" name='hotelDescription' value={formData.hotelDescription} onChange={handleChange} />
                     </MDBCol>
+                    <MDBCol lg="6" className="py-1">
+                      <MDBInput textarea label="Image" icon="envelope" group type="text" validate error="wrong"
+                        success="right" name='image' value={formData.image} onChange={handleChange} />
+                    </MDBCol>
                   </MDBRow>
                   <hr />
 

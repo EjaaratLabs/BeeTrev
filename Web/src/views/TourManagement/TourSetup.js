@@ -107,6 +107,10 @@ export function TourSetup() {
                       <MDBInput label="Event Names" icon="envelope" group type="text" validate error="wrong"
                         success="right" name='EVENTNAMES' value={formData.EVENTNAMES} onChange={handleChange} />
                     </MDBCol>
+                    <MDBCol lg="6" className="py-1">
+                      <MDBInput label="Image" icon="envelope" group type="text" validate error="wrong"
+                        success="right" name='IMAGE' value={formData.IMAGE} onChange={handleChange} />
+                    </MDBCol>
                     </MDBRow>
                   <hr />
                 </div>

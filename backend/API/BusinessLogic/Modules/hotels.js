@@ -6,8 +6,8 @@ class hotels
     async createNewType(message)
     {
     
-        var results=await client.Query("insert into hotels(hotelName,hotelLocation,roomPrice,hotelFacilities,hotelDescription,hotelStatus,createdBy) values(?,?,?,?,?,?,?)",
-        [message.HOTELNAME, message.HOTELLOCATION,message.ROOMPRICE,message.HOTELFACILITIES,message.HOTELDESCRIPTION,message.HOTELSTATUS,message.API_USER_ID]);
+        var results=await client.Query("insert into hotels(hotelName,hotelLocation,roomPrice,hotelFacilities,hotelDescription,hotelStatus,createdBy,image) values(?,?,?,?,?,?,?,?)",
+        [message.HOTELNAME, message.HOTELLOCATION,message.ROOMPRICE,message.HOTELFACILITIES,message.HOTELDESCRIPTION,message.HOTELSTATUS,message.API_USER_ID,message.IMAGE]);
     }
     async gethotels()
     {

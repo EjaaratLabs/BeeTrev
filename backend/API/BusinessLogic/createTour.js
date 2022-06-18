@@ -15,7 +15,8 @@ class createTour
             message.SHORT_DESC=req.body.SHORT_DESC;
             message.LONG_DESC=req.body.LONG_DESC;
             message.QTY=req.body.QTY;
-            message.EVENTNAMES=req.body.EVENTNAMES
+            message.EVENTNAMES=req.body.EVENTNAMES;
+            message.IMAGE=req.body.IMAGE;
     }
     async process(message)
     {
