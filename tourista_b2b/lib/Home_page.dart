@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:tourista_b2b/models/lastannuncementModel.dart';
+import 'package:tourista_b2b/models/tourModel.dart';
 import 'package:tourista_b2b/services/services.dart';
 
 class homePage extends StatefulWidget {
@@ -13,9 +14,11 @@ class _homePageState extends State<homePage> {
   void initState() {
     super.initState();
     _requestInit();
+    _requestInitTourDesc();
   }
 
   String lastAnnounce = "";
+  String descrip = "";
 
   _requestInit() async {
     var temp = await Services().getlastannouncement();
@@ -25,7 +28,17 @@ class _homePageState extends State<homePage> {
     });
   }
 
+  _requestInitTourDesc() async {
+    var temp1 = await Services().gettoursdescp();
+
+    setState(() {
+      //aboutCard = temp;
+      descrip = temp1.shortDescription;
+    });
+  }
+
   LastAnnouncmenetModel() {}
+  TourModel() {}
 
   @override
   Widget build(BuildContext context) {
@@ -69,10 +82,10 @@ class _homePageState extends State<homePage> {
         //   ),
         // ),
         Card(
+          elevation: 2.0,
           child: ListTile(
             title: Text("Itenary Plan"),
-            subtitle: Text(
-                "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec dapibus tincidunt bibendum. Maecenas eu viverra orci. Duis diam leo, porta at justo vitae, euismod aliquam nulla."),
+            subtitle: Text(descrip),
           ),
         ),
       ],

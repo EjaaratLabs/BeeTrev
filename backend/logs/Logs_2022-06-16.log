@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 02:09:02.518 | Info | '/transaction/myprofile' | 
 02:09:06.395 | Info | '/transaction/myprofile' | 
 02:09:06.485 | Info | '/transaction/gettour' | 
@@ -287,3 +288,41 @@
 13:27:48.493 | Info | '/transaction/gettourcollaborate' | 
 13:27:48.510 | Info | '/transaction/getmytourcollaborate' | 
 13:27:59.903 | Info | '/transaction/myprofile' | 
+=======
+02:58:24.046 | Info | '/api/user/login' | 
+02:58:26.114 | Info | '/transaction/gettourbyuserid' | 
+02:58:29.964 | Info | '/transaction/gettourdetails' | 
+02:58:30.013 | Info | '/transaction/getlastannouncement' | 
+03:06:41.709 | Info | '/api/user/login' | 
+03:06:42.742 | Info | '/transaction/gettourbyuserid' | 
+03:06:45.513 | Info | '/transaction/getlastannouncement' | 
+03:09:10.241 | Info | '/api/user/login' | 
+03:09:11.606 | Info | '/transaction/gettourbyuserid' | 
+03:09:13.823 | Info | '/transaction/getlastannouncement' | 
+03:09:13.827 | Info | '/transaction/gettourdetails' | 
+03:12:48.298 | Info | '/api/user/login' | 
+03:12:49.283 | Info | '/transaction/gettourbyuserid' | 
+03:12:51.361 | Info | '/transaction/getlastannouncement' | 
+03:12:51.363 | Info | '/transaction/gettourdetails' | 
+03:17:06.122 | Info | '/api/user/login' | 
+03:17:06.943 | Info | '/transaction/gettourbyuserid' | 
+03:17:09.362 | Info | '/transaction/getlastannouncement' | 
+03:17:09.367 | Info | '/transaction/gettourdetails' | 
+03:18:08.096 | Info | '/transaction/getcustomer' | 
+03:18:11.903 | Info | '/transaction/getEvents' | 
+03:18:16.800 | Info | '/transaction/getlastannouncement' | 
+03:18:16.802 | Info | '/transaction/gettourdetails' | 
+03:18:28.842 | Info | '/transaction/createannouncement' | 
+03:18:29.324 | Info | '/transaction/gettourbyuserid' | 
+03:18:31.557 | Info | '/transaction/getlastannouncement' | 
+03:18:31.559 | Info | '/transaction/gettourdetails' | 
+03:18:34.092 | Info | '/transaction/getannouncement' | 
+03:21:26.343 | Info | '/transaction/getlastannouncement' | 
+03:21:26.356 | Info | '/transaction/gettourdetails' | 
+03:32:25.482 | Info | '/api/user/login' | 
+03:33:10.266 | Info | '/api/user/login' | 
+03:34:35.376 | Info | '/api/user/login' | 
+03:34:35.992 | Info | '/transaction/gettourbyuserid' | 
+03:34:39.060 | Info | '/transaction/getlastannouncement' | 
+03:34:39.064 | Info | '/transaction/gettourdetails' | 
+>>>>>>> 6af17b56d5d4fc112ec62a3119e3fa028788b4f1
