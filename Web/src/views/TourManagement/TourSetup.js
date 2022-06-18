@@ -92,11 +92,11 @@ export function TourSetup() {
                         success="right" name='STATUS' value={formData.STATUS} onChange={handleChange} />
                     </MDBCol>
                     <MDBCol lg="12" className="py-1">
-                      <MDBInput label="Overview" icon="envelope" group type="text" validate error="wrong"
+                      <MDBInput textarea label="Overview" icon="envelope" group type="text" validate error="wrong"
                         success="right" name='SHORT_DESC' value={formData.SHORT_DESC} onChange={handleChange} />
                     </MDBCol>
                     <MDBCol lg="12" className="py-1">
-                      <MDBInput label="Description" icon="envelope" group type="text" validate error="wrong"
+                      <MDBInput textarea label="Description" icon="envelope" group type="text" validate error="wrong"
                         success="right" name='LONG_DESC' value={formData.LONG_DESC} onChange={handleChange} />
                     </MDBCol>
                     <MDBCol lg="4" className="py-1">
