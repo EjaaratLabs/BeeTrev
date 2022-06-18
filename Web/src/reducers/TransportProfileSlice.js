@@ -1,6 +1,6 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { toast } from 'react-toastify';
-import { CreateNewTransport, deleteTransport, GetTransportDetails, GetTransportsList } from '../api/TransportApis';
+import { CreateNewTransport, deleteTransport, GetAllTransportsList, GetTransportDetails, GetTransportsList } from '../api/TransportApis';
 
 
 const initialState = {
@@ -9,7 +9,8 @@ const initialState = {
   unAssignedList: [],
   status: 'idle',
   screenMode: 'list',
-  transports: []
+  transports: [],
+  allTransports: []
 };
 
 // The function below is called a thunk and allows us to perform async logic. It
@@ -23,6 +24,15 @@ export const GetTransportsListAsync = createAsyncThunk(
   'TransportSlice/gettransport',
   async (data) => {
     const response = await GetTransportsList(data.formData, data.token);
+    console.log("res:  ", response)
+    return response.data;
+  }
+);
+
+export const GetAllTransportsListAsync = createAsyncThunk(
+  'TransportSlice/getalltransport',
+  async (data) => {
+    const response = await GetAllTransportsList(data.formData, data.token);
     console.log("res:  ", response)
     return response.data;
   }
@@ -69,6 +79,11 @@ export const TransportProfileSlice = createSlice({
         state.transports = action.payload.transports
         // state.profileData = action.payload.token;
       })
+      .addCase(GetAllTransportsListAsync.fulfilled, (state, action) => {
+        state.status = 'idle';
+        state.allTransports = action.payload.transports
+        // state.profileData = action.payload.token;
+      })
       .addCase(createNewTransportAsync.pending, (state, action) => {
         state.status = 'loading';
       })
@@ -108,6 +123,9 @@ export const getProfiles = (state) => state.TransportSlice.profile;
 export const getAvailableProfiles = (state) => state.TransportSlice.unAssignedList;
 
 export const getTransports = (state) => state.TransportSlice.transports;
+
+export const getAllTransports = (state) => state.TransportSlice.allTransports;
+
 
 // We can also write thunks by hand, which may contain both sync and async logic.
 // Here's an example of conditionally dispatching actions based on current state.

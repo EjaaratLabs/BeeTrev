@@ -1,5 +1,9 @@
 import apiUtil from '../utilities/apiHelper'
 
+export function GetAllTransportsList(data,token) {
+  return apiUtil.getApi('transaction/gettransport', token, {})
+}
+
 export function GetTransportsList(data,token) {
   return apiUtil.getApi('transaction/gettransportbyuserid', token, {})
 }

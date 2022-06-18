@@ -1,5 +1,9 @@
 import apiUtil from '../utilities/apiHelper'
 
+export function GetAllHotelsList(data,token) {
+  return apiUtil.getApi('transaction/gethotels', token, {})
+}
+
 export function GetHotelsList(data,token) {
   return apiUtil.getApi('transaction/gethotelshistory', token, {})
 }

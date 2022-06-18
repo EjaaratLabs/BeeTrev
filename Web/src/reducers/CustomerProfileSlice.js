@@ -131,6 +131,7 @@ export const CustomerProfileSlice = createSlice({
       })
       .addCase(createNewCustomerAsync.fulfilled, (state, action) => {
         state.status = 'idle';
+        console.log(action.payload)
         toast.success(action.payload.message)
         // state.profileData = action.payload.token;
       })

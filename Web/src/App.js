@@ -7,6 +7,9 @@ import { Landing } from './views/Landing';
 import './App.css';
 import { BrowserRouter as Router, Routes, Route, Link, } from "react-router-dom";
 
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 import { Landing1 } from './views/Landing1';
 import { TourLanding } from './views/TourLanding';
 import { TourDetails } from './views/TourDetails';
@@ -40,6 +43,8 @@ function App() {
          
         </Routes>
       </Router>
+
+      <ToastContainer />
     </div>
   );
 }

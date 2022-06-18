@@ -60,10 +60,11 @@ function Status(props) {
 
 export function CollaborationList() {
   const [basicModal, setBasicModal] = useState(false);
-  let details = {};
+  const [details, setDetailsMode] = useState({});
 
   const toggleShow = (e) => {
-    details = e;
+    setDetailsMode(e);
+
     console.log(details.Name);
     setBasicModal(!basicModal);
   }
@@ -161,7 +162,7 @@ export function CollaborationList() {
       </MDBCol>)
     })
   }
-
+console.log(details,"Test")
   return (
     <div>
 
@@ -219,7 +220,7 @@ export function CollaborationList() {
             <MDBModalTitle>Operator Information</MDBModalTitle>
             <MDBBtn className='btn-close' color='none' onClick={toggleShow}></MDBBtn>
           </MDBModalHeader>
-          <MDBModalBody>
+          <MDBModalBody className='text-start px-5'>
             <div>Name: {details.Name}</div>
             <div>Phone: {details.Phone}</div>
             <div>Email: {details.Email}</div>

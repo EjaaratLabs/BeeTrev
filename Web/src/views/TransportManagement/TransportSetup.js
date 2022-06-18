@@ -75,7 +75,7 @@ export function TransportSetup() {
                         success="right" name='COMPANY' value={formData.COMPANY} onChange={handleChange} />
                     </MDBCol>
                     <MDBCol lg="6" className="py-1">
-                      <MDBInput label="Model" icon="envelope" group type="number" validate error="wrong"
+                      <MDBInput label="Model" icon="envelope" group type="text" validate error="wrong"
                         success="right" name='MODEL' value={formData.MODEL} onChange={handleChange} />
                     </MDBCol>
                     <MDBCol lg="6" className="py-1">

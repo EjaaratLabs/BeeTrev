@@ -41,7 +41,7 @@ import { Navbar } from './Navbar';
 import { Footer } from './Footer';
 import { getAllTours, GetAllToursListAsync, getTours, GetToursListAsync } from '../reducers/TourProfileSlice';
 import place from './Assets/hunza.webp'
-import { getHotels, GetHotelsListAsync } from '../reducers/HotelProfileSlice';
+import { getAllHotels, GetAllHotelsListAsync, getHotels, GetHotelsListAsync } from '../reducers/HotelProfileSlice';
 import room from './Assets/room.jpeg'
 
 
@@ -51,9 +51,9 @@ export function HotelLanding() {
   const dispatch = useDispatch();
   useEffect(() => {
 
-    dispatch(GetHotelsListAsync({ token }));
+    dispatch(GetAllHotelsListAsync({ token }));
   }, []);
-  const data = useSelector(getHotels);
+  const data = useSelector(getAllHotels);
   console.log(data);
   let navigate = useNavigate()
   let location = useLocation()

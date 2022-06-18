@@ -33,10 +33,7 @@ import {
 import { Toast, ToastContainer } from 'react-bootstrap';
 // import StarRatings from 'react-star-ratings';
 import { getToken, loginAsync, resetToken, getUserData } from '../reducers/AuthSlice'
-import logo from '../assets/logo.png'
-import comakebg from '../assets/comkaebg.png'
-import item1 from '../assets/signup.png'
-import item2 from '../assets/connect.png'
+
 // import Avatar from 'react-avatar';
 import item3 from '../assets/sahke.png'
 import { Navbar } from './Navbar';
@@ -78,10 +75,6 @@ export function TourBooking() {
     formData['TOURID']=params.tourId;
     console.log(formData);
     dispatch(createNewCustomerAsync({ formData, token }))
-    .then(()=>{
-      toggleShowA()
-    })
-
 
   }
 

@@ -210,7 +210,10 @@ export function Landing() {
     } 
     else if (data.type == "3") {
       return <Transport />;
-    } 
+    }
+    else{
+      return <h1>Error</h1>
+    }
   }
   
   

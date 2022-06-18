@@ -288,4 +288,8 @@ module.exports = {
         controller: "GetTransport",
         allowedMethod: ['GET']
     },
+    "/transaction/updatequantity": {
+        controller: "updateQuantity",
+        allowedMethod: ['GET']
+    },
 }

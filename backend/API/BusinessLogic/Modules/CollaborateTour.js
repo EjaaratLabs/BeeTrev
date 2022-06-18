@@ -6,7 +6,7 @@ class CollaborateTour
     async createCollaboration(message)
     {
     
-        var results=await client.Query("insert into tourcollaborate(operatorId,tourId,price,quantity) values(?,?,?,?)",
+        var results=await client.Query("insert into tourcollaborate(operatorId,tourId,collaborationPrice,collaborationQuantity) values(?,?,?,?)",
         [message.API_USER_ID,message.TOURID,message.PRICE,message.QTY]);
     }
     async getTourCollaborate(message)

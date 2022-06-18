@@ -38,7 +38,7 @@ import { getAllTours, GetAllToursListAsync, getTours, GetToursListAsync } from '
 import place from './Assets/hunza.webp'
 import InputRange from 'react-input-range';
 import "react-input-range/lib/css/index.css";
-import { getTransports } from '../reducers/TransportProfileSlice';
+import { getAllTransports, GetAllTransportsListAsync, getTransports, GetTransportsListAsync } from '../reducers/TransportProfileSlice';
 
 
 export function TransportLanding() {
@@ -47,9 +47,9 @@ export function TransportLanding() {
   const dispatch = useDispatch();
   useEffect(() => {
 
-    dispatch(GetAllToursListAsync({ token }));
+    dispatch(GetAllTransportsListAsync({ token }));
   }, []);
-  const data = useSelector(getTransports);
+  const data = useSelector(getAllTransports);
   console.log(data);
   let navigate = useNavigate()
   let location = useLocation()
