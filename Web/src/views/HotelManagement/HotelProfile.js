@@ -78,21 +78,6 @@ function Active(props) {
   }}><MDBBtn color='danger' size='sm' >Active Booking</MDBBtn> </Link>
 }
 
-const images = [
-  {
-    original: 'https://foxbusinessmarket.com/wp-content/uploads/2022/01/hotl.jpg',
-    thumbnail: 'https://foxbusinessmarket.com/wp-content/uploads/2022/01/hotl.jpg',
-  },
-  {
-    original: 'http://cdn.cnn.com/cnnnext/dam/assets/140127103345-peninsula-shanghai-deluxe-mock-up.jpg',
-    thumbnail: 'http://cdn.cnn.com/cnnnext/dam/assets/140127103345-peninsula-shanghai-deluxe-mock-up.jpg',
-  },
-  {
-    original: 'https://www.luxurytravelmagazine.com/images/article/2021July/Raffles_Istanbul.jpg',
-    thumbnail: 'https://www.luxurytravelmagazine.com/images/article/2021July/Raffles_Istanbul.jpg',
-  },
-];
-
 
 
 export const HotelProfile = (props) => {
@@ -130,15 +115,13 @@ export const HotelProfile = (props) => {
   };
 
   
-
-  // const data = useSelector(getTours);
-  /*if (props.details.status == "1") {
-    badge = <MDBBadge color='success'>{statusMap[props.details.status]}</MDBBadge>
-  } else if (props.details.status == "2") {
-    badge = <MDBBadge color='danger'>{statusMap[props.details.status]}</MDBBadge>
-  } else if (props.details.status == "3") {
-    badge = <MDBBadge color='danger'>{statusMap[props.details.status]}</MDBBadge>
-  }*/
+  const images = [
+    {
+      original: formData.details.image,
+      thumbnail: formData.details.image,
+    }
+  ];
+  
   return (
     <div className="p-4 text-start w-100">
       <MDBBreadcrumb>

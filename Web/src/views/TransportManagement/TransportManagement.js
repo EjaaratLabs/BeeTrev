@@ -32,37 +32,12 @@ import { TransportProfile } from './TransportProfile';
 
 export function TransportManagement() {
 
-  const screen1 = useSelector(state => state.childProfile.screenMode);
   const [screen, setScreenMode] = useState("list");
   const [details, setProfileDetails] = useState({});
   const [detailsMode, setDetailsMode] = useState("add");
 
   var screenModule = <div></div>
 
-
-  // if (screen == "list") {
-  //   screenModule = <TransportList
-  //     openNewProfile={() => {
-  //       setDetailsMode("add")
-  //       setScreenMode("addscreen")
-  //       setProfileDetails(null)
-  //     }}
-  //     openProfileDetails={(details) => {
-  //       setDetailsMode("edit")
-  //       setProfileDetails(details)
-  //       setScreenMode("details")
-  //     }} />;
-  // }
-  // else if (screen == "addscreen") {
-  //   screenModule = <TransportSetup details={details} detailsMode={detailsMode} closeProfileDetails={() => {
-  //     setScreenMode("list")
-  //   }} />;
-  // }
-  // else if (screen == "details") {
-  //   screenModule = <ChildProfile details={details} closeProfileDetails={() => {
-  //     setScreenMode("list")
-  //   }} />;
-  // }
   return (
     // screenModule
     <Routes>

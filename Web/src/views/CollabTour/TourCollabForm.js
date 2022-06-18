@@ -84,7 +84,7 @@ export function TourCollabForm() {
                   <hr />
                 </div>
                 <div className="text-end w-100">
-                  <MDBBtn  color="danger" className="mx-2 my-5" href="/home/collaborate-tour">Close</MDBBtn><MDBBtn className="mx-2  my-5" onClick={onSubmit}>Collaborate</MDBBtn>
+                  <MDBBtn  color="danger" className="mx-2 my-5" href="/home/collaborate-tour">Close</MDBBtn><MDBBtn className="mx-2  my-5" href='#' onClick={onSubmit}>Collaborate</MDBBtn>
                 </div>
               </form>
 

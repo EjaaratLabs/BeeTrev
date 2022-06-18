@@ -290,6 +290,6 @@ module.exports = {
     },
     "/transaction/updatequantity": {
         controller: "updateQuantity",
-        allowedMethod: ['GET']
+        allowedMethod: ['POST']
     },
 }

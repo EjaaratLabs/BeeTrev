@@ -94,7 +94,7 @@ export function HotelSetup() {
 
                 </div>
                 <div className="text-end w-100">
-                  <MDBBtn color="danger" className="mx-2 my-5" href="/home/hotel">Close</MDBBtn><MDBBtn className="mx-2  my-5" onClick={onSubmit}>Add</MDBBtn>
+                  <MDBBtn color="danger" className="mx-2 my-5" href="/home/hotel">Close</MDBBtn><MDBBtn className="mx-2  my-5" href='#' onClick={onSubmit}>Add</MDBBtn>
                 </div>
               </form>
 

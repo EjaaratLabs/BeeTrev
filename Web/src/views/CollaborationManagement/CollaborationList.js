@@ -46,13 +46,13 @@ function Status(props) {
   <Link to="#"  onClick={()=>{
     console.log(props.id);
     dispatch(updateCollaborateStatusAsync({params:{id:props.id}, token }));
-  }}><MDBBtn style={{ backgroundColor: "#30B4BA" }} >Accept</MDBBtn> </Link>
+  }}><MDBBtn style={{ backgroundColor: "#30B4BA" }} href='#' >Accept</MDBBtn> </Link>
   </MDBCol>
   
   <MDBCol size='2'>
   <Link to="#"  onClick={()=>{
     dispatch(declineCollaborateStatusAsync({params:{id:props.id}, token }));
-  }}><MDBBtn color='danger' >Decline</MDBBtn> </Link>
+  }}><MDBBtn color='danger' href='#' >Decline</MDBBtn> </Link>
   </MDBCol>
   </>
   )

@@ -6,8 +6,8 @@ class Transports
     async createNewTransport(message)
     {
     
-        var results=await client.Query("insert into transports(type,company,model,price,status,createdBy) values(?,?,?,?,?,?)",
-        [message.TYPE, message.COMPANY, message.MODEL, message.PRICE, message.STATUS, message.API_USER_ID]);
+        var results=await client.Query("insert into transports(type,company,model,price,status,createdBy,image,location) values(?,?,?,?,?,?,?,?)",
+        [message.TYPE, message.COMPANY, message.MODEL, message.PRICE, message.STATUS, message.API_USER_ID, message.IMAGE, message.LOCATION]);
     }
     async getAllTransport()
     {

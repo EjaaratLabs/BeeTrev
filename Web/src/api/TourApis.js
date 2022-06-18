@@ -23,3 +23,7 @@ export function GetTourDetails(data,token) {
 export function DeleteTour(data,token) {
   return apiUtil.postApi('transaction/deletetour', token, data)
 }
+
+export function UpdateTour(data,token) {
+  return apiUtil.postApi('transaction/updatequantity', token, data)
+}

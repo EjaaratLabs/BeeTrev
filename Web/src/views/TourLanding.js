@@ -79,7 +79,7 @@ export function TourLanding() {
             <MDBRow>
             <MDBCol size='4'>
                <div>
-                 <img src={place} width="190px"/>
+                 <img src={val.image} width="190px"/>
                </div>
               </MDBCol>
               <MDBCol size='5'>
@@ -122,7 +122,7 @@ export function TourLanding() {
             <MDBCard>
 
               <MDBCardBody className='text-start'>
-                <MDBInput label="Search a project" className=" mb-2" icon="envelope" group type="email" validate error="wrong"
+                <MDBInput label="Search a tour" className=" mb-2" icon="envelope" group type="email" validate error="wrong"
                   success="right" value={search} onChange={(e) => {
                     setSearch(e.target.value)
                   }} />
@@ -143,13 +143,11 @@ export function TourLanding() {
                   <option value="Hunza">Hunza</option>
                   <option value="Gilgit">Gilgit</option>
                   <option value="Swat">Swat</option>
+                  <option value="Skardu">Skardu</option>
+                  <option value="Naran">Naran</option>
+                  <option value="Shogran">Shogran</option>
+                  <option value="Kashmir">Kashmir</option>
                 </select>
-                <hr />
-                <h5>Quantity</h5>
-                <MDBCheckbox name='flexCheck' value='1' id='flexCheckDefault' label='0 - 250' />
-                <MDBCheckbox name='flexCheck' value='2' id='flexCheckChecked' label='251 - 500' />
-                <MDBCheckbox name='flexCheck' value='3' id='flexCheckChecked' label='501 - 1000' />
-                <MDBCheckbox name='flexCheck' value='4' id='flexCheckChecked' label='1000+' />
                 <hr />
                 <h5 className=" mb-4">Price</h5>
 <InputRange

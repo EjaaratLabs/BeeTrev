@@ -57,8 +57,7 @@ export function TransportLanding() {
   const [search, setSearch] = useState("");
   const [value,setValue]=useState('All');
   
-  const [destination,setDestination]=useState('All');
-  const [val, setVal] = React.useState({ min: 0, max: 100000 });
+  const [val, setVal] = React.useState({ min: 0, max: 50000 });
     
   const handleSelect=(e)=>{
     setValue(e.target.value)
@@ -68,22 +67,24 @@ export function TransportLanding() {
   var list = [];
   if (data) {
     var temp = data;
-    if(params.tourCategory)
-    {
-      temp = data.filter((x) => (x.name && x.name.toLowerCase().includes(params.tourCategory.toLowerCase())) || (x.destination && x.destination.toLowerCase().includes(params.tourCategory.toLowerCase())))
-    }
+    // if(params.tourCategory)
+    // {
+    //   temp = data.filter((x) => (x.name && x.name.toLowerCase().includes(params.tourCategory.toLowerCase())) )
+    // }
     
     if (search) {
-      temp = data.filter((x) => (x.name && x.name.toLowerCase().includes(search.toLowerCase())) || (x.destination && x.destination.toLowerCase().includes(search.toLowerCase())) )
+      temp = temp.filter((x) => (x.name && x.name.toLowerCase().includes(search.toLowerCase())) )
     }
     
-    if (value != 'All' || destination != 'All') {
-      temp = data.filter((x) => (x.departure && x.departure.toLowerCase().includes(value.toLowerCase())) || (x.destination && x.destination.toLowerCase().includes(destination.toLowerCase())))
+    if (value != 'All') {
+      temp = temp.filter((x) => (x.location && x.location.toLowerCase().includes(value.toLowerCase())))
     }
     
     if (val.max <= 100000) {
-      temp = data.filter((x) => (x.price >= val.min) && (x.price <= val.max))
+      temp = temp.filter((x) => (x.price >= val.min) && (x.price <= val.max))
     }
+    
+
     temp.forEach(val => {
       list.push(<MDBCol size='12' className='my-3'>
         <MDBCard className="">
@@ -91,13 +92,14 @@ export function TransportLanding() {
             <MDBRow>
             <MDBCol size='4'>
                <div>
-                 <img src={place} width="190px"/>
+                 <img src= {val.image} style={{width:"190px"}}/>
                </div>
               </MDBCol>
               <MDBCol size='5'>
-                <h5 className='text-left'>{val.type}</h5>
+                <h5 className='text-left'>{val.model}</h5>
                 <div className='text-left'>{val.company}</div>
-                <p className='mt-5'>{val.model}</p>
+                <p className='mt-2'>{val.type}</p>
+                <div className='text-left'><MDBIcon icon="map-marker-alt" /> {val.location}</div>
               </MDBCol>
               <MDBCol size='3' className='text-end'>
                 <div className='text-left'>Price: {val.price}</div>
@@ -138,34 +140,19 @@ export function TransportLanding() {
                     setSearch(e.target.value)
                   }} />
                 <br />
-                <h5>Departure</h5>
+                <h5>Location</h5>
                 <select className="form-select" onChange={handleSelect}>
                   <option value="All">---All---</option>
                   <option value="Karachi">Karachi</option>
                   <option value="Lahore">Lahore</option>
                   <option value="Islamabad">Islamabad</option>
                 </select>
-                <hr />
-                <h5>Destination</h5>
-                <select className="form-select" onChange={(e) => {
-                    setDestination(e.target.value)
-                  }}>
-                  <option value="All">---All---</option>
-                  <option value="Hunza">Hunza</option>
-                  <option value="Gilgit">Gilgit</option>
-                  <option value="Swat">Swat</option>
-                </select>
-                <hr />
-                <h5>Quantity</h5>
-                <MDBCheckbox name='flexCheck' value='1' id='flexCheckDefault' label='0 - 250' />
-                <MDBCheckbox name='flexCheck' value='2' id='flexCheckChecked' label='251 - 500' />
-                <MDBCheckbox name='flexCheck' value='3' id='flexCheckChecked' label='501 - 1000' />
-                <MDBCheckbox name='flexCheck' value='4' id='flexCheckChecked' label='1000+' />
+                
                 <hr />
                 <h5 className=" mb-4">Price</h5>
 <InputRange
             step={5000}
-            maxValue={100000}
+            maxValue={50000}
             minValue={0}
             value={val}
             onChange={setVal}

@@ -12,7 +12,7 @@ class Tours
     async getAllTour()
     {
     
-        var results=await client.Query("Select * from tours where isDeleted = 0",
+        var results=await client.Query("Select * from tours where isDeleted = 0 and quantity != 0",
         []);
         return results && results.length>0?results:[];
     }
@@ -54,6 +54,11 @@ class Tours
     
         var results=await client.Query("insert into events(tourid,events,guestid) values(?,?,?)",
         [tourId, name, ""]);
+    }
+    async updateTour(qty,id)
+    {
+        var results=await client.Query("update tours set quantity=? where id=?" , 
+        [qty,id]);
     }
 }
 module.exports=new Tours();

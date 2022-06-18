@@ -69,17 +69,9 @@ export function TransportDetails() {
 
   const images = [
     {
-      original: 'https://picsum.photos/id/1018/1000/600/',
-      thumbnail: 'https://picsum.photos/id/1018/250/150/',
-    },
-    {
-      original: 'https://picsum.photos/id/1015/1000/600/',
-      thumbnail: 'https://picsum.photos/id/1015/250/150/',
-    },
-    {
-      original: 'https://picsum.photos/id/1019/1000/600/',
-      thumbnail: 'https://picsum.photos/id/1019/250/150/',
-    },
+      original: details?.details?.image,
+      thumbnail: details?.details?.image,
+    }
   ];
 
   return (
@@ -115,12 +107,13 @@ export function TransportDetails() {
           <MDBCol size='4' className='d-flex  align-items-stretch'>
             <MDBCard className="p-2 mb-3  w-100">
               <MDBCardBody>
-                <MDBCardTitle><h4 className='text-start'>{details?.details?.type}</h4></MDBCardTitle>
+                <MDBCardTitle><h4 className='text-start'>{details?.details?.model}</h4></MDBCardTitle>
                 <MDBRow>
                   <div className='text-start'>
                     <p>{details?.details?.company}</p>
                     
-                    <p> {details?.details?.model}</p>
+                    <p> {details?.details?.type}</p>
+                    <p><MDBIcon icon="map-marker-alt" /> {details?.details?.location}</p>
                     <h5 className='text-center mt-5'>PKR {details?.details?.price} </h5>
                     <div className='text-center mt-5'><MDBBtn className='' href={'/transport/booking/' + details?.details?.id} style={{ backgroundColor: '#F7D402', color: "black" }}>Book Now</MDBBtn></div>
                   </div>
@@ -133,11 +126,7 @@ export function TransportDetails() {
           <MDBCol size='12'>
             <MDBCard className="px-3 py-2">
               <MDBCardBody className='text-start'>
-                <MDBCardTitle><h5>Overview</h5></MDBCardTitle>
-                <p>{details?.details?.shortDescription}</p>
-                {/* <textarea disabled style={{width : "100%", height : "200px"}}>{details?.details?.shortDescription}</textarea> */}
-                <MDBCardTitle><h5>Description</h5></MDBCardTitle>
-                <p>{details?.details?.longDescription}</p>
+                
                 <div className='w-100  py-3 d-flex  justify-content-between' >
                 <MDBBtn href='/tour' style={{backgroundColor:"#30B4BA"}}><MDBIcon icon="arrow-left" /> Back to list</MDBBtn>
                   
