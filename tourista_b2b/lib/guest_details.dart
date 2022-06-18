@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'basic_info.dart';
 import 'statuses.dart';
-
+/*
 class guest_details extends StatefulWidget {
   const guest_details({Key? key}) : super(key: key);
 
@@ -64,7 +64,7 @@ class _guest_detailsState extends State<guest_details> {
 
                 // child:
                 Expanded(
-                  child: TabBarView(children: [b_info(), status()]),
+                  child: TabBarView(children: [b_info(guestid: '1',), status()]),
                 ),
               ],
             ),
@@ -72,3 +72,4 @@ class _guest_detailsState extends State<guest_details> {
     );
   }
 }
+*/
