@@ -382,3 +382,6 @@
 02:42:15.933 | Info | '/transaction/myprofile' | 
 02:42:15.963 | Info | '/transaction/gettourdetails' | 
 02:42:34.024 | Info | '/transaction/createcustomer' | 
+02:54:15.937 | Info | '/transaction/myprofile' | 
+02:54:15.973 | Info | '/transaction/gettourdetails' | 
+02:54:34.540 | Info | '/transaction/createcustomer' | 
