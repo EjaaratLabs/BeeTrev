@@ -1,5 +1,6 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { Login, Signup } from '../api/AuthApis';
+import { toast } from 'react-toastify';
 
 const initialState = {
   token: '',
@@ -56,6 +57,7 @@ export const AuthSlice = createSlice({
        
         state.status = 'idle';
         state.token = action.payload.token;
+        toast.success(action.payload.message)
       })
       .addCase(createNewUserAsync.pending, (state) => {
       
@@ -65,6 +67,7 @@ export const AuthSlice = createSlice({
        
         state.status = 'idle';
         state.token = action.payload.token;
+        toast.success(action.payload.message)
       })
   },
 });

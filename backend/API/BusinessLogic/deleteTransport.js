@@ -20,7 +20,7 @@ class deleteTransport
     }
     async output(res,message)
     {
-        res.responseBody.message = "transport deleted successfully"
+        res.responseBody.message = "Transport deleted successfully"
         res.status="Success";
     }
     inputValidation(req)

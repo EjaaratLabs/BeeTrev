@@ -20,7 +20,7 @@ class declineCollaborateStatus
     }
     async output(res,message)
     {
-        res.responseBody.message = "collaborate updated successfully"
+        res.responseBody.message = "Collaboration declined successfully"
         res.status="Success";
     }
     inputValidation(req)

@@ -24,7 +24,7 @@ class createTransport
     }
     async output(res,message)
     {
-        res.responseBody.message = "TRANSPORT created successfully"
+        res.responseBody.message = "Transport created successfully"
         res.status="Success";
     }
     inputValidation(req)

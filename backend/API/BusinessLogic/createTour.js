@@ -40,7 +40,7 @@ class createTour
     }
     async output(res,message)
     {
-        res.responseBody.message = "TOUR created successfully"
+        res.responseBody.message = "Tour created successfully"
         res.status="Success";
     }
     inputValidation(req)

@@ -107,6 +107,7 @@ export const TransportProfileSlice = createSlice({
         state.status = 'idle';
         // state.profileData= action.payload
         // state.profileData = action.payload.token;
+        toast.success(action.payload.message)
       });
   },
 });

@@ -20,7 +20,7 @@ class updateBookingStatus
     }
     async output(res,message)
     {
-        res.responseBody.message = "updated successfully"
+        res.responseBody.message = "Booking updated successfully"
         res.status="Success";
     }
     inputValidation(req)

@@ -20,7 +20,7 @@ class updateCollaborateStatus
     }
     async output(res,message)
     {
-        res.responseBody.message = "collaborate updated successfully"
+        res.responseBody.message = "Collaboration updated successfully"
         res.status="Success";
     }
     inputValidation(req)

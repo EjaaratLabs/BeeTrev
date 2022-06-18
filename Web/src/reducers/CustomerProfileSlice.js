@@ -158,6 +158,7 @@ export const CustomerProfileSlice = createSlice({
         state.status = 'idle';
         // state.profileData= action.payload
         // state.profileData = action.payload.token;
+        toast.success(action.payload.message)
       })
       .addCase(updateHotelBookingStatusAsync.pending, (state, action) => {
         state.status = 'loading';
@@ -166,6 +167,7 @@ export const CustomerProfileSlice = createSlice({
         state.status = 'idle';
         // state.profileData= action.payload
         // state.profileData = action.payload.token;
+        toast.success(action.payload.message)
       })
       .addCase(updateTransportBookingStatusAsync.pending, (state, action) => {
         state.status = 'loading';
@@ -174,6 +176,7 @@ export const CustomerProfileSlice = createSlice({
         state.status = 'idle';
         // state.profileData= action.payload
         // state.profileData = action.payload.token;
+        toast.success(action.payload.message)
       });
   },
 });

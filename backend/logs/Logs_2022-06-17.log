@@ -1,1 +1,9 @@
 22:37:09.768 | Info | '/transaction/myprofile' | 
+22:59:58.540 | Info | '/transaction/myprofile' | 
+22:59:59.733 | Info | '/transaction/myprofile' | 
+22:59:59.824 | Info | '/transaction/gettour' | 
+23:00:23.945 | Info | '/transaction/myprofile' | 
+23:00:23.966 | Info | '/transaction/gettourdetails' | 
+23:00:25.592 | Info | '/transaction/myprofile' | 
+23:00:25.653 | Info | '/transaction/gettourdetails' | 
+23:00:31.884 | Info | '/transaction/createcustomer' | 

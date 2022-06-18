@@ -23,7 +23,7 @@ class createCollaboration
     }
     async output(res,message)
     {
-        res.responseBody.message = "collab created successfully"
+        res.responseBody.message = "Collaboration sent successfully"
         res.status="Success";
     }
     inputValidation(req)

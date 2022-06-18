@@ -20,7 +20,7 @@ class deleteTour
     }
     async output(res,message)
     {
-        res.responseBody.message = "TOUR deleted successfully"
+        res.responseBody.message = "Tour deleted successfully"
         res.status="Success";
     }
     inputValidation(req)

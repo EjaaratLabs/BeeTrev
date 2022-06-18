@@ -20,7 +20,7 @@ class deleteHotel
     }
     async output(res,message)
     {
-        res.responseBody.message = "hotel deleted successfully"
+        res.responseBody.message = "Hotel deleted successfully"
         res.status="Success";
     }
     inputValidation(req)

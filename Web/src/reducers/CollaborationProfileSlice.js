@@ -101,6 +101,7 @@ export const CollaborationProfileSlice = createSlice({
       .addCase(updateCollaborateStatusAsync.fulfilled, (state, action) => {
         state.status = 'idle';
         // state.profileData = action.payload.token;
+        toast.success(action.payload.message)
       })
       .addCase(declineCollaborateStatusAsync.pending, (state, action) => {
         state.status = 'loading';
@@ -108,6 +109,7 @@ export const CollaborationProfileSlice = createSlice({
       .addCase(declineCollaborateStatusAsync.fulfilled, (state, action) => {
         state.status = 'idle';
         // state.profileData = action.payload.token;
+        toast.success(action.payload.message)
       });
   },
 });

@@ -5,8 +5,6 @@ import autoMergeLevel2 from 'reduxjs-toolkit-persist/lib/stateReconciler/autoMer
 
 import authReducer from '../reducers/AuthSlice';
 import counterReducer from '../features/counter/counterSlice';
-import childProfileReducer from '../reducers/ChildProfileSlice';
-import doonorProfileReducer from '../reducers/DonorProfileSlice';
 import TourProfileSlice from '../reducers/TourProfileSlice';
 import TransportProfileSlice from '../reducers/TransportProfileSlice';
 import HotelProfileSlice from '../reducers/HotelProfileSlice';
@@ -23,8 +21,6 @@ const persistConfig = {
 const reducers = combineReducers({
   count: counterReducer,
   authentication: authReducer,
-  childProfile: childProfileReducer,
-  donorProfile: doonorProfileReducer,
   TourSlice: TourProfileSlice,
   TransportSlice: TransportProfileSlice,
   HotelSlice: HotelProfileSlice,

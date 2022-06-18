@@ -23,7 +23,7 @@ class createCustomers
     }
     async output(res,message)
     {
-        res.responseBody.message = "transport customer created successfully"
+        res.responseBody.message = "Booking created successfully"
         res.status="Success";
     }
     inputValidation(req)
