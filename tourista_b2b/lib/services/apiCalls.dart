@@ -8,7 +8,7 @@ import 'package:streaming_shared_preferences/streaming_shared_preferences.dart';
 class ApiCalls {
   final LoginToken loginToken;
   String baseApiUrl;
-  ApiCalls({required this.loginToken, this.baseApiUrl = "172.16.5.23:3100"});
+  ApiCalls({required this.loginToken, this.baseApiUrl = "bqapi.ejaarat.com:3200"});
 
   ///CONSTANTS FOR API CALLS
   ///eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJjbGllbnQiLCJpYXQiOjE2MTQ5NTE5MTl9.NhFa1eFf4Z1DNxmXUSVWt9VWDdsGch_w31yD5a5Muew
@@ -38,7 +38,7 @@ class ApiCalls {
     print("********************************************************");
     print(bodyData);
     return await http.post(
-      Uri.http(baseApiUrl, route),
+      Uri.https(baseApiUrl, route),
       headers: header,
       body: bodyData,
       //  encoding: Encoding.getByName("utf-8")
@@ -53,7 +53,7 @@ class ApiCalls {
     };
     print(queryParams);
     return await http.get(
-      Uri.http(baseApiUrl, route, queryParams),
+      Uri.https(baseApiUrl, route, queryParams),
       headers: header,
     );
   }

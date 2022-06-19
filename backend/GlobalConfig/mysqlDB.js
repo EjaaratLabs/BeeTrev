@@ -8,7 +8,7 @@ module.exports = {
   "0": {
     host: 'localhost',
     user: 'root',
-    password: '',
-    database: 'beetrev2',
+    password: 'ejaaratlabs',
+    database: 'beetrev',
   },
 }
