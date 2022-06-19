@@ -79,7 +79,7 @@ export function Signup() {
       </MDBNavbar>
       <div
         className='p-5 text-center bg-image'
-        style={{ backgroundImage: `url(${signupBg})`, height: "83vh" }}
+        style={{ backgroundImage: `url(${signupBg})`, height: "90vh" }}
       >
         <div className='mask' style={{ backgroundColor: 'rgba(0, 0, 0, 0.6)' }}>
           <div className='d-flex justify-content-center align-items-center h-100'>
