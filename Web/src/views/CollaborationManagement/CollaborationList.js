@@ -28,7 +28,7 @@ import {
   MDBCardHeader
 } from 'mdb-react-ui-kit';
 import { getToken, loginAsync, resetToken } from '../../reducers/AuthSlice'
-import { getAllTours, GetAllToursListAsync, getCollabTours, GetCollabToursListAsync, getTours, GetToursListAsync } from '../../reducers/TourProfileSlice';
+import { getAllTours, GetAllToursListAsync, getCollabTours, GetCollabToursListAsync, getTours, GetToursListAsync, UpdateTourAsync } from '../../reducers/TourProfileSlice';
 import collab from '../Assets/collaboration.png'
 import InputRange from 'react-input-range';
 import "react-input-range/lib/css/index.css";
@@ -44,8 +44,9 @@ function Status(props) {
   <>
   <MDBCol size='2'>
   <Link to="#"  onClick={()=>{
-    console.log(props.id);
     dispatch(updateCollaborateStatusAsync({params:{id:props.id}, token }));
+    console.log('req' , props.tourId, props.qty)
+    dispatch(UpdateTourAsync({params:{tourId:props.tourId,qty:props.qty}, token }));
   }}><MDBBtn style={{ backgroundColor: "#30B4BA" }} href='#' >Accept</MDBBtn> </Link>
   </MDBCol>
   
@@ -119,7 +120,7 @@ export function CollaborationList() {
                 <MDBBtn  onClick={()=>toggleShow(val)}>View Details</MDBBtn></MDBCol>
                 <MDBRow className='d-flex justify-content-center '>
                   
-                {val.collaborateStatus == 0?<Status id={val.collaborationId} />: val.collaborateStatus == 1? "Accepted":"Declined"}
+                {val.collaborateStatus == 0?<Status id={val.collaborationId} tourId={val.tourId} qty={val.collaborationQuantity} />: val.collaborateStatus == 1? "Accepted":"Declined"}
                   
                 </MDBRow>
             </MDBRow>

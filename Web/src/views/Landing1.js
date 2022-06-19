@@ -95,8 +95,8 @@ export function Landing1() {
           <MDBCarouselItem className='active'>
             <MDBCarouselElement src={hero} alt='...' style={{ height: "600px"}} />
             <MDBCarouselCaption style={{ marginBottom: "200px",  background: "rgba(0, 0, 0, .6)"}}>
-              <h2>Book your dream tour with us</h2>
-              <p>Explore and Create a best tour for your holidays</p>
+              <h2>Book your dream Tour with us</h2>
+              <p>Explore and Create a best Tour for your holidays</p>
               <MDBBtn className='mx-2' style={{ backgroundColor: '#F7D402', color: "black" }} href="/tour" >Find a Tour</MDBBtn>
               <MDBBtn className='mx-2' href='/hotel' style={{backgroundColor:"#30B4BA"}} >Find a Hotel</MDBBtn>
               <MDBBtn className='mx-2' href='/transport' style={{backgroundColor:"#30B4BA"}} >Find a Transport</MDBBtn>
@@ -166,7 +166,7 @@ export function Landing1() {
             </MDBCard></div>
           </Carousel>;
         </MDBRow>
-        <MDBRow className='text-center '>
+        <MDBRow className='text-center mb-6'>
         <hr />
           <h2 className='mb-5 mt-2'>Simple process</h2>
           <MDBCol>
@@ -177,7 +177,7 @@ export function Landing1() {
                   <br />
                   Sign Up</MDBCardTitle>
                 <MDBCardText>
-                  Are you a buyer or a vendor?
+                  Are you a Tour, Hotel, Transport vendor?
                 </MDBCardText>
 
               </MDBCardBody>
@@ -189,9 +189,9 @@ export function Landing1() {
                 <MDBCardTitle>
                   <img src={item2} className="my-3" />
                   <br />
-                  Connect</MDBCardTitle>
+                  Book</MDBCardTitle>
                 <MDBCardText>
-                  Post projects. Browse vendors. Send a message when you find a match!
+                  Browse Tours, Hotels, Transports. Send a booking request when you find a match!
                 </MDBCardText>
 
               </MDBCardBody>
@@ -203,9 +203,9 @@ export function Landing1() {
                 <MDBCardTitle>
                   <img src={item3} className="my-3" />
                   <br />
-                  Shake on it</MDBCardTitle>
+                  Collaborate</MDBCardTitle>
                 <MDBCardText>
-                  Create & deliver products. Watch your business grow!
+                  Collaborate Tours with other Tour vendors!
                 </MDBCardText>
 
               </MDBCardBody>
@@ -214,44 +214,6 @@ export function Landing1() {
 
         </MDBRow>
 
-        
-        <MDBRow>
-          <hr />
-          <h1 className='my-5'>Allied services</h1>
-          <Carousel responsive={responsive}>
-            <div><MDBCard style={{ maxWidth: '22rem' }}>
-              <MDBCardBody>
-              <img src={alitem1} className="my-3" />
-              <h4>Web and Graphics</h4>
-
-              </MDBCardBody>
-            </MDBCard></div>
-            <div><MDBCard style={{ maxWidth: '22rem' }}>
-              <MDBCardBody>
-              <img src={alitem2} className="my-3" />
-              <h4>Digital Marketing</h4>
-
-              </MDBCardBody>
-            </MDBCard></div>
-          
-  
-            <div><MDBCard style={{ maxWidth: '22rem' }}>
-              <MDBCardBody>
-              <img src={alitem3} className="my-3" />
-              <h4>Financial & Tax</h4>
-
-              </MDBCardBody>
-            </MDBCard></div>
-            <div><MDBCard style={{ maxWidth: '22rem' }}>
-              <MDBCardBody>
-              <img src={alitem4} className="my-3" />
-              <h4>Logistics</h4>
-
-              </MDBCardBody>
-            </MDBCard></div>
-         
-          </Carousel>;
-        </MDBRow>
 
       </MDBContainer>
   <Footer/>
