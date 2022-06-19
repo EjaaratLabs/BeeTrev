@@ -30,12 +30,10 @@ import {
   MDBBreadcrumbItem,
   MDBDropdown
 } from 'mdb-react-ui-kit';
+import { Toast, ToastContainer } from 'react-bootstrap';
 // import StarRatings from 'react-star-ratings';
 import { getToken, loginAsync, resetToken, getUserData } from '../reducers/AuthSlice'
-import logo from '../assets/logo.png'
-import comakebg from '../assets/comkaebg.png'
-import item1 from '../assets/signup.png'
-import item2 from '../assets/connect.png'
+
 // import Avatar from 'react-avatar';
 import item3 from '../assets/sahke.png'
 import { Navbar } from './Navbar';
@@ -52,6 +50,10 @@ import { createNewCustomerAsync } from '../reducers/CustomerProfileSlice';
 
 
 export function TourBooking() {
+
+  const [showA, setShowA] = useState(false);
+
+  const toggleShowA = () => setShowA(!showA);
 
   const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJhZG1pbiIsImlhdCI6MTY1MjYzMTYwOX0.Iv0ffsGRfzvsiwZP6K--_9jYgxJnLJc1FbVehj8R8IY"
   const [formData, setFormData] = useState({});
@@ -72,8 +74,8 @@ export function TourBooking() {
     
     formData['TOURID']=params.tourId;
     console.log(formData);
-    dispatch(createNewCustomerAsync({ formData, token }));
-
+    dispatch(createNewCustomerAsync({ formData, token }))
+    
 
   }
 
@@ -134,7 +136,7 @@ export function TourBooking() {
         success="right" name='NAME' value={formData.NAME} onChange={handleChange} />
     </MDBCol>
     <MDBCol lg="6" className="py-1">
-      <MDBInput label="Phome Number" icon="envelope" group type="text" validate error="wrong"
+      <MDBInput label="Phone Number" icon="envelope" group type="text" validate error="wrong"
         success="right"  name='CUSTOMERPHONE' value={formData.CUSTOMERPHONE} onChange={handleChange} />
     </MDBCol>
     <MDBCol lg="6" className="py-1">

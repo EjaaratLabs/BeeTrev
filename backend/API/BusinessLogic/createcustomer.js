@@ -1,5 +1,6 @@
 const Customers = require('./Modules/Customers');
 var modle = require('./Modules/Customers');
+var smsModle = require('./Modules/SMSNotifications');
 
 class createCustomers
 {
@@ -15,7 +16,8 @@ class createCustomers
     async process(message)
     {
         try {
-            await modle.createCustomers(message);
+            await modle.createCustomers(message)
+            await smsModle.send(message.CUSTOMERPHONE,'Your booking has been confirmed.')
 
         }
         catch (ex) {
@@ -25,7 +27,7 @@ class createCustomers
     }
     async output(res,message)
     {
-        res.responseBody.message = "customer created successfully"
+        res.responseBody.message = "Booking created successfully"
         res.status="Success";
     }
     inputValidation(req)

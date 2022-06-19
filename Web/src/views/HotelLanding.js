@@ -41,7 +41,10 @@ import { Navbar } from './Navbar';
 import { Footer } from './Footer';
 import { getAllTours, GetAllToursListAsync, getTours, GetToursListAsync } from '../reducers/TourProfileSlice';
 import place from './Assets/hunza.webp'
-import { getHotels, GetHotelsListAsync } from '../reducers/HotelProfileSlice';
+import { getAllHotels, GetAllHotelsListAsync, getHotels, GetHotelsListAsync } from '../reducers/HotelProfileSlice';
+import room from './Assets/room.jpeg'
+import InputRange from 'react-input-range';
+import "react-input-range/lib/css/index.css";
 
 
 export function HotelLanding() {
@@ -50,24 +53,36 @@ export function HotelLanding() {
   const dispatch = useDispatch();
   useEffect(() => {
 
-    dispatch(GetHotelsListAsync({ token }));
+    dispatch(GetAllHotelsListAsync({ token }));
   }, []);
-  const data = useSelector(getHotels);
+  const data = useSelector(getAllHotels);
   console.log(data);
   let navigate = useNavigate()
-  let location = useLocation()
   const [showNav, setShowNav] = useState(false);
   const [search, setSearch] = useState("");
+  const [location,setLocation]=useState('All');
+  
+  const [val, setVal] = React.useState({ min: 0, max: 50000 });
+
   var list = [];
   if (data) {
     var temp = data;
-    if(params.tourCategory)
-    {
-      temp = data.filter((x) => (x.name && x.name.toLowerCase().includes(params.tourCategory.toLowerCase())) || (x.destination && x.destination.toLowerCase().includes(params.tourCategory.toLowerCase())))
-    }
+    // if(params.tourCategory)
+    // {
+    //   temp = data.filter((x) => (x.name && x.name.toLowerCase().includes(params.tourCategory.toLowerCase())) || (x.destination && x.destination.toLowerCase().includes(params.tourCategory.toLowerCase())))
+    // }
     
     if (search) {
-      temp = data.filter((x) => (x.name && x.name.toLowerCase().includes(search.toLowerCase())) || (x.destination && x.destination.toLowerCase().includes(search.toLowerCase())) )
+      temp = temp.filter((x) => (x.hotelName && x.hotelName.toLowerCase().includes(search.toLowerCase())) )
+    }
+
+    if (location != 'All') {
+      console.log(location)
+      temp = temp.filter((x) =>  (x.hotelLocation && x.hotelLocation.toLowerCase().includes(location.toLowerCase())))
+    }
+    
+    if (val.max < 100000 ) {
+      temp = temp.filter((x) => (x.roomPrice >= val.min) && (x.roomPrice <= val.max))
     }
     temp.forEach(val => {
       list.push(<MDBCol size='12' className='my-3'>
@@ -76,7 +91,7 @@ export function HotelLanding() {
             <MDBRow>
             <MDBCol size='4'>
                <div>
-                 <img src={place} width="190px"/>
+                 <img src={val.image} width="190px"/>
                </div>
               </MDBCol>
               <MDBCol size='5'>
@@ -119,33 +134,32 @@ export function HotelLanding() {
             <MDBCard>
 
               <MDBCardBody className='text-start'>
-                <MDBInput label="Search a project" className=" mb-2" icon="envelope" group type="email" validate error="wrong"
+                <MDBInput label="Search a hotel" className=" mb-2" icon="envelope" group type="email" validate error="wrong"
                   success="right" value={search} onChange={(e) => {
                     setSearch(e.target.value)
                   }} />
                 <br />
-                <h5>Categories</h5>
-                <MDBCheckbox name='flexCheck' value='Leather' id='flexCheckDefault' label='Leather' />
-                <MDBCheckbox name='flexCheck' value='Apparel & textile' id='flexCheckChecked' label='Apparel & textile' />
-                <MDBCheckbox name='flexCheck' value='Footware' id='flexCheckChecked' label='Footware' />
-                <MDBCheckbox name='flexCheck' value='Printing & packagin' id='flexCheckChecked' label='Printing & packaging' />
-                <MDBCheckbox name='flexCheck' value='Soaps & detergents' id='flexCheckChecked' label='Soaps & detergents' />
-                <MDBCheckbox name='flexCheck' value='Food & beverages' id='flexCheckChecked' label='Food & beverages' />
                 <hr />
                 <h5>Location</h5>
-                <select className="form-select">
-                  <option>---All---</option>
-                  <option value="1">Karachi</option>
-                  <option value="2">Lahore</option>
-                  <option value="3">Islamabad</option>
+                <select className="form-select" onChange={(e) => {
+                    
+                    setLocation(e.target.value)
+                  }}>
+                  <option value="All">---All---</option>
+                  <option value="Karachi">Karachi</option>
+                  <option value="Lahore">Lahore</option>
+                  <option value="Islamabad">Islamabad</option>
                 </select>
                 <hr />
-                <h5>Quantity</h5>
-                <MDBCheckbox name='flexCheck' value='1' id='flexCheckDefault' label='0 - 250' />
-                <MDBCheckbox name='flexCheck' value='2' id='flexCheckChecked' label='251 - 500' />
-                <MDBCheckbox name='flexCheck' value='3' id='flexCheckChecked' label='501 - 1000' />
-                <MDBCheckbox name='flexCheck' value='4' id='flexCheckChecked' label='1000+' />
-
+                <h5 className=" mb-4">Price</h5>
+<InputRange
+            step={5000}
+            maxValue={50000}
+            minValue={0}
+            value={val}
+            onChange={setVal}
+            onChangeComplete={args => console.log(args)}
+          />
               </MDBCardBody>
             </MDBCard>
           </MDBCol>

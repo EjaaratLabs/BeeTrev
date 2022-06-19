@@ -5,13 +5,12 @@ import autoMergeLevel2 from 'reduxjs-toolkit-persist/lib/stateReconciler/autoMer
 
 import authReducer from '../reducers/AuthSlice';
 import counterReducer from '../features/counter/counterSlice';
-import childProfileReducer from '../reducers/ChildProfileSlice';
-import doonorProfileReducer from '../reducers/DonorProfileSlice';
 import TourProfileSlice from '../reducers/TourProfileSlice';
 import TransportProfileSlice from '../reducers/TransportProfileSlice';
 import HotelProfileSlice from '../reducers/HotelProfileSlice';
 import UserProfileSlice from '../reducers/UserProfileSlice';
 import CustomerProfileSlice from '../reducers/CustomerProfileSlice';
+import CollaborationProfileSlice from '../reducers/CollaborationProfileSlice';
 
 const persistConfig = {
   key: 'root',
@@ -22,13 +21,12 @@ const persistConfig = {
 const reducers = combineReducers({
   count: counterReducer,
   authentication: authReducer,
-  childProfile: childProfileReducer,
-  donorProfile: doonorProfileReducer,
   TourSlice: TourProfileSlice,
   TransportSlice: TransportProfileSlice,
   HotelSlice: HotelProfileSlice,
   UserSlice: UserProfileSlice,
-  CustomerSlice: CustomerProfileSlice
+  CustomerSlice: CustomerProfileSlice,
+  CollaborationSlice: CollaborationProfileSlice
 });
 
 const _persistedReducer = persistReducer(persistConfig, reducers);

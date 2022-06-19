@@ -18,7 +18,7 @@ class _btm_navState extends State<btm_nav> {
   static List<Widget> _btmNav = <Widget>[
     homePage(),
     guestList(),
-    profile(),
+    //profile(),
     // actions(),
   ];
   void _onItemTapped(int index) {
@@ -59,8 +59,8 @@ class _btm_navState extends State<btm_nav> {
       body: _btmNav.elementAt(_selectedIndex),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       floatingActionButton: SizedBox(
-        height: 30.0,
-        width: 40.0,
+        height: 50.0,
+        width: 50.0,
         child: FloatingActionButton(
           onPressed: () {
             Navigator.push(
@@ -74,7 +74,7 @@ class _btm_navState extends State<btm_nav> {
       ),
       bottomNavigationBar: BottomAppBar(
         shape: CircularNotchedRectangle(),
-        notchMargin: 0.0,
+        notchMargin: 2.0,
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
@@ -86,7 +86,7 @@ class _btm_navState extends State<btm_nav> {
                 Icons.home,
                 color: _selectedIndex == 0 ? Color(0xffa014eb) : Colors.grey,
               ),
-              height: 40,
+              height: 50,
             ),
             FlatButton(
               onPressed: () {
@@ -94,16 +94,16 @@ class _btm_navState extends State<btm_nav> {
               },
               child: Icon(Icons.people,
                   color: _selectedIndex == 1 ? Color(0xffa014eb) : Colors.grey),
-              height: 40,
+              height: 50,
             ),
-            FlatButton(
-              onPressed: () {
-                _onItemTapped(2);
-              },
-              child: Icon(Icons.person,
-                  color: _selectedIndex == 2 ? Color(0xffa014eb) : Colors.grey),
-              height: 20,
-            ),
+            // FlatButton(
+            //   onPressed: () {
+            //     _onItemTapped(2);
+            //   },
+            //   child: Icon(Icons.person,
+            //       color: _selectedIndex == 2 ? Color(0xffa014eb) : Colors.grey),
+            //   height: 20,
+            // ),
             // FlatButton(
             //   onPressed: () {
             //     _onItemTapped(3);

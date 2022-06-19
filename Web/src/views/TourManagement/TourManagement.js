@@ -32,7 +32,6 @@ import { TourProfile } from './TourProfile';
 
 export function TourManagement() {
 
-  const screen1 = useSelector(state => state.childProfile.screenMode);
   const [screen, setScreenMode] = useState("list");
   const [details, setProfileDetails] = useState({});
   const [detailsMode, setDetailsMode] = useState("add");
@@ -40,29 +39,6 @@ export function TourManagement() {
   var screenModule = <div></div>
 
 
-  // if (screen == "list") {
-  //   screenModule = <TourList
-  //     openNewProfile={() => {
-  //       setDetailsMode("add")
-  //       setScreenMode("addscreen")
-  //       setProfileDetails(null)
-  //     }}
-  //     openProfileDetails={(details) => {
-  //       setDetailsMode("edit")
-  //       setProfileDetails(details)
-  //       setScreenMode("details")
-  //     }} />;
-  // }
-  // else if (screen == "addscreen") {
-  //   screenModule = <TourSetup details={details} detailsMode={detailsMode} closeProfileDetails={() => {
-  //     setScreenMode("list")
-  //   }} />;
-  // }
-  // else if (screen == "details") {
-  //   screenModule = <ChildProfile details={details} closeProfileDetails={() => {
-  //     setScreenMode("list")
-  //   }} />;
-  // }
   return (
     // screenModule
 

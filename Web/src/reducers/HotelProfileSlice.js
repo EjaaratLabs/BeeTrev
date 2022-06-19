@@ -1,6 +1,6 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 
-import { CreateNewHotel, GetHotelDetails, GetHotelsList } from '../api/HotelApis';
+import { CreateNewHotel, deleteHotel, GetAllHotelsList, GetHotelDetails, GetHotelsList } from '../api/HotelApis';
 import { toast } from 'react-toastify';
 
 
@@ -10,7 +10,8 @@ const initialState = {
   unAssignedList: [],
   status: 'idle',
   screenMode: 'list',
-  hotels: []
+  hotels: [],
+  allHotels: []
 };
 
 // The function below is called a thunk and allows us to perform async logic. It
@@ -24,6 +25,15 @@ export const GetHotelsListAsync = createAsyncThunk(
   'HotelSlice/gethotels',
   async (data) => {
     const response = await GetHotelsList(data.formData, data.token);
+    console.log("res:  ", response)
+    return response.data;
+  }
+);
+
+export const GetAllHotelsListAsync = createAsyncThunk(
+  'HotelSlice/getallhotels',
+  async (data) => {
+    const response = await GetAllHotelsList(data.formData, data.token);
     console.log("res:  ", response)
     return response.data;
   }
@@ -47,6 +57,15 @@ export const GetHotelDetailsAsync = createAsyncThunk(
   }
 );
 
+export const DeleteHotelAsync = createAsyncThunk(
+  'HotelSlice/delete',
+  async (data) => {
+    const response = await deleteHotel(data.params, data.token);
+    return response.data;
+  }
+);
+
+
 export const HotelProfileSlice = createSlice({
   name: 'HotelSlice',
   initialState,
@@ -58,6 +77,11 @@ export const HotelProfileSlice = createSlice({
     },*/
   extraReducers: (builder) => {
     builder
+      .addCase(GetAllHotelsListAsync.fulfilled, (state, action) => {
+        state.status = 'idle';
+        state.allHotels = action.payload.list
+        // state.profileData = action.payload.token;
+      })
       .addCase(GetHotelsListAsync.fulfilled, (state, action) => {
         state.status = 'idle';
         state.hotels = action.payload.list
@@ -79,6 +103,15 @@ export const HotelProfileSlice = createSlice({
         state.profileData= action.payload
         // state.profileData = action.payload.token;
       })
+      .addCase(DeleteHotelAsync.pending, (state, action) => {
+        state.status = 'loading';
+      })
+      .addCase(DeleteHotelAsync.fulfilled, (state, action) => {
+        state.status = 'idle';
+        // state.profileData= action.payload
+        // state.profileData = action.payload.token;
+        toast.success(action.payload.message)
+      });
   },
 });
 
@@ -94,6 +127,8 @@ export const getProfiles = (state) => state.HotelSlice.profile;
 export const getAvailableProfiles = (state) => state.HotelSlice.unAssignedList;
 
 export const getHotels = (state) => state.HotelSlice.hotels;
+
+export const getAllHotels = (state) => state.HotelSlice.allHotels;
 
 // We can also write thunks by hand, which may contain both sync and async logic.
 // Here's an example of conditionally dispatching actions based on current state.

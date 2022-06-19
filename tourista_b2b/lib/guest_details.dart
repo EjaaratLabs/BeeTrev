@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'basic_info.dart';
+//import 'basic_info.dart';
 import 'statuses.dart';
 /*
 class guest_details extends StatefulWidget {
@@ -63,9 +63,9 @@ class _guest_detailsState extends State<guest_details> {
                 //   height: 390,
 
                 // child:
-                Expanded(
-                  child: TabBarView(children: [b_info(guestid: '1',), status()]),
-                ),
+                //Expanded(
+                //  child: TabBarView(children: [b_info(), status()]),
+                //),
               ],
             ),
           )),

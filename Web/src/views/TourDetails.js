@@ -68,17 +68,9 @@ export function TourDetails() {
 
   const images = [
     {
-      original: 'https://picsum.photos/id/1018/1000/600/',
-      thumbnail: 'https://picsum.photos/id/1018/250/150/',
-    },
-    {
-      original: 'https://picsum.photos/id/1015/1000/600/',
-      thumbnail: 'https://picsum.photos/id/1015/250/150/',
-    },
-    {
-      original: 'https://picsum.photos/id/1019/1000/600/',
-      thumbnail: 'https://picsum.photos/id/1019/250/150/',
-    },
+      original: details?.details?.image,
+      thumbnail: details?.details?.image,
+    }
   ];
 
   return (
@@ -136,7 +128,7 @@ export function TourDetails() {
               <MDBCardBody className='text-start'>
                 <MDBCardTitle><h5>Overview</h5></MDBCardTitle>
                 <p>{details?.details?.shortDescription}</p>
-                <textarea disabled style={{width : "100%", height : "200px"}}>{details?.details?.shortDescription}</textarea>
+                {/* <textarea disabled style={{width : "100%", height : "200px"}}>{details?.details?.shortDescription}</textarea> */}
                 <MDBCardTitle><h5>Description</h5></MDBCardTitle>
                 <p>{details?.details?.longDescription}</p>
                 <div className='w-100  py-3 d-flex  justify-content-between' >

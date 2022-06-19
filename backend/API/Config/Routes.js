@@ -45,13 +45,48 @@ module.exports = {
         allowedMethod: ['GET']
     },
     
+    "/transaction/gettransportdetails": {
+        controller: "gettransportdetails",
+        allowedMethod: ['GET']
+    },
+    
     "/transaction/deletetour": {
         controller: "deleteTour",
         allowedMethod: ['POST']
     },
     
+    "/transaction/deletetransport": {
+        controller: "deleteTransport",
+        allowedMethod: ['POST']
+    },
+    
+    "/transaction/deletehotel": {
+        controller: "deleteHotel",
+        allowedMethod: ['POST']
+    },
+    
     "/transaction/updatebookingstatus": {
         controller: "updateBookingStatus",
+        allowedMethod: ['POST']
+    },
+    
+    "/transaction/updatehotelbookingstatus": {
+        controller: "updateHotelBookingStatus",
+        allowedMethod: ['POST']
+    },
+    
+    "/transaction/updatetransportbookingstatus": {
+        controller: "updateTransportBookingStatus",
+        allowedMethod: ['POST']
+    },
+    
+    "/transaction/updatecollaboratestatus": {
+        controller: "updateCollaborateStatus",
+        allowedMethod: ['POST']
+    },
+    
+    "/transaction/declinecollaboratestatus": {
+        controller: "declineCollaborateStatus",
         allowedMethod: ['POST']
     },
 
@@ -104,6 +139,10 @@ module.exports = {
     },
     "/transaction/myprofile": {
         controller: "GetProfile",
+        allowedMethod: ['GET']
+    },
+    "/transaction/getusertype": {
+        controller: "GetUserType",
         allowedMethod: ['GET']
     },
     "/transaction/changepassword": {
@@ -171,14 +210,55 @@ module.exports = {
         allowedMethod: ['POST']
 
     },
+    
+    "/transaction/createcollaboration": {
+        controller: "createCollaboration",
+        allowedMethod: ['POST']
+
+    },
+    
+    "/transaction/createhotelcustomer": {
+        controller: "createhotelcustomer",
+        allowedMethod: ['POST']
+    },
+    
+    "/transaction/createtransportcustomer": {
+        controller: "createtransportcustomer",
+        allowedMethod: ['POST']
+    },
 
     "/transaction/getcustomer": {
         controller: "getcustomer",
         allowedMethod: ['GET']
     },
+    
+    "/transaction/gethotelcustomer": {
+        controller: "gethotelcustomer",
+        allowedMethod: ['GET']
+    },
+    
+    "/transaction/gettransportcustomer": {
+        controller: "gettransportcustomer",
+        allowedMethod: ['GET']
+    },
+    
+    "/transaction/gettourcollaborate": {
+        controller: "GetTourCollaborate",
+        allowedMethod: ['GET']
+    },
+    
+    "/transaction/getmytourcollaborate": {
+        controller: "GetMyTourCollaborate",
+        allowedMethod: ['GET']
+    },
+
     "/transaction/getEvents": {
         controller: "getEvents",
         allowedMethod: ['GET']
+    },
+    "/transaction/updateEvent": {
+        controller: "updateEvent",
+        allowedMethod: ['GET','POST']
     },
     "/transaction/getannouncement": {
         controller: "GetAnnouncement",
@@ -196,6 +276,10 @@ module.exports = {
         controller: "GetTourHistory",
         allowedMethod: ['GET']
     },
+    "/transaction/getcollabtour": {
+        controller: "GetCollabTour",
+        allowedMethod: ['GET']
+    },
     "/transaction/gettransportbyuserid": {
         controller: "GetTransportHistory",
         allowedMethod: ['GET']
@@ -203,5 +287,9 @@ module.exports = {
     "/transaction/gettransport": {
         controller: "GetTransport",
         allowedMethod: ['GET']
+    },
+    "/transaction/updatequantity": {
+        controller: "updateQuantity",
+        allowedMethod: ['POST']
     },
 }

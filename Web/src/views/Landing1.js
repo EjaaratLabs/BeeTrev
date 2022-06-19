@@ -41,16 +41,10 @@ import shogran from './Assets/shogran.webp'
 import kashmir from './Assets/kashmir.webp'
 import skardu from './Assets/skardu.webp'
 import hunza from './Assets/hunza.webp'
+import gilgit from './Assets/gilgit.webp'
 import item3 from '../assets/sahke.png'
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
-
-import seritem1 from '../assets/leather.png'
-import seritem2 from '../assets/apparels.png'
-import seritem3 from '../assets/printing.png'
-import seritem4 from '../assets/food.png'
-import seritem5 from '../assets/soaps.png'
-import seritem6 from '../assets/footwear.png'
 
 import alitem1 from '../assets/web.png'
 import alitem2 from '../assets/dm.png'
@@ -59,6 +53,7 @@ import alitem4 from '../assets/log.jpg'
 
 import { Navbar } from './Navbar';
 import { Footer } from './Footer';
+
 const responsive = {
   superLargeDesktop: {
     // the naming can be any, depends on you.
@@ -100,10 +95,11 @@ export function Landing1() {
           <MDBCarouselItem className='active'>
             <MDBCarouselElement src={hero} alt='...' style={{ height: "600px"}} />
             <MDBCarouselCaption style={{ marginBottom: "200px",  background: "rgba(0, 0, 0, .6)"}}>
-              <h2>Custom works make the dream happen</h2>
-              <p>A place for entrepreneurs and vendors to connect.</p>
+              <h2>Book your dream tour with us</h2>
+              <p>Explore and Create a best tour for your holidays</p>
               <MDBBtn className='mx-2' style={{ backgroundColor: '#F7D402', color: "black" }} href="/tour" >Find a Tour</MDBBtn>
               <MDBBtn className='mx-2' href='/hotel' style={{backgroundColor:"#30B4BA"}} >Find a Hotel</MDBBtn>
+              <MDBBtn className='mx-2' href='/transport' style={{backgroundColor:"#30B4BA"}} >Find a Transport</MDBBtn>
             </MDBCarouselCaption>
           </MDBCarouselItem>
 
@@ -124,7 +120,7 @@ export function Landing1() {
             </MDBCard></div>
             <div><MDBCard style={{ maxWidth: '22rem' }}>
               <MDBCardBody>
-              <img src={hunza} className="my-3" style={{ width: "300px"}}/>
+              <img src={gilgit} className="my-3" style={{ width: "300px"}}/>
               <h4><Link to="/tour/Gilgit" style={{color:"black"}}>Gilgit</Link></h4>
 
               </MDBCardBody>
@@ -217,61 +213,8 @@ export function Landing1() {
           </MDBCol>
 
         </MDBRow>
-        <MDBRow>
-          <hr />
-          <h1 className='my-5'>Discover projects</h1>
-          <Carousel responsive={responsive}>
-            <div><MDBCard style={{ maxWidth: '22rem' }}>
-              <MDBCardBody>
-                <MDBCardTitle>
-                  BeeTrev</MDBCardTitle>
-                <MDBCardText>
-                  Tourism B2B Platform.
-                </MDBCardText>
 
-              </MDBCardBody>
-            </MDBCard></div>
-            <div><MDBCard style={{ maxWidth: '22rem' }}>
-              <MDBCardBody>
-                <MDBCardTitle>
-                SDCMS</MDBCardTitle>
-                <MDBCardText>
-                  Smart donation collection managemnt system.
-                </MDBCardText>
-
-              </MDBCardBody>
-            </MDBCard></div>
-            <div><MDBCard style={{ maxWidth: '22rem' }}>
-              <MDBCardBody>
-                <MDBCardTitle>
-                  Car Pool</MDBCardTitle>
-                <MDBCardText>
-                  Car ride sharing service.
-                </MDBCardText>
-
-              </MDBCardBody>
-            </MDBCard></div>
-            <div><MDBCard style={{ maxWidth: '22rem' }}>
-              <MDBCardBody>
-                <MDBCardTitle>
-                  Car Pool</MDBCardTitle>
-                <MDBCardText>
-                  Car ride sharing service.
-                </MDBCardText>
-
-              </MDBCardBody>
-            </MDBCard></div>
-          
-          </Carousel>;
-        </MDBRow>
         
-        <MDBRow>
-          <hr />
-          <h1>Co-make journey</h1>
-          <h5>
-            Every entrepreneur carries a story and a goal.</h5>
-          <img className='my-5' src={banner} style={{ borderRadius: "25px" }} />
-        </MDBRow>
         <MDBRow>
           <hr />
           <h1 className='my-5'>Allied services</h1>
@@ -309,6 +252,7 @@ export function Landing1() {
          
           </Carousel>;
         </MDBRow>
+
       </MDBContainer>
   <Footer/>
 

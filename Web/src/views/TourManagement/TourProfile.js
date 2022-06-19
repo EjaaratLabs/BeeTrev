@@ -31,7 +31,7 @@ import {
 } from 'mdb-react-ui-kit';
 
 import DataTable from 'react-data-table-component';
-import { GetTourDetailsAsync } from '../../reducers/TourProfileSlice';
+import { GetTourDetailsAsync, UpdateTourAsync } from '../../reducers/TourProfileSlice';
 import { getToken } from '../../reducers/AuthSlice';
 import { useParams } from 'react-router';
 import slider1 from '../Assets/slider1.png'
@@ -68,35 +68,21 @@ const columns = [
   },
   {
     name: 'Action',
-    selector: row =>(row.bookingStatus == 0? <Active id={row.id}/>: "Active") ,
+    selector: row =>(row.bookingStatus == 0? <Active id={row.id} qty={row.quantity}/>: "Active") ,
   }
 ];
 
 function Active(props) {
   const dispatch = useDispatch();
   const token = useSelector(getToken);
+  let params = useParams();
   
   return <Link to="#"  onClick={()=>{
     dispatch(updateBookingStatusAsync({params:{id:props.id}, token }));
+    console.log('req' , params.tourId, props.quantity)
+    dispatch(UpdateTourAsync({params:{tourId:params.tourId,qty:props.qty}, token }));
   }}><MDBBtn color='danger' size='sm' >Active Booking</MDBBtn> </Link>
 }
-
-const images = [
-  {
-    original: 'https://picsum.photos/id/1018/1000/600/',
-    thumbnail: 'https://picsum.photos/id/1018/250/150/',
-  },
-  {
-    original: 'https://picsum.photos/id/1015/1000/600/',
-    thumbnail: 'https://picsum.photos/id/1015/250/150/',
-  },
-  {
-    original: 'https://picsum.photos/id/1019/1000/600/',
-    thumbnail: 'https://picsum.photos/id/1019/250/150/',
-  },
-];
-
-
 
 export const TourProfile = (props) => {
   
@@ -133,15 +119,13 @@ export const TourProfile = (props) => {
   };
 
   
+  const images = [
+    {
+      original: formData.details.image,
+      thumbnail: formData.details.image,
+    }
+  ];
 
-  // const data = useSelector(getTours);
-  /*if (props.details.status == "1") {
-    badge = <MDBBadge color='success'>{statusMap[props.details.status]}</MDBBadge>
-  } else if (props.details.status == "2") {
-    badge = <MDBBadge color='danger'>{statusMap[props.details.status]}</MDBBadge>
-  } else if (props.details.status == "3") {
-    badge = <MDBBadge color='danger'>{statusMap[props.details.status]}</MDBBadge>
-  }*/
   return (
     <div className="p-4 text-start w-100">
       <MDBBreadcrumb>

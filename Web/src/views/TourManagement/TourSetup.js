@@ -92,22 +92,30 @@ export function TourSetup() {
                         success="right" name='STATUS' value={formData.STATUS} onChange={handleChange} />
                     </MDBCol>
                     <MDBCol lg="12" className="py-1">
-                      <MDBInput label="Overview" icon="envelope" group type="text" validate error="wrong"
+                      <MDBInput textarea label="Overview" icon="envelope" group type="text" validate error="wrong"
                         success="right" name='SHORT_DESC' value={formData.SHORT_DESC} onChange={handleChange} />
                     </MDBCol>
                     <MDBCol lg="12" className="py-1">
-                      <MDBInput label="Description" icon="envelope" group type="text" validate error="wrong"
+                      <MDBInput textarea label="Description" icon="envelope" group type="text" validate error="wrong"
                         success="right" name='LONG_DESC' value={formData.LONG_DESC} onChange={handleChange} />
                     </MDBCol>
                     <MDBCol lg="4" className="py-1">
                       <MDBInput label="Quantity" icon="envelope" group type="number" validate error="wrong"
                         success="right" name='QTY' value={formData.QTY} onChange={handleChange} />
                     </MDBCol>
+                    <MDBCol lg="12" className="py-1">
+                      <MDBInput label="Event Names" icon="envelope" group type="text" validate error="wrong"
+                        success="right" name='EVENTNAMES' value={formData.EVENTNAMES} onChange={handleChange} />
+                    </MDBCol>
+                    <MDBCol lg="6" className="py-1">
+                      <MDBInput label="Image" icon="envelope" group type="text" validate error="wrong"
+                        success="right" name='IMAGE' value={formData.IMAGE} onChange={handleChange} />
+                    </MDBCol>
                     </MDBRow>
                   <hr />
                 </div>
                 <div className="text-end w-100">
-                  <MDBBtn  color="danger" className="mx-2 my-5" href="/home/tour">Close</MDBBtn><MDBBtn className="mx-2  my-5" onClick={onSubmit}>Add</MDBBtn>
+                  <MDBBtn  color="danger" className="mx-2 my-5" href="/home/tour">Close</MDBBtn><MDBBtn className="mx-2  my-5" href='#' onClick={onSubmit}>Add</MDBBtn>
                 </div>
               </form>
 

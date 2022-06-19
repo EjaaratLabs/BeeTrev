@@ -26,7 +26,8 @@ class GetProfile{
             phone:message.USER.Phone,
             address:message.USER.Address,
             center:message.USER.centername,
-            email:message.USER.Email
+            email:message.USER.Email,
+            type:message.USER.userType
         }:{}
         res.status = "Success";
     }

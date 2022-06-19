@@ -1,6 +1,6 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { toast } from 'react-toastify';
-import { CreateNewTransport, GetTransportsList } from '../api/TransportApis';
+import { CreateNewTransport, deleteTransport, GetAllTransportsList, GetTransportDetails, GetTransportsList } from '../api/TransportApis';
 
 
 const initialState = {
@@ -9,7 +9,8 @@ const initialState = {
   unAssignedList: [],
   status: 'idle',
   screenMode: 'list',
-  transports: []
+  transports: [],
+  allTransports: []
 };
 
 // The function below is called a thunk and allows us to perform async logic. It
@@ -28,10 +29,36 @@ export const GetTransportsListAsync = createAsyncThunk(
   }
 );
 
+export const GetAllTransportsListAsync = createAsyncThunk(
+  'TransportSlice/getalltransport',
+  async (data) => {
+    const response = await GetAllTransportsList(data.formData, data.token);
+    console.log("res:  ", response)
+    return response.data;
+  }
+);
+
 export const createNewTransportAsync = createAsyncThunk(
   'TransportSlice/createtransport',
   async (data) => {
     const response = await CreateNewTransport(data.formData, data.token);
+    return response.data;
+  }
+);
+
+export const GetTransportDetailsAsync = createAsyncThunk(
+  'TransportSlice/details',
+  async (data) => {
+    const response = await GetTransportDetails(data.params, data.token);
+    console.log('res',response);
+    return response.data;
+  }
+);
+
+export const DeleteTransportAsync = createAsyncThunk(
+  'TransportSlice/delete',
+  async (data) => {
+    const response = await deleteTransport(data.params, data.token);
     return response.data;
   }
 );
@@ -52,6 +79,11 @@ export const TransportProfileSlice = createSlice({
         state.transports = action.payload.transports
         // state.profileData = action.payload.token;
       })
+      .addCase(GetAllTransportsListAsync.fulfilled, (state, action) => {
+        state.status = 'idle';
+        state.allTransports = action.payload.transports
+        // state.profileData = action.payload.token;
+      })
       .addCase(createNewTransportAsync.pending, (state, action) => {
         state.status = 'loading';
       })
@@ -60,6 +92,22 @@ export const TransportProfileSlice = createSlice({
         toast.success(action.payload.message)
         // state.profileData = action.payload.token;
       })
+      .addCase(GetTransportDetailsAsync.pending, (state, action) => {
+        state.status = 'loading';
+      })
+      .addCase(GetTransportDetailsAsync.fulfilled, (state, action) => {
+        state.status = 'idle';
+        state.profileData= action.payload
+        // state.profileData = action.payload.token;
+      })
+      .addCase(DeleteTransportAsync.pending, (state, action) => {
+        state.status = 'loading';
+      })
+      .addCase(DeleteTransportAsync.fulfilled, (state, action) => {
+        state.status = 'idle';
+        // state.profileData= action.payload
+        // state.profileData = action.payload.token;
+      });
   },
 });
 
@@ -75,6 +123,9 @@ export const getProfiles = (state) => state.TransportSlice.profile;
 export const getAvailableProfiles = (state) => state.TransportSlice.unAssignedList;
 
 export const getTransports = (state) => state.TransportSlice.transports;
+
+export const getAllTransports = (state) => state.TransportSlice.allTransports;
+
 
 // We can also write thunks by hand, which may contain both sync and async logic.
 // Here's an example of conditionally dispatching actions based on current state.

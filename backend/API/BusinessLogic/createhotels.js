@@ -13,6 +13,7 @@ class createhotels
             message.HOTELFACILITIES=req.body.hotelFacilities
             message.HOTELDESCRIPTION=req.body.hotelDescription 
             message.HOTELSTATUS=req.body.hotelStatus
+            message.IMAGE=req.body.image
              
     }
     async process(message)
@@ -27,7 +28,7 @@ class createhotels
         res.status="Success";
         res.responseBody.TEST=message.TEST
         res.responseBody.TOTAl=message.TOTAl
-        res.responseBody.message="hotels added success"
+        res.responseBody.message="Hotel added successfully"
     }
     inputValidation(req)
     {

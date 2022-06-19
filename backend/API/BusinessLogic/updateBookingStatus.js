@@ -1,7 +1,7 @@
 
 var modle = require('./Modules/Customers');
 
-class updateBookingStatus
+class updateHotelBookingStatus
 {
     async input(req,message)
     {
@@ -20,7 +20,7 @@ class updateBookingStatus
     }
     async output(res,message)
     {
-        res.responseBody.message = "updated successfully"
+        res.responseBody.message = "Booking updated successfully"
         res.status="Success";
     }
     inputValidation(req)
@@ -29,4 +29,4 @@ class updateBookingStatus
     }
     
 }
-module.exports= new updateBookingStatus();
+module.exports= new updateHotelBookingStatus();

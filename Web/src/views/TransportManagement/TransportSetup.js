@@ -75,7 +75,7 @@ export function TransportSetup() {
                         success="right" name='COMPANY' value={formData.COMPANY} onChange={handleChange} />
                     </MDBCol>
                     <MDBCol lg="6" className="py-1">
-                      <MDBInput label="Model" icon="envelope" group type="number" validate error="wrong"
+                      <MDBInput label="Model" icon="envelope" group type="text" validate error="wrong"
                         success="right" name='MODEL' value={formData.MODEL} onChange={handleChange} />
                     </MDBCol>
                     <MDBCol lg="6" className="py-1">
@@ -86,12 +86,20 @@ export function TransportSetup() {
                       <MDBInput label="Status" icon="envelope" group type="text" validate error="wrong"
                         success="right" name='STATUS' value={formData.STATUS} onChange={handleChange} />
                     </MDBCol>
+                    <MDBCol lg="6" className="py-1">
+                      <MDBInput label="Image" icon="envelope" group type="text" validate error="wrong"
+                        success="right" name='IMAGE' value={formData.IMAGE} onChange={handleChange} />
+                    </MDBCol>
+                    <MDBCol lg="6" className="py-1">
+                      <MDBInput label="Location" icon="envelope" group type="text" validate error="wrong"
+                        success="right" name='LOCATION' value={formData.LOCATION} onChange={handleChange} />
+                    </MDBCol>
                   </MDBRow>
                   <hr />
 
                 </div>
                 <div className="text-end w-100">
-                  <MDBBtn color="danger" className="mx-2 my-5" href="/home/transport">Close</MDBBtn><MDBBtn onClick={onSubmit} className="mx-2  my-5">Add</MDBBtn>
+                  <MDBBtn color="danger" className="mx-2 my-5" href="/home/transport">Close</MDBBtn><MDBBtn onClick={onSubmit} className="mx-2  my-5"  href='#'>Add</MDBBtn>
                 </div>
               </form>
 

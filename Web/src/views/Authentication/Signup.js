@@ -108,7 +108,7 @@ export function Signup() {
                 <MDBInput label="Password" className="mb-5 mb-2" icon="envelope" group type="password" validate error="wrong"
                   success="right" name='password' value={formData.password} onChange={handleChange} />
 
-                <MDBBtn href="" onClick={onSubmit}>Sign Up</MDBBtn>
+                <MDBBtn href="#" onClick={onSubmit}>Sign Up</MDBBtn>
               </MDBCardBody>
             </MDBCard>
 
