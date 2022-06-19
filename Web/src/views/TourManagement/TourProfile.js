@@ -79,7 +79,7 @@ function Active(props) {
   
   return <Link to="#"  onClick={()=>{
     dispatch(updateBookingStatusAsync({params:{id:props.id}, token }));
-    console.log('req' , params.tourId, props.quantity)
+    console.log('req' , params.tourId, props.qty)
     dispatch(UpdateTourAsync({params:{tourId:params.tourId,qty:props.qty}, token }));
   }}><MDBBtn color='danger' size='sm' >Active Booking</MDBBtn> </Link>
 }

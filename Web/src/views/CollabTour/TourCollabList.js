@@ -65,22 +65,27 @@ export function TourCollabList() {
   var list = [];
   if (data) {
     var temp = data;
-    if(params.tourCategory)
-    {
-      temp = data.filter((x) => (x.name && x.name.toLowerCase().includes(params.tourCategory.toLowerCase())) || (x.destination && x.destination.toLowerCase().includes(params.tourCategory.toLowerCase())))
-    }
+    // if(params.tourCategory)
+    // {
+    //   temp = data.filter((x) => (x.name && x.name.toLowerCase().includes(params.tourCategory.toLowerCase())) || (x.destination && x.destination.toLowerCase().includes(params.tourCategory.toLowerCase())))
+    // }
     
     if (search) {
       temp = data.filter((x) => (x.name && x.name.toLowerCase().includes(search.toLowerCase())) || (x.destination && x.destination.toLowerCase().includes(search.toLowerCase())) )
     }
     
-    if (value != 'All' || destination != 'All') {
-      temp = data.filter((x) => (x.departure && x.departure.toLowerCase().includes(value.toLowerCase())) || (x.destination && x.destination.toLowerCase().includes(destination.toLowerCase())))
+    if (value != 'All' ) {
+      temp = data.filter((x) => (x.departure && x.departure.toLowerCase().includes(value.toLowerCase())) )
     }
     
-    if (val.max <= 100000) {
+    if (destination != 'All') {
+      temp = data.filter((x) =>  (x.destination && x.destination.toLowerCase().includes(destination.toLowerCase())))
+    }
+    
+    if (val.max < 100000 ) {
       temp = data.filter((x) => (x.price >= val.min) && (x.price <= val.max))
     }
+    
     temp.forEach(val => {
       list.push(<MDBCol size='12' className='my-3'>
         <MDBCard className="">
@@ -146,18 +151,6 @@ export function TourCollabList() {
                 </MDBCol>
                 <MDBCol>
                 <h5>Destination</h5>
-                <select className="form-select" onChange={(e) => {
-                    setDestination(e.target.value)
-                  }}>
-                  <option value="All">---All---</option>
-                  <option value="Hunza">Hunza</option>
-                  <option value="Gilgit">Gilgit</option>
-                  <option value="Swat">Swat</option>
-                </select>
-                
-                </MDBCol>
-                <MDBCol>
-                <h5>Quantity</h5>
                 <select className="form-select" onChange={(e) => {
                     setDestination(e.target.value)
                   }}>

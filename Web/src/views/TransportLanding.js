@@ -73,7 +73,7 @@ export function TransportLanding() {
     // }
     
     if (search) {
-      temp = temp.filter((x) => (x.name && x.name.toLowerCase().includes(search.toLowerCase())) )
+      temp = temp.filter((x) => (x.model && x.model.toLowerCase().includes(search.toLowerCase())) )
     }
     
     if (value != 'All') {
@@ -135,7 +135,7 @@ export function TransportLanding() {
             <MDBCard>
 
               <MDBCardBody className='text-start'>
-                <MDBInput label="Search a project" className=" mb-2" icon="envelope" group type="email" validate error="wrong"
+                <MDBInput label="Search a transport" className=" mb-2" icon="envelope" group type="email" validate error="wrong"
                   success="right" value={search} onChange={(e) => {
                     setSearch(e.target.value)
                   }} />
